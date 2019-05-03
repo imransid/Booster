@@ -15,3 +15,21 @@ fatal: no upstream configured for branch 'master'
 > git check-ignore -z --stdin
 > git add -A -- .
 > git commit --quiet --allow-empty-message --file - --all
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+fatal: no upstream configured for branch 'master'
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+fatal: no upstream configured for branch 'master'
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git ls-tree -l HEAD -- /home/imran/Work_project/react-native/Booster/~/.vscode-root/logs/20190503T175945/exthost1/output_logging_20190503T180005/1-Git.log
+> git show 1dd6d806e2192777150fab49674d862d432efaea
+> git show HEAD:~/.vscode-root/logs/20190503T175945/exthost1/output_logging_20190503T180005/1-Git.log
+> git add -A -- .
