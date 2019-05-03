@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "470491176372",
+    "firebase_url": "https://booster-25017.firebaseio.com",
+    "project_id": "booster-25017",
+    "storage_bucket": "booster-25017.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470491176372:android:d7badd00a41b6c59",
+        "android_client_info": {
+          "package_name": "com.booster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470491176372-tln4p3lflcpp7jsum2sdgrgjb036vqf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUuXxqWhF42EaTFN_RGFxGLtSud4nKcig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470491176372-tln4p3lflcpp7jsum2sdgrgjb036vqf7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
