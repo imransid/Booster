@@ -93,7 +93,27 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+public class Version { 
+    private final static int VERSION_BUILD = 0; 
+    private final static int VERSION_MAJOR = 1; 
+    private final static int VERSION_MINOR = 83; 
+    public static int getVersionCode() { 
+        return VERSION_BUILD*1000*1000 + VERSION_MAJOR * 1000 + VERSION_MINOR; 
+    }
+
+    public static String getVersionName() { 
+        return VERSION_BUILD + "." + VERSION_MAJOR + "." + VERSION_MINOR; 
+    } 
+}
+
+
 android {
+
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+
+    archivesBaseName = "Booster_" + Version.getVersionName()
+
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     compileOptions {
