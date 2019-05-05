@@ -1,8 +1,12 @@
 import React, {Component} from "react";
 import { View, ImageBackground, Image } from "react-native";
 import { Form, Item, Label, Input, Icon, Container, Content, Footer, Body, Text, Left, Right} from 'native-base';
+import {GoogleSigninButton} from 'react-native-google-signin';
+
 
 export default class BackGroundImage extends Component{
+
+
     render(){
         return(
                 <Container>
@@ -18,6 +22,14 @@ export default class BackGroundImage extends Component{
                                     <Text style={{fontWeight: 'bold'}}> Mr. Accountant</Text>
                                 </View>
 
+                            </View>
+                            <View style={{ flex: 1, alignItems: 'center' , flexDirection: 'row', marginTop: 20}}>
+                                < GoogleSigninButton
+                                    style={{ width: '100%', height: 48 }}
+                                    size={GoogleSigninButton.Size.Wide}
+                                    color={GoogleSigninButton.Color.Dark}
+                                    onPress={this.props.google}
+                                    />
                             </View>
                             <View>
                                 <Form>

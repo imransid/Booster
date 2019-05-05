@@ -54,13 +54,12 @@ componentDidMount(){
 }
 
 _Google_signIn = async () => {
+
   try {
     await GoogleSignin.hasPlayServices();
     const userInfo = await GoogleSignin.signIn();
-    // this.setState({ userInfo, error: null });
+    
     alert(userInfo.user.name)
-
-    //this.onSignIn(userInfo)
 
   } catch (error) {
 
@@ -85,16 +84,9 @@ _Google_signIn = async () => {
 
   render() {
     return (
-      // <BackGroundImage>   disabled={this.state.isSigninInProgress} 
-      <View>
-        <BackGroundImage />
-        <GoogleSigninButton
-          style={{ width: 192, height: 48 }}
-          size={GoogleSigninButton.Size.Wide}
-          color={GoogleSigninButton.Color.Dark}
-          onPress={this._Google_signIn}
-          />
-      </View>
+      <BackGroundImage
+       google = {this._Google_signIn}
+      />
     );
   }
 }
