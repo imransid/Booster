@@ -2,7 +2,10 @@ import React from "react";
 import BackGroundImage from './BackGroundImage.js';
 import PushNotification from 'react-native-push-notification';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
-import { View } from "native-base";
+import * as firebase from 'firebase';
+import { firebaseconfig } from '../../config/config';
+
+firebase.initializeApp(firebaseconfig)
 
 export default class HomeScreen extends React.Component {
 
@@ -49,6 +52,67 @@ _configureGoogleSignIn() {
   });
 }
 
+
+onSignIn = googleUser => {
+  console.log("work", googleUser)
+  // console.log('Google Auth Response', googleUser.user.email);
+
+  // Alert.alert(googleUser.user.email);
+  
+  
+  var unsubscribe = firebase.auth().onAuthStateChanged(function(firebaseUser) {
+    unsubscribe();
+    // // Check if we are already signed-in Firebase with the correct user.
+    console.log('firebase user',firebaseUser)
+    let chker;
+      if (firebaseUser) {
+        var providerData = firebaseUser.providerData;
+        for (var i = 0; i < providerData.length; i++) {
+
+          console.log('firebase', googleUser.user.id)
+          console.log('isjs', providerData[i].uid)
+          if (providerData[i].providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID &&
+              providerData[i].uid === googleUser.user.id) {
+            // We don't need to reauth the Firebase connection.
+            chker = true;
+          }
+        }
+      }
+      else{
+        chker = false;
+      }
+      
+
+
+    if (chker == false) {
+
+      // for android develop :: ./keytool -exportcert -keystore "C:\Users\ITG-06\.android\debug.keystore" -list -v
+      // for build :: ./keytool -exportcert -keystore "G:\Work Project\try\InstaWallet\android\app\my-release-key.keystore" -list -v
+
+      //  79:BE:04:97:2C:CD:00:88:82:15:E0:30:D4:55:0D:6B:81:3D:58:A6
+      
+      // Build Firebase credential with the Google ID token.
+      var credential = firebase.auth.GoogleAuthProvider.credential(
+        googleUser.idToken,
+        googleUser.accessToken
+      );
+      // Sign in with credential from the Google user.
+      firebase.auth().signInAndRetrieveDataWithCredential(credential).then(() => console.log('user sign in')).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
+    } else {
+      console.log('User already signed-in Firebase.');
+    }
+  }.bind(this));
+}
+
 componentDidMount(){
   this._configureGoogleSignIn();
 }
@@ -60,6 +124,8 @@ _Google_signIn = async () => {
     const userInfo = await GoogleSignin.signIn();
     
     alert(userInfo.user.name)
+
+    this.onSignIn(userInfo);
 
   } catch (error) {
 
