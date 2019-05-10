@@ -10,44 +10,6 @@ export default class BackGroundImage extends Component{
     render(){
         return(
                 <Container>
-                    <ImageBackground source={require('../../assets/images/bg.png')} style={{width: '100%', height: '100%'}}>
-
-                        <Content>
-                            <View style={{ flex: 1, alignItems: 'center', flexDirection: 'column'}}>
-                                <View>
-                                    <Image source={require('../../assets/images/logo.png')} />
-                                </View>
-                                
-                                <View>
-                                    <Text style={{fontWeight: 'bold'}}> Mr. Accountant</Text>
-                                </View>
-
-                            </View>
-                            <View style={{ flex: 1, alignItems: 'center' , flexDirection: 'row', marginTop: 20}}>
-                                < GoogleSigninButton
-                                    style={{ width: '100%', height: 48 }}
-                                    size={GoogleSigninButton.Size.Wide}
-                                    color={GoogleSigninButton.Color.Dark}
-                                    onPress={this.props.google}
-                                    />
-                            </View>
-                            <View>
-                                <Form>
-                                    <Item floatingLabel>
-                                        <Label>EMAIL</Label>
-                                        <Input />
-                                    </Item>
-                                    <Item floatingLabel last>
-                                        <Label>PASSWORD</Label>
-                                        <Input />
-                                    </Item>
-                                </Form>
-                            </View>
-                        
-                        </Content>
-
-                    </ImageBackground>
-                    
                 </Container>
             
         )
