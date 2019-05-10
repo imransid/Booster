@@ -3,7 +3,6 @@ import { View, ImageBackground, Image } from "react-native";
 import { Form, Item, Label, Input, Icon, Container, Content, Footer, Body, Text, Left, Right} from 'native-base';
 import {GoogleSigninButton} from 'react-native-google-signin';
 
-import FBbutton from './facebookButton/fb_Button';
 
 export default class BackGroundImage extends Component{
 
@@ -24,20 +23,14 @@ export default class BackGroundImage extends Component{
                                 </View>
 
                             </View>
-                            <View style={{ flex: 1, alignItems: 'center' , flexDirection: 'column', marginTop: 20}}>
-                                
-                                    < GoogleSigninButton
-                                        style={{ width: '100%', height: 48 }}
-                                        size={GoogleSigninButton.Size.Wide}
-                                        color={GoogleSigninButton.Color.Dark}
-                                        onPress={this.props.google}
-                                        />
-                                
-                                    <FBbutton />
-                                
-                                
+                            <View style={{ flex: 1, alignItems: 'center' , flexDirection: 'row', marginTop: 20}}>
+                                < GoogleSigninButton
+                                    style={{ width: '100%', height: 48 }}
+                                    size={GoogleSigninButton.Size.Wide}
+                                    color={GoogleSigninButton.Color.Dark}
+                                    onPress={this.props.google}
+                                    />
                             </View>
-                            
                             <View>
                                 <Form>
                                     <Item floatingLabel>

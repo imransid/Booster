@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from 'react';
 import BackGroundImage from './BackGroundImage.js';
 import PushNotification from 'react-native-push-notification';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
@@ -7,7 +7,7 @@ import { firebaseconfig } from '../../config/config';
 
 firebase.initializeApp(firebaseconfig)
 
-export default class HomeScreen extends React.Component {
+export default class HomeScreen extends Component {
 
   //-----pushcontroler for push notification----
   PushController = () => {
