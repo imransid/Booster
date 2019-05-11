@@ -1,23 +1,16 @@
 import React, {Component} from "react";
-import {TouchableHighlight } from "react-native";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {TouchableHighlight, View } from "react-native";
+import { Thumbnail } from "native-base";
 
-
-const InputWithButtonCurrencies = (props) => {
+const InputWithFB = (props) => {
     return (
-      <TouchableHighlight style={{ width: '500', height: 48 }}>
-
-              <Icon.Button
-                name="facebook"
-                backgroundColor="#3b5998"
-                onPress={this.loginWithFacebook}
-              >
-                Login with Facebook
-              </Icon.Button>
+      <TouchableHighlight onPress={props.fb_metgod}>
+            
+            <Thumbnail style={{width: 50, height: 50}} source={require("../../../assets/images/facebook.png" )} />
 
       </TouchableHighlight>
       
          
     )}
 
-  export default InputWithButtonCurrencies;
+  export default InputWithFB;

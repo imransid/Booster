@@ -4,10 +4,69 @@ import PushNotification from 'react-native-push-notification';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import * as firebase from 'firebase';
 import { firebaseconfig } from '../../config/config';
+import { AccessToken, LoginManager, } from 'react-native-fbsdk';
 
 firebase.initializeApp(firebaseconfig)
 
 export default class HomeScreen extends Component {
+// for fblogin
+
+isFBLogged = () => {
+
+  var props = this.props;
+
+  LoginManager.logInWithReadPermissions(["public_profile", "email"]).then(
+    function(result) {
+      if (result.isCancelled) {
+        console.log("Login cancelled");
+      } else {
+        console.log(
+          "Login success with permissions: " +
+            
+            JSON.stringify(result)
+            
+
+
+        );
+             
+        AccessToken.getCurrentAccessToken().then(
+          (data) => {
+            
+
+            var api = 'https://graph.facebook.com/v2.8/' + data.userID +
+             '?fields=name,email&access_token=' + data.accessToken;
+            fetch(api)
+                  .then((response) => response.json())
+                  .then( (responseData) => {
+                        console.log(responseData);
+                        // Alert.alert(responseData.name);
+                        if(responseData.name){
+                          // this._success_google(props);
+                          //props.navigation.navigate("Converter");
+                        }
+                       
+                  })
+                  .done(); 
+
+                  
+
+          }
+        );
+      }
+    },
+    function(error) {
+      console.log("Login fail with error: " + error);
+      Alert.alert('Login fail');
+    }
+  );
+}
+
+
+
+
+
+
+
 
   //-----pushcontroler for push notification----
   PushController = () => {
@@ -152,6 +211,7 @@ _Google_signIn = async () => {
     return (
       <BackGroundImage
        google = {this._Google_signIn}
+       facebook = {this.isFBLogged}
       />
     );
   }
