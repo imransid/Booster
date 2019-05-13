@@ -16,34 +16,34 @@ export default class BackGroundImage extends Component{
                     <ImageBackground source={require('../../assets/images/Back.png')} style={{width: '100%', height: '100%', alignSelf: 'stretch',flex:1}}>
 
                         <Content>
-                            <View  style={{flex: 1, alignItems: 'center', flexDirection: 'column'}} >
+                            <View  style={{flex: 1, alignItems: 'center', flexDirection: 'column',}} >
                                 {/* <View style={styles.headerLogo}> */}<View style={{marginTop:80}} >
                                     <Image source={require('../../assets/images/appLogo.png')  } />
                                 </View>
 
                             </View>
                             
-                            <View style={{ flex: 1, marginBottom: "20%"}}>
+                            <View style={{ flex: 1, marginBottom: "20%", width:'80%',marginLeft:30,marginTop:30}}>
                                 <Form>
                                     <Item floatingLabel>
-                                        <Label>EMAIL</Label>
+                                        <Label>Email</Label>
                                         <Input />
                                     </Item>
-                                    <Item floatingLabel last>
-                                        <Label>PASSWORD</Label>
+                                    <Item floatingLabel>
+                                        <Label>Password</Label>
                                         <Input />
                                     </Item>
                                 </Form>
                             </View>
                             <View style={{ flex: 1, alignItems: 'center', marginBottom: "30%"}}>
                             
-                                    <View style={{width: '90%', marginBottom: "5%"}}>
+                                    <View style={{width: '50%', marginBottom: "5%"}}>
                                         <Button block light small style={{borderRadius : 15}}>
                                             <Text>Sign in</Text>
                                         </Button>
                                     </View>
 
-                                    <View style={{width: '90%'}}>
+                                    <View style={{width: '50%'}}>
                                         <Button block transparent small style={{borderRadius : 15, borderColor: 'white', borderWidth: 1}}>
                                             <Text style={{color: 'white'}}>Create Account</Text>
                                         </Button>
@@ -54,16 +54,21 @@ export default class BackGroundImage extends Component{
 
                             <View style={{ flex: 1, alignItems: 'center', flexDirection: 'row', justifyContent:'space-between'}}>
                                     
-                                    <View style={{ marginLeft: "30%"}}>
-                                        <GooGleButton
-                                        g_method = {this.props.google} 
-                                        />
-                                    </View>
-                                    <View style={{ marginRight: "30%" }}>
+                            <View style={{ marginLeft: "30%" }}>
                                         <FBbutton
                                         fb_metgod = {this.props.facebook} 
                                         />
                                     </View>
+                                    
+                                    
+                                    
+                                    
+                                    <View style={{ marginRight: "30%"}}>
+                                        <GooGleButton
+                                        g_method = {this.props.google} 
+                                        />
+                                    </View>
+                                   
                                                                 
                                 
                             </View>
