@@ -1,31 +1,46 @@
 import React, {Component} from "react";
-import { View, Text } from "react-native";
+import { Dimensions } from "react-native";
 import { createStackNavigator, createAppContainer, createDrawerNavigator } from "react-navigation";
-import Login from '../../components/Login/Login'
+import LOGIN from '../../components/Login/Login';
+import REGISTER from "../../components/Register/Register";
+import WALLET from "../../components/Wallet/Wallet";
+
+// class Hidden extends React.Component {
+//   render() {
+//     return null;
+//   }
+// }
+
 
 export default class nav extends Component{
     render(){
         return(
-            <AppNavigator />
+            <AppContainer />
         )
     }
 }
 
-const AppNavigator = createAppContainer(createStackNavigator({
-    LOGIN: {
-      screen: Login,
-      navigationOptions: {
-        header: () => null
-      }
+const WIDTH = Dimensions.get('window').width;
+
+const DrawerConfig = {
+  drawerWidth : WIDTH * 0.83,
+}
+
+const DrawerNavigator = createDrawerNavigator(
+  {
+
+    REGISTER : {
+      screen : REGISTER
+    },
+    LOGIN : {
+      screen : LOGIN
+    },
+    WALLET: {
+      screen : WALLET
     }
-  }))
 
+  },
+  DrawerConfig
+);
 
-// const MyDrawerNavigator = createDrawerNavigator({
-//     Home:{ 
-//        screen: Login,
-//     }
-//   });
-
-
-//   const MyApp = createAppContainer(MyDrawerNavigator);
+const AppContainer = createAppContainer(DrawerNavigator);
