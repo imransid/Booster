@@ -4,6 +4,7 @@ import { createStackNavigator, createAppContainer, createDrawerNavigator } from 
 import LOGIN from '../../components/Login/Login';
 import REGISTER from "../../components/Register/Register";
 import WALLET from "../../components/Wallet/Wallet";
+import CONVERT from "../../components/Converter/Converter";
 
 // class Hidden extends React.Component {
 //   render() {
@@ -35,9 +36,13 @@ const DrawerNavigator = createDrawerNavigator(
     LOGIN : {
       screen : LOGIN
     },
-    WALLET: {
+    WALLET : {
       screen : WALLET
+    },
+    CONVERT : {
+      screen : CONVERT
     }
+
 
   },
   DrawerConfig
