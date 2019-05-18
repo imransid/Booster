@@ -34,14 +34,14 @@ const DrawerConfig = {
 const DrawerNavigator = createDrawerNavigator(
   {
 
-    REGISTER : {
-      screen : REGISTER
+    WALLET : {
+      screen : WALLET
     },
     LOGIN : {
       screen : LOGIN
     },
-    WALLET : {
-      screen : WALLET
+    REGISTER : {
+      screen : REGISTER
     },
     CONVERT : {
       screen : CONVERT
@@ -49,7 +49,8 @@ const DrawerNavigator = createDrawerNavigator(
 
 
   },
-  DrawerConfig
+  DrawerConfig,
+  
 );
 
 const AppContainer = createAppContainer(DrawerNavigator);
