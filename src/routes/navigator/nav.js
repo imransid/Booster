@@ -5,6 +5,7 @@ import LOGIN from '../../components/Login/Login';
 import REGISTER from "../../components/Register/Register";
 import WALLET from "../../components/Wallet/Wallet";
 import CONVERT from "../../components/Converter/Converter";
+import SideDrawer from "../../components/Menu/MenuDrawer";
 
 // class Hidden extends React.Component {
 //   render() {
@@ -25,6 +26,9 @@ const WIDTH = Dimensions.get('window').width;
 
 const DrawerConfig = {
   drawerWidth : WIDTH * 0.83,
+  contentComponent : ({ navigation }) => {
+    return(<SideDrawer props={navigation} />)
+  }
 }
 
 const DrawerNavigator = createDrawerNavigator(
