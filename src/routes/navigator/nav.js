@@ -31,11 +31,24 @@ const DrawerConfig = {
   }
 }
 
+const HOME = createStackNavigator({
+
+  WALLET: {
+    screen : WALLET
+  }
+
+},
+{
+ headerMode : 'none',
+ initialRouteName: "WALLET"
+}
+)
+
 const DrawerNavigator = createDrawerNavigator(
   {
 
     WALLET : {
-      screen : WALLET
+      screen : HOME
     },
     LOGIN : {
       screen : LOGIN
