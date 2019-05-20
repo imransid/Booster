@@ -10,17 +10,17 @@ project.ext.react = [
 apply from: "../../node_modules/react-native/react.gradle"
 
 
-def enableSeparateBuildPerCPUArchitecture = false
+def enableSeparateBuildPerCPUArchitecture = false;
 
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
  */
-def enableProguardInReleaseBuilds = false
+def enableProguardInReleaseBuilds = false;
 
 public class Version { 
     private final static int VERSION_BUILD = 0; 
     private final static int VERSION_MAJOR = 1; 
-    private final static int VERSION_MINOR = 12; 
+    private final static int VERSION_MINOR = 14; 
     public static int getVersionCode() { 
         return VERSION_BUILD*1000*1000 + VERSION_MAJOR * 1000 + VERSION_MINOR; 
     }
