@@ -20,7 +20,7 @@ def enableProguardInReleaseBuilds = false;
 public class Version { 
     private final static int VERSION_BUILD = 0; 
     private final static int VERSION_MAJOR = 1; 
-    private final static int VERSION_MINOR = 14; 
+    private final static int VERSION_MINOR = 15; 
     public static int getVersionCode() { 
         return VERSION_BUILD*1000*1000 + VERSION_MAJOR * 1000 + VERSION_MINOR; 
     }
