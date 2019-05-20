@@ -7,6 +7,7 @@ import WALLETICON from 'react-native-vector-icons/MaterialIcons';
 import WALLETCHAT from 'react-native-vector-icons/MaterialCommunityIcons';
 import CustomFooter from "./WalletFotter/CustomFooter";
 import TransectionData from "./Transection/Transection";
+import styles from "./Styles";
 
 export default class Wallet extends Component{
 
@@ -14,17 +15,26 @@ export default class Wallet extends Component{
         super(props)
         this.state = {
             transectionColor: "#3ACDFC",
-            walletColor: "#171818",            
+            walletColor: "#171818", 
+            pressStatus: 'transection',
+            
+                       
           };
     }
 
     ADD_transection = () => {
-        alert("add transection")
+        console.log("ADD TRA ")
+        this.setState({pressStatus: "transection",
+          })
+
+        
     }
 
     ADD_WALLET = () => {
-        alert("Wallet")
+        this.setState({pressStatus: "wallet",
+          })
     }
+
 
 
     render(){
@@ -65,14 +75,23 @@ export default class Wallet extends Component{
                         <Card style={{backgroundColor : "#282A29", height: 50, borderColor: "#282A29"}}>
                             <View style={{flexDirection: "row"}}>
                                 <View style={{width: "50%", height: "100%", alignItems: "center"}}>
-                                        <Button block style={{backgroundColor: this.state.transectionColor , height: "100%", width: "100%", borderRadius: 7}}>
+                                        <Button block style={ this.state.pressStatus == "transection"
+                        ? styles.buttonPress
+                        : styles.button }
+                        onPress= {() => this.ADD_transection()}
+                                        
+                                        >
                                             <Label style={{color: "white"}}>
                                                 Transection
                                             </Label>
                                         </Button>
                                 </View>
                                 <View style={{width: "50%", height: "100%", alignItems: "center"}}>
-                                        <Button block style={{backgroundColor: this.state.walletColor , height: "100%", width: "100%", borderRadius: 7}}>
+                                <Button block style={ this.state.pressStatus == "wallet"
+                        ? styles.buttonPress
+                        : styles.button }
+                        onPress={()=>this.ADD_WALLET()}
+                                        >
                                             <Label style={{color: "white"}}>
                                                 Wallet
                                             </Label>
