@@ -68,7 +68,7 @@ class MenuDrawer extends Component {
                             </Label>
                         </View>
                     </View>
-                    <View style={{flexDirection : "column"}}>
+                    <View style={{flexDirection : "column",justifyContent:'flex-end', marginTop:10}}>
                         <View>
                             <Label style={{color: "black"}}>
                                 Imran Khan
