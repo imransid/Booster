@@ -7,31 +7,32 @@ import WALLETICON from 'react-native-vector-icons/MaterialIcons';
 import WALLETCHAT from 'react-native-vector-icons/MaterialCommunityIcons';
 import CustomFooter from "./WalletFotter/CustomFooter";
 import TransectionData from "./Transection/Transection";
+import ADDWALLET from "./AddWallet/AddWallet";
 import styles from "./Styles";
 
 export default class Wallet extends Component{
 
     constructor(props) {
         super(props)
-        this.state = {
-            transectionColor: "#3ACDFC",
-            walletColor: "#171818", 
+        this.state = { 
             pressStatus: 'transection',
-            
-                       
+            blockStatus: 'transection' 
           };
     }
 
     ADD_transection = () => {
-        console.log("ADD TRA ")
-        this.setState({pressStatus: "transection",
+        this.setState({
+            pressStatus: "transection",
+            blockStatus: 'transection'
           })
 
         
     }
 
     ADD_WALLET = () => {
-        this.setState({pressStatus: "wallet",
+        this.setState({
+            pressStatus: "wallet",
+            blockStatus: 'wallet'
           })
     }
 
@@ -109,7 +110,9 @@ export default class Wallet extends Component{
                         
                         <Grid>
                             <Row >
-                                <TransectionData />
+                                {
+                                    this.state.blockStatus == 'transection' ? <TransectionData /> : < ADDWALLET />
+                                } 
                             </Row>
 
                         </Grid>
