@@ -7,6 +7,8 @@ import WALLET from "../../components/Wallet/Wallet";
 import CONVERT from "../../components/Converter/Converter";
 import SideDrawer from "../../components/Menu/MenuDrawer";
 import ADD_TRANSECTIONS from "../../components/Wallet/Transection/AddNewTransectios"
+import RATE from "../../components/Rate/Rate";
+
 // class Hidden extends React.Component {
 //   render() {
 //     return null;
@@ -43,13 +45,15 @@ const HOME = createStackNavigator({
 },
 {
  headerMode : 'none',
- initialRouteName: "ADD_TRANSECTIONS"
+ initialRouteName: "WALLET"
 }
 )
 
 const DrawerNavigator = createDrawerNavigator(
   {
-
+    RATE : {
+      screen: RATE
+    },
     WALLET : {
       screen : HOME
     },
@@ -61,7 +65,8 @@ const DrawerNavigator = createDrawerNavigator(
     },
     CONVERT : {
       screen : CONVERT
-    }
+    },
+    
 
 
   },

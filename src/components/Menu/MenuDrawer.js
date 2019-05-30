@@ -11,12 +11,12 @@ class MenuDrawer extends Component {
     navImage(nav){
         if(nav == "WALLET"){
             return(
-                <Image style={{width: 25, height: 25, marginRight: 15}} source={require("../../assets/images/WALLET.png")} />
+                <Image style={{width: 25, height: 25, marginRight: 15}} source={require("../../assets/images/wallet.png")} />
             )
         }
         else if(nav == "CONVERT"){
             return(
-                <Image style={{width: 25, height: 25, marginRight: 15}} source={require("../../assets/images/CONVERT.png")} />
+                <Image style={{width: 25, height: 25, marginRight: 15}} source={require("../../assets/images/convert.png")} />
             )
         }
         else if(nav == "SETTING"){
@@ -25,7 +25,7 @@ class MenuDrawer extends Component {
             )
         }else if(nav == "RATE"){
             return(
-                <Image style={{width: 25, height: 25, marginRight: 15}} source={require("../../assets/images/RATE.png")} />
+                <Image style={{width: 25, height: 25, marginRight: 15}} source={require("../../assets/images/rate.png")} />
             )
         }else if(nav == "FAQ"){
             return(
