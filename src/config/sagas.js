@@ -1,6 +1,8 @@
 import { takeEvery, select, call, put } from 'redux-saga/effects';
 import actionType from '../constant/constant';
 
+import { all_Transection } from "../saga_actions/All_Data_Transections";
+
 const API_KEY = "1e8d1babbeccde1eb21b";
 
 const url = "https://free.currconv.com/api/v7/convert?q"
@@ -43,11 +45,16 @@ const leastRate = function* (action){
 } 
 
 
+// const all_Transection = function* (action){
+//     console.log('workkk')
+// }
+
 
 
 const rootSaga = function* (){
     yield takeEvery(actionType.USER, fetchuser )
     yield takeEvery(actionType.CONVERTION_INIT, leastRate)
+    yield takeEvery(actionType.TRANSECTION, all_Transection)
 }
 
 export default rootSaga;

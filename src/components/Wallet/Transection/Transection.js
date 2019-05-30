@@ -1,10 +1,20 @@
 import React, {Component} from "react";
 import { View, TouchableOpacity, ScrollView } from "react-native";
-import {Label, Card} from 'native-base';
+import {Label, Card, Button} from 'native-base';
 import CUSTOMADDCARD from "../CustomCard/CustomCard";
+import { connect } from 'react-redux';
+import { letast_transection } from "../../../actions/Transection";
 
+class Transection extends Component{
 
-export default class Transection extends Component{
+    componentDidMount(){
+        this.props.dispatch(letast_transection())
+    }
+
+    ADD_New_Transection = () =>{
+        this.props.navigation.navigate("ADD_TRANSECTIONS")
+    } 
+
     render(){
         return(
             <ScrollView style={{paddingBottom: 20}}>
@@ -19,8 +29,11 @@ export default class Transection extends Component{
                 <CUSTOMADDCARD IconGenarater={'MCI'} colorCode={'#808000'} name={'Shoping'} iconName={'shopify'} date={'Dec, 11, 2019'} value={'$ 36'} />
                 <CUSTOMADDCARD IconGenarater={'MCI'} colorCode={'#808000'} name={'Shoping'} iconName={'shopify'} date={'Dec, 11, 2019'} value={'$ 36'} />
 
-                <Card style={{backgroundColor : "#3E287B", height : 70, borderColor : "#3E287B", borderRadius: 5}}>
-                    <Label>ONE</Label>
+                <Card style={{borderColor : "#171818", paddingTop: 20 , height : 70, backgroundColor: "#171818"}}>
+                {/* borderColor : "#3E287B", borderRadius: 5  */}
+                        <Button block success onPress={ () => this.ADD_New_Transection() }>
+                            <Label style={{fontWeight: "900", color: "#ffffff"}}>Add Transection</Label>
+                        </Button>
                 </Card>
                 
             </ScrollView>
@@ -28,3 +41,11 @@ export default class Transection extends Component{
         )
     }
 }
+
+const mapStateProps = (state) => {
+    return {
+
+    }
+}
+
+export default connect(mapStateProps)(Transection)

@@ -2,7 +2,10 @@ const constantDataType = {
     USER : 'USER',
     ADMIN : 'ADMIN',
     CONVERTION_INIT : 'CONVERTION_INIT',
-    CONVERT : 'CONVERT'
+    CONVERT : 'CONVERT',
+    TRANSECTION : 'TRANSECTION',
+    TRANSECTION_RESOLT : 'TRANSECTION_RESOLT', 
+    ADD_TRANSECTION : 'ADD_TRANSECTION'
 }
 
 export default constantDataType

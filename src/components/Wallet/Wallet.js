@@ -18,6 +18,7 @@ export default class Wallet extends Component{
             pressStatus: 'transection',
             blockStatus: 'transection' 
           };
+        console.log(this.props)
     }
 
     ADD_transection = () => {
@@ -25,8 +26,6 @@ export default class Wallet extends Component{
             pressStatus: "transection",
             blockStatus: 'transection'
           })
-
-        
     }
 
     ADD_WALLET = () => {
@@ -111,7 +110,7 @@ export default class Wallet extends Component{
                         <Grid>
                             <Row >
                                 {
-                                    this.state.blockStatus == 'transection' ? <TransectionData /> : < ADDWALLET />
+                                    this.state.blockStatus == 'transection' ? <TransectionData navigation={this.props.navigation} /> : < ADDWALLET navigation={this.props.navigation} />
                                 } 
                             </Row>
 

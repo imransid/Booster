@@ -8,6 +8,8 @@ import {Label, Card} from 'native-base';
 
 
 const ICONPROVIDER = (props) => {
+
+    
     if(props.IconGenarater == "MCI"){
         return(
             <MCI 
