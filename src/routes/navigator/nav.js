@@ -6,6 +6,7 @@ import REGISTER from "../../components/Register/Register";
 import WALLET from "../../components/Wallet/Wallet";
 import CONVERT from "../../components/Converter/Converter";
 import SideDrawer from "../../components/Menu/MenuDrawer";
+import RATE from "../../components/Rate/Rate";
 
 // class Hidden extends React.Component {
 //   render() {
@@ -46,7 +47,9 @@ const HOME = createStackNavigator({
 
 const DrawerNavigator = createDrawerNavigator(
   {
-
+    RATE : {
+      screen: RATE
+    },
     WALLET : {
       screen : HOME
     },
@@ -58,7 +61,8 @@ const DrawerNavigator = createDrawerNavigator(
     },
     CONVERT : {
       screen : CONVERT
-    }
+    },
+    
 
 
   },
