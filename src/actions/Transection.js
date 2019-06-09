@@ -1,10 +1,11 @@
 import actionType from '../constant/constant';
 
 
-export function add_new_transection(data){
+export function add_new_transection(data, nav){
     return {
         type: actionType.ADD_TRANSECTION,
-        result: data
+        result: data,
+        nav: nav
     }
 }
 

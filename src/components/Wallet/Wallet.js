@@ -1,16 +1,15 @@
 import React, {Component} from "react";
-import { View,Text, ImageBackground, Image,StyleSheet, TouchableOpacity } from "react-native";
-import {Label, Container, Content, Header, Card, Left, Footer, Grid, Row, Col, Button} from 'native-base';
+import { connect } from 'react-redux';
+import { View, Image } from "react-native";
+import {Label, Container, Content, Header, Card, Footer, Grid, Row, Button} from 'native-base';
 import  MenuDrawerBUtton  from "../Menu/MenuButtons";
-import TRANN from 'react-native-vector-icons/FontAwesome';
-import WALLETICON from 'react-native-vector-icons/MaterialIcons';
-import WALLETCHAT from 'react-native-vector-icons/MaterialCommunityIcons';
 import CustomFooter from "./WalletFotter/CustomFooter";
 import TransectionData from "./Transection/Transection";
 import ADDWALLET from "./AddWallet/AddWallet";
 import styles from "./Styles";
+import { letast_transection } from "../../actions/Transection";
 
-export default class Wallet extends Component{
+class Wallet extends Component{
 
     constructor(props) {
         super(props)
@@ -18,7 +17,9 @@ export default class Wallet extends Component{
             pressStatus: 'transection',
             blockStatus: 'transection' 
           };
-        console.log(this.props)
+        this.navigationWillFocusListener = this.props.navigation.addListener('willFocus', () => {
+            this.props.dispatch(letast_transection())
+          });
     }
 
     ADD_transection = () => {
@@ -35,11 +36,15 @@ export default class Wallet extends Component{
           })
     }
 
-
-
     render(){
+
         return(
-                <Container style={{backgroundColor: "#171818"}}>
+            this.props.lodder ? 
+                    <View style={{ flex:1,alignItems:'center',justifyContent:'center',backgroundColor: '#1b2129' }}>
+                        <Image source={require('../../assets/load.gif')} style={{height:60, width:60}}></Image>
+                    </View> 
+            :
+            <Container style={{backgroundColor: "#171818"}}>
                     <Header style={{alignContent: "stretch", backgroundColor: '#000000', borderColor: "red"}}>
                         <View style={{flexDirection: "row", width: "100%", paddingTop: 15}}>
                             <MenuDrawerBUtton navigation={this.props.navigation}/>
@@ -110,7 +115,22 @@ export default class Wallet extends Component{
                         <Grid>
                             <Row >
                                 {
-                                    this.state.blockStatus == 'transection' ? <TransectionData navigation={this.props.navigation} /> : < ADDWALLET navigation={this.props.navigation} />
+                                    this.state.blockStatus == 'transection' ? (
+                                        //console.log('okk', this.props.all_leatest_transection)
+                                        this.props.all_leatest_transection != null ? (
+                                        this.props.all_leatest_transection.length == undefined ? 
+                                                <TransectionData 
+                                                    navigation={this.props.navigation} 
+                                                    all_leatest_transection={this.props.all_leatest_transection}/> 
+                                            : 
+                                                <TransectionData   
+                                                    navigation={this.props.navigation} 
+                                                    all_leatest_transection={this.props.all_leatest_transection}/>
+                                        ) : 
+                                        <TransectionData   
+                                            navigation={this.props.navigation} 
+                                            all_leatest_transection={this.props.all_leatest_transection}/>
+                                    ) : < ADDWALLET navigation={this.props.navigation} />
                                 } 
                             </Row>
 
@@ -121,8 +141,21 @@ export default class Wallet extends Component{
                         <CustomFooter />    
                     </Footer>
 
-                </Container>
+            </Container>
             
         )
     }
 }
+
+
+const mapStateProps = (state) => {
+    const all_leatest_transection = state.TRASECTION.all_transection;
+    const lodder = state.TRASECTION.lodder;
+
+    return {
+        all_leatest_transection,
+        lodder
+    }
+}
+
+export default connect(mapStateProps)(Wallet)

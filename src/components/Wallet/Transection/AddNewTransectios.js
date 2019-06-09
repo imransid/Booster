@@ -1,30 +1,97 @@
 import React, {Component} from "react";
-import { View, Text, StyleSheet, ScrollView, Picker } from "react-native";
+import { View, ScrollView, Picker } from "react-native";
 import MenuDrawerBUtton from "../../Menu/MenuButtons"
 import {Label, Card, Button, Container, Header, Content, Grid, Row, Input} from 'native-base';
 import Pie from 'react-native-pie';
-import VectorAntDesign from 'react-native-vector-icons/AntDesign';
 import { connect } from 'react-redux';
-import { letast_transection } from "../../../actions/Transection";
 import styles from "./Styles";
-import { TextInput } from "react-native-gesture-handler";
-
+import { add_new_transection } from "../../../actions/Transection"
 class AddNewTransectios extends Component{
 
     constructor(){
         super();
         this.state = {
-            selectCategory: "Shoping"
+            selectCategory: "Shoping",
+            description: "",
+            amount: "",
+            date: this.DateGenrater()
         }
     }
 
-    componentDidMount(){
-        this.props.dispatch(letast_transection())
+    DateGenrater = () => {
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0');
+        let year = today.getFullYear();
+
+        today = dd + '-' + mm + '-' + year;
+
+        return today;
     }
 
-    ADD_New_Transection = () =>{
-        alert("hi")
-    } 
+    componentDidMount(){
+        // this.props.dispatch(letast_transection())
+    }
+
+    ADD_New_Transection = () => {
+        
+        if(this.state.amount == "" && this.state.description == ""){
+
+        }else{
+            let colorCode, IconCode, IconName;
+            if(this.state.selectCategory == "Shoping"){
+                colorCode = "#808000";
+                IconCode = "ENTYPO_ICON";
+                IconName = "shopping-cart";
+            }else if(this.state.selectCategory == "Eating"){
+                colorCode = "#503000";
+                IconCode = "FONTAWESOME5_ICON";
+                IconName = "utensils";
+            }else if(this.state.selectCategory == "Party"){
+                colorCode = "#609090";
+                IconCode = "FONTAWESOME5_ICON";
+                IconName = "cocktail";
+            }else if(this.state.selectCategory == "Gift"){
+                colorCode = "#F81894";
+                IconCode = "GIFTPROVIDER";
+                IconName = "gift";
+            }else if(this.state.selectCategory == "Travel"){
+                colorCode = "#006727";
+                IconCode = "GIFTPROVIDER";
+                IconName = "car";
+            }else if(this.state.selectCategory == "Other"){
+                colorCode = "#8B0000";
+                IconCode = "FONTAWESOME5_ICON";
+                IconName = "info";
+            }else if(this.state.selectCategory == "Bill"){
+                colorCode = "#B25204";
+                IconCode = "FONTAWESOME5_ICON";
+                IconName = "credit-card";
+            }
+
+
+            let data = {
+                'selectCategory': this.state.selectCategory,
+                'description': this.state.description,
+                'amount': this.state.amount,
+                'date': this.state.date,
+                'colorCode': colorCode,
+                'IconCode': IconCode,
+                'IconName': IconName
+            }
+
+
+            //AddTransectionMethods(data, this.props.navigation)
+            let valueData = this.props.dispatch(add_new_transection(data, this.props.navigation))
+            // this.props.navigation.navigate('WALLET');
+            
+        }
+        
+    }
+    
+    componentWillReceiveProps(newProps){
+        //this.props.navigation.navigate('WALLET');
+    }
 
     render(){
         return(
@@ -75,7 +142,7 @@ class AddNewTransectios extends Component{
                                                         <Picker.Item label="Party" value="Party" />
                                                         <Picker.Item label="Gift" value="Gift" />
                                                         <Picker.Item label="Bill" value="Bill" />
-                                                        <Picker.Item label="Tour" value="Tour" />
+                                                        <Picker.Item label="Travel" value="Travel" />
                                                         <Picker.Item label="Other" value="Other" />
                                                     
                                                 </Picker>
@@ -89,7 +156,7 @@ class AddNewTransectios extends Component{
                                                 </Label>
                                             </View>
                                             <View style={{width: "60%", alignItems: "center", height: "100%", padding: 8}}>
-                                                <Input placeholder="Enter Amount" placeholderTextColor="#fff" style={{width: "100%", color: "#fff"}} />
+                                                <Input onChangeText={amount => this.setState({ amount })} placeholder="Enter Amount" placeholderTextColor="#fff" style={{width: "100%", color: "#fff"}} />
                                             </View>
                                         </Card>
                                         <Card style={{backgroundColor: "#171818", height: 150, flexDirection: "column"}}>
@@ -99,16 +166,18 @@ class AddNewTransectios extends Component{
                                                 </Label>
                                             </View>
                                             <View style={styles.DescriptionInputView}>
-                                                <Input placeholder="Enter Description" placeholderTextColor="#fff" style={styles.DescriptionInputBox} />
+                                                <Input onChangeText={description => this.setState({ description })} placeholder="Enter Description" placeholderTextColor="#fff" style={styles.DescriptionInputBox} />
                                             </View>
                                             
                                         </Card>
                                         <Card style={styles.saveTransectionCard}>
-                                            <Button block success style={styles.saveTransectionButton}>
+                                         
+                                            <Button block success onPress={ () => this.ADD_New_Transection() } style={styles.saveTransectionButton}>
                                                 <Label style={styles.saveTransectionButtonText}>
                                                     Save Transection
                                                 </Label>
                                             </Button>
+                                            
                                         </Card>
                                 </View>
                         </View>
@@ -122,7 +191,11 @@ class AddNewTransectios extends Component{
 
 
 const mapStateProps = (state) => {
+
+    const AddNewTransection = state.TRASECTION.AddNewTransection;
+
     return {
+        AddNewTransection
 
     }
 }

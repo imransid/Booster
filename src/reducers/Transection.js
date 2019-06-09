@@ -1,20 +1,27 @@
-import {
-    TRANSECTION
-} from '../constant/constant';
-
-// import usertest from '../actions/audit'
+import actionType from "../constant/constant";
 
 const initialState = {
-    convert_result : ''
+    all_transection : null,
+    lodder : true
 }
 
 export default (state = initialState, action) => {
+
     switch (action.type){
-        case CONVERT:
-            return ({
+        
+        case actionType.TRANSECTION_RESULT:
+            return ({        
                 ...state,
-                convert_result : action.result
+                all_transection : action.result,
+                lodder : false
             })
+
+        case actionType.ADD_TRANSECTION:
+            return ({        
+                ...state,
+                lodder : true
+            })
+
         default:
             return state;
     }

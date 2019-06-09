@@ -1,7 +1,7 @@
 import { takeEvery, select, call, put } from 'redux-saga/effects';
 import actionType from '../constant/constant';
 
-import { all_Transection } from "../saga_actions/All_Data_Transections";
+import { all_Transection, addTransections } from "../saga_actions/All_Data_Transections";
 
 const API_KEY = "1e8d1babbeccde1eb21b";
 
@@ -13,8 +13,6 @@ const url = "https://free.currconv.com/api/v7/convert?q"
 export const getLatestRate = (pair_Currency) => fetch(`https://free.currconv.com/api/v7/convert?q=${pair_Currency}&compact=ultra&apiKey=1e8d1babbeccde1eb21b`);
 
 // www.amdoren.com api tjbve4G7kJwCeqx35GnxrSudsU9M2P
-
-
 // https://free.currconv.com/api/v7/convert?q=USD_PHP&compact=ultra&apiKey=1e8d1babbeccde1eb21b
 
 const fetchuser = function* (action){
@@ -30,9 +28,7 @@ const leastRate = function* (action){
 
     const resut_Base = yield responsebase.json();
 
-    const CON_result = resut_Base[pair_Currency]
-
-    console.log('finally', pair_Currency)
+    const CON_result = resut_Base[pair_Currency];
 
   if (resut_Base.error) {
     yield put({ type: CONVERSION_ERROR, error: "error ON" });
@@ -44,17 +40,11 @@ const leastRate = function* (action){
 
 } 
 
-
-// const all_Transection = function* (action){
-//     console.log('workkk')
-// }
-
-
-
 const rootSaga = function* (){
     yield takeEvery(actionType.USER, fetchuser )
     yield takeEvery(actionType.CONVERTION_INIT, leastRate)
     yield takeEvery(actionType.TRANSECTION, all_Transection)
+    yield takeEvery(actionType.ADD_TRANSECTION, addTransections)
 }
 
 export default rootSaga;

@@ -9,13 +9,6 @@ import SideDrawer from "../../components/Menu/MenuDrawer";
 import ADD_TRANSECTIONS from "../../components/Wallet/Transection/AddNewTransectios"
 import RATE from "../../components/Rate/Rate";
 
-// class Hidden extends React.Component {
-//   render() {
-//     return null;
-//   }
-// }
-
-
 export default class nav extends Component{
     render(){
         return(
@@ -27,6 +20,7 @@ export default class nav extends Component{
 const WIDTH = Dimensions.get('window').width;
 
 const DrawerConfig = {
+  initialRouteName: 'WALLET',
   drawerWidth : WIDTH * 0.83,
   contentComponent : ({ navigation }) => {
     return(<SideDrawer props={navigation} />)
@@ -70,7 +64,7 @@ const DrawerNavigator = createDrawerNavigator(
 
 
   },
-  DrawerConfig,
+   DrawerConfig,
   
 );
 

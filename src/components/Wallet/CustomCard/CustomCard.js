@@ -1,41 +1,36 @@
 import React, {Component} from "react";
 import { View, TouchableOpacity, ScrollView } from "react-native";
 import MI from 'react-native-vector-icons/MaterialIcons';
-import IC from 'react-native-vector-icons/Ionicons';
+import FONTAWESOME5_ICON from 'react-native-vector-icons/FontAwesome5';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
 import OC from 'react-native-vector-icons/Octicons';
+import GIFTPROVIDER from 'react-native-vector-icons/AntDesign';
+import ENTYPO_ICON from 'react-native-vector-icons/Entypo';
 import {Label, Card} from 'native-base';
 
 
 const ICONPROVIDER = (props) => {
 
     
-    if(props.IconGenarater == "MCI"){
+    if(props.IconGenarater == "GIFTPROVIDER"){
         return(
-            <MCI 
+            <GIFTPROVIDER 
                 name= { props.iconName } 
-                size={35} 
+                size={28} 
                 color="#fff"/>
         )
-    } else if(props.IconGenarater == "MI"){
+    } else if(props.IconGenarater == "ENTYPO_ICON"){
         return(
-            <MI 
+            <ENTYPO_ICON 
                 name= { props.iconName } 
-                size={35} 
+                size={28} 
                 color="#fff"/>
         )
-    } else if(props.IconGenarater == "OC"){
+    } else if(props.IconGenarater == "FONTAWESOME5_ICON"){
         return(
-            <OC 
+            <FONTAWESOME5_ICON 
                 name= { props.iconName } 
-                size={35} 
-                color="#fff"/>
-        )
-    } else if(props.IconGenarater == "IC"){
-        return(
-            <IC 
-                name= { props.iconName } 
-                size={35} 
+                size={28} 
                 color="#fff"/>
         )
     }
