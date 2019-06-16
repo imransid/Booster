@@ -8,6 +8,7 @@ import TransectionData from "./Transection/Transection";
 import ADDWALLET from "./AddWallet/AddWallet";
 import styles from "./Styles";
 import { letast_transection } from "../../actions/Transection";
+import TransectionCustomCard from "./CustomCard/TransectionCustomCard";
 
 class Wallet extends Component{
 
@@ -53,30 +54,10 @@ class Wallet extends Component{
                             </Label>
                         </View>
                     </Header>
-                    <Header style={{height: 220, backgroundColor: "#171818"}}>
+                    <Header style={{height: 320, backgroundColor: "#171818"}}>
                         <View style={{width: '100%'}}>
-
-                        <Card style={{height: 120, backgroundColor: "#E3F2FD", marginBottom: 10}}>
-                            <View style={{width: "100%", height: "100%", flexDirection: "row", padding: 10}}>
-                                <View style={{width: "50%", height: "100%", alignItems: "center"}}>
-                                    <Label style={{color: "black"}}>
-                                        Wallet Currency:
-                                    </Label>
-                                    <Label style={{color: "black", fontWeight: "bold", fontSize: 25}}>
-                                        $ USD
-                                    </Label>
-                                </View>
-                                <View style={{width: "50%", height: "100%", alignItems: "center"}}>
-                                    <Label style={{color: "black"}}>
-                                        Wallet Balance:
-                                    </Label>
-                                    <Label style={{color: "black", fontWeight: "bold", fontSize: 25}}>
-                                        $ 2500.00
-                                    </Label>
-                                </View>
-
-                            </View>
-                        </Card>
+                        <TransectionCustomCard />
+                        
                         <Card style={{backgroundColor : "#282A29", height: 50, borderColor: "#282A29"}}>
                             <View style={{flexDirection: "row"}}>
                                 <View style={{width: "50%", height: "100%", alignItems: "center"}}>
@@ -98,7 +79,7 @@ class Wallet extends Component{
                         onPress={()=>this.ADD_WALLET()}
                                         >
                                             <Label style={{color: "white"}}>
-                                                Wallet
+                                                Wallet details
                                             </Label>
                                         </Button>
                                 </View>

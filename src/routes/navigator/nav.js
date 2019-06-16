@@ -6,8 +6,10 @@ import REGISTER from "../../components/Register/Register";
 import WALLET from "../../components/Wallet/Wallet";
 import CONVERT from "../../components/Converter/Converter";
 import SideDrawer from "../../components/Menu/MenuDrawer";
-import ADD_TRANSECTIONS from "../../components/Wallet/Transection/AddNewTransectios"
+import ADD_TRANSECTIONS from "../../components/Wallet/Transection/AddNewTransectios";
 import RATE from "../../components/Rate/Rate";
+import ADD_WALLET from "../../components/Wallet/AddWallet/AddNewWallet";
+
 
 export default class nav extends Component{
     render(){
@@ -34,6 +36,9 @@ const HOME = createStackNavigator({
   },
   ADD_TRANSECTIONS: {
     screen: ADD_TRANSECTIONS
+  },
+  ADD_WALLET: {
+    screen: ADD_WALLET
   }
 
 },
