@@ -3,15 +3,14 @@ import { ScrollView } from "react-native";
 import {Label, Card, Button} from 'native-base';
 import CUSTOMADDCARD from "../CustomCard/CustomCard";
 
-
 class Transection extends Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
     }
 
     ADD_New_Transection = () =>{
-        this.props.navigation.navigate("ADD_TRANSECTIONS")
+        this.props.navigation.navigate("ADD_TRANSECTIONS", { walletId: this.props.walletId })
     }
 
     IconGenarator() {

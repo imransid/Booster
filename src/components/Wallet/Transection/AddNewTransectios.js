@@ -5,16 +5,18 @@ import {Label, Card, Button, Container, Header, Content, Grid, Row, Input} from 
 import Pie from 'react-native-pie';
 import { connect } from 'react-redux';
 import styles from "./Styles";
-import { add_new_transection } from "../../../actions/Transection"
+import { add_new_transection } from "../../../actions/Transection";
+
 class AddNewTransectios extends Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             selectCategory: "Shoping",
             description: "",
             amount: "",
-            date: this.DateGenrater()
+            date: this.DateGenrater(),
+            walletId: this.props.navigation.state.params.walletId
         }
     }
 
@@ -30,6 +32,7 @@ class AddNewTransectios extends Component{
     }
 
     componentDidMount(){
+        console.log(this.props.navigation.state.params.walletId, this.state)
         // this.props.dispatch(letast_transection())
     }
 
@@ -77,12 +80,13 @@ class AddNewTransectios extends Component{
                 'date': this.state.date,
                 'colorCode': colorCode,
                 'IconCode': IconCode,
-                'IconName': IconName
+                'IconName': IconName,
+                'walletId': this.state.walletId
             }
 
 
-            //AddTransectionMethods(data, this.props.navigation)
-            let valueData = this.props.dispatch(add_new_transection(data, this.props.navigation))
+            // AddTransectionMethods(data, this.props.navigation)
+            this.props.dispatch(add_new_transection(data, this.props.navigation))
             // this.props.navigation.navigate('WALLET');
             
         }

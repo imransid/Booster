@@ -12,6 +12,6 @@ export function add_new_transection(data, nav){
 export function letast_transection(data){
     return {
         type: actionType.TRANSECTION,
-        result: data
+        walletId: data
     }
 }

@@ -4,19 +4,30 @@ import MenuDrawerBUtton from "../../Menu/MenuButtons"
 import {Label, Card, Button, Container, Header, Content, Input} from 'native-base';
 import { connect } from 'react-redux';
 import styles from "../../Wallet/Transection/Styles";
+import { add_new_card } from "../../../actions/WalletCard";
 class AddNewWallet extends Component{
-
     constructor(){
         super();
         this.state = {
             card_holder_name: "",
-            bank_code: "002",
+            bank_code: "BRAC BANK",
             balance: "",
             balance_type: "dabit",
             wallet_add_date: this.DateGenrater(),
-            card_num: ""
+            card_num: "",
+            wallet_id: this.GenrateWalletID(12)
         }
     }
+
+    GenrateWalletID = (length) => {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+           result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+     }
 
     DateGenrater = () => {
         let today = new Date();
@@ -27,25 +38,32 @@ class AddNewWallet extends Component{
         today = dd + '-' + mm + '-' + year;
 
         return today;
-    }
 
-    componentDidMount(){
-        // this.props.dispatch(letast_transection())
     }
 
     ADD_New_Wallet = () => {
         if(this.state.card_holder_name == "" && this.state.bank_code == "" && this.state.balance == "" && this.state.balance_type == "" && this.state.card_num == ""){
-
+            ToastAndroid.show("Please Cheak Again Cann't Save Empty Field", ToastAndroid.SHORT);
         }else{
+
+            let data = {
+                'card_holder_name': this.state.card_holder_name,
+                'bank_code': this.state.bank_code,
+                'balance': this.state.balance,
+                'balance_type': this.state.balance_type,
+                'wallet_add_date': this.state.wallet_add_date,
+                'card_num': this.state.card_num,
+                'wallet_id': this.state.wallet_id
+            }
+
+            
+            this.props.dispatch(add_new_card(data, this.props.navigation));
+
             ToastAndroid.show('Data save successfully', ToastAndroid.SHORT);
         }
         
     }
     
-    componentWillReceiveProps(newProps){
-        //this.props.navigation.navigate('WALLET');
-    }
-
     render(){
         return(
             <Container style={{backgroundColor: "#171820"}}>
@@ -80,16 +98,16 @@ class AddNewWallet extends Component{
                                             <View style={{width: "60%", height: "100%", padding: 8}}>
                                             <ScrollView style={{ height: "100%"}}>
                                                 <Picker style={{color: "#fff"}}
-                                                    selectedValue={this.state.selectCategory}
+                                                    selectedValue={this.state.bank_code}
                                                     onValueChange={(itemValue) =>this.setState({ bank_code: itemValue})}>
                                 
-                                                        <Picker.Item label="BRAC BANK" value="001" />
-                                                        <Picker.Item label="CITY BANK" value="002" />
-                                                        <Picker.Item label="DBBL" value="003" />
-                                                        <Picker.Item label="Dhaka Bank" value="004" />
-                                                        <Picker.Item label="NRB BANK" value="005" />
-                                                        <Picker.Item label="EBL BANK" value="006" />
-                                                        <Picker.Item label="Other" value="007" />
+                                                        <Picker.Item label="BRAC BANK" value="BRAC BANK" />
+                                                        <Picker.Item label="CITY BANK" value="CITY BANK" />
+                                                        <Picker.Item label="DBBL" value="DBBL" />
+                                                        <Picker.Item label="Dhaka Bank" value="Dhaka Bank" />
+                                                        <Picker.Item label="NRB BANK" value="NRB BANK" />
+                                                        <Picker.Item label="EBL BANK" value="EBL BANK" />
+                                                        <Picker.Item label="Others Bank" value="Others Bank" />
                                                     
                                                 </Picker>
                                                 </ScrollView>  
@@ -117,8 +135,8 @@ class AddNewWallet extends Component{
                                                     selectedValue={this.state.balance_type}
                                                     onValueChange={(itemValue) =>this.setState({ balance_type: itemValue})}>
                                 
-                                                        <Picker.Item label="CREDIT" value="credit" />
-                                                        <Picker.Item label="DABIT" value="dabit" />
+                                                        <Picker.Item label="CREDIT" value="CREDIT" />
+                                                        <Picker.Item label="DABIT" value="DABIT" />
                                                 </Picker>
                                                 </ScrollView>  
                                             </View>

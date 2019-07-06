@@ -1,12 +1,9 @@
 import React, {Component} from "react";
 import {ScrollView } from "react-native";
 import {Label, Card, Button} from 'native-base';
+import { connect } from 'react-redux';
 
-import CUSTOMADDCARD from "../CustomCard/CustomCard";
-import { TouchableOpacity } from "react-native-gesture-handler";
-
-
-export default class AddWallet extends Component{
+class AddWallet extends Component{
 
     ADD_New_Wallet = () => {
         this.props.navigation.navigate('ADD_WALLET');
@@ -17,19 +14,19 @@ export default class AddWallet extends Component{
             <ScrollView style={{paddingBottom: 20}}>
                 <Card style={{backgroundColor : "#1B282A", height : 220, borderColor : "#3E287B", borderRadius: 5, padding: 10}}>
                     <Label style={{color: "white", margin: 10, fontWeight: "900"}}>
-                        Bank Name : BRAC
+                        Bank Name : { this.props.details.bank_code }
                     </Label>
                     <Label style={{color: "white", margin: 10, fontWeight: "900"}}>
-                        Balance : 80000
+                        Balance : { this.props.details.balance }
                     </Label>
                     <Label style={{color: "white", margin: 10, fontWeight: "900"}}>
-                        Balance Type : DABIT
+                        Balance Type : { this.props.details.balance_type }
                     </Label>
                     <Label style={{color: "white", margin: 10, fontWeight: "900"}}>
-                        Card Num : 8300 4700 1201 9483
+                        Card Num : **** **** **** { this.props.details.card_num }
                     </Label>
                     <Label style={{color: "white", margin: 10, fontWeight: "900"}}>
-                        Card Holder Name : IMRAN KHAN OPU
+                        Card Holder Name : { this.props.details.card_holder_name }
                     </Label>
                 </Card>
                 <Card style={{borderColor : "#171818", paddingTop: 20 , height : 70, backgroundColor: "#171818"}}>
@@ -43,3 +40,15 @@ export default class AddWallet extends Component{
         )
     }
 }
+
+
+const mapStateProps = (state) => {
+
+    const details = state.TRASECTION.wallet_detaits;
+
+    return {
+        details
+    }
+}
+
+export default connect(mapStateProps)(AddWallet)

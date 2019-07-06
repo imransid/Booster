@@ -13,6 +13,8 @@ export default (state = initialState, action) => {
             return ({        
                 ...state,
                 all_transection : action.result,
+                all_walllet_card : action.result_wallet,
+                wallet_detaits: action.wallet_detaits,
                 lodder : false
             })
 

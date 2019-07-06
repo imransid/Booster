@@ -1,14 +1,9 @@
 import React, {Component} from "react";
-import { View, Image, StyleSheet, ImageBackground } from "react-native";
-import { DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon, Right } from 'native-base';
+import { View, Image, StyleSheet, AsyncStorage } from "react-native";
+import { Card, Text } from 'native-base';
 import Swiper from 'react-native-swiper';
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Level } from "chalk";
-
-const CardChange = () => {
-  console.log("workkkkkkkkkkkkk")
-}
-
+import { connect } from 'react-redux';
+import { letast_transection } from "../../../actions/Transection";
 
 const CustomTransectionCustomCard = (props) => {
     return(
@@ -20,7 +15,9 @@ const CustomTransectionCustomCard = (props) => {
               />
             <View style={{width: "100%", paddingTop: 10}}>
                     <Text style={{textAlign: 'right', fontSize: 20, fontWeight: "800"}}>
-                      Brac Bank
+                      {
+                        props.data.bank_code
+                      }
                     </Text>
             </View>
             <View style={{width: '100%', marginTop: 60}}>
@@ -32,7 +29,9 @@ const CustomTransectionCustomCard = (props) => {
             </View>
             <View>
               <Text style={{fontSize: 20, fontWeight: "900"}}>
-                Imran Khan Opu
+              {
+                props.data.card_holder_name
+              }
               </Text>
             </View>         
         </Card>
@@ -41,33 +40,58 @@ const CustomTransectionCustomCard = (props) => {
 
 
 class TransectionCustomCard extends Component {
+
+    PropsChker = () => {
+      
+      if(this.props.card_data.length == undefined){
+          return(
+              <CustomTransectionCustomCard
+                data={this.props.card_data}
+              />
+          )
+      }else{
+
+          return this.props.card_data.map((e, i) => {
+            return(
+              // CustomTransectionCustomCard(e, key=i)
+               <CustomTransectionCustomCard
+                key={i}
+                data={e}
+                />             
+              )
+          })        
+      }
+
+    }
+
+    _onMomentumScrollEnd(e, state, context) {
+      if(this.props.card_data.length == undefined) {
+        console.log('result', state.index)
+      }else{
+
+        AsyncStorage.getItem('wallet@Card').then((e) =>  {
+          let data_load = JSON.parse(e);
+          let id = data_load[state.index].wallet_id;
+          this.props.dispatch(letast_transection(id))  
+      })
+
+      }
+    }
+
     render() {
         return (
             <View style={{height: 250, width: "100%", padding: 20}}>
-                 <Swiper 
-                  showsButtons={false}
-                  onIndexChanged={CardChange}
-                  index={0}
-                  >
-                    {/* <View style={styles.slide1}>
-                    <Text style={styles.text}>Hello Swiper</Text>
-                    </View>
-                    <View style={styles.slide2}>
-                    <Text style={styles.text}>Beautiful</Text>
-                    </View>
-                    <View style={styles.slide3}>
-                    <Text style={styles.text}>And simple</Text>
-                    </View> */}
-                        {
-                            CustomTransectionCustomCard()
-                        }
-                        {
-                            CustomTransectionCustomCard()
-                        }
-                        {
-                            CustomTransectionCustomCard()
-                        }
-                </Swiper>
+              <Swiper 
+                showsButtons={false}
+                index={0}
+                onMomentumScrollEnd={this._onMomentumScrollEnd.bind(this)}
+                >
+                {
+                    this.props.card_data != null ? 
+                      this.PropsChker()
+                    : null
+                }           
+              </Swiper>  
             </View>    
         )}
 }
@@ -98,6 +122,12 @@ const styles = StyleSheet.create({
       fontSize: 30,
       fontWeight: 'bold',
     }
-  })
+  });
 
-export default TransectionCustomCard;
+const mapStateProps = (state) => {
+  return {
+
+  }
+}
+
+export default connect(mapStateProps)(TransectionCustomCard)
