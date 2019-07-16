@@ -49,9 +49,17 @@ async function retrieveTransection(walletIdNo){
 
         if(data !== null){
             let data_load = JSON.parse(data);
+            
             let output_result;
             if(data_load.length != undefined){
+                output_result = data_load.map( e => 
+                     e.walletId == walletIdNo ? e : null  
+                )
 
+                output_result = output_result.filter( e =>
+                    e != null
+                )
+                
             }else{
                 data_load.walletId == walletIdNo ? output_result = data_load : output_result = null
             }
@@ -75,6 +83,45 @@ export const all_Transection = function* (action){
     
 }
 
+const UpdateBalance = function*(walletid, amounT){
+    try{
+        AsyncStorage.getItem('wallet@Card').then(res => {
+            let data = JSON.parse(res);
+            let result = [];
+            let avamount;
+            if(data.length == undefined){
+                data.balance == 0 ? avamount = 0 : avamount = data.balance - amounT;
+                result = {
+                    'card_holder_name': data.card_holder_name,
+                    'bank_code': data.bank_code,
+                    'balance': data.balance,
+                    'avalible_balance': avamount,
+                    'balance_type': data.balance_type,
+                    'wallet_add_date': data.wallet_add_date,
+                    'card_num': data.card_num,
+                    'wallet_id': data.wallet_id
+                }
+            } else{
+
+            let objIndex = data.findIndex(obj => obj.wallet_id === walletid)
+            let updateObj = { ...data[objIndex], avalible_balance : data[objIndex].avalible_balance - amounT }
+            result = [
+                ...data.slice(0, objIndex), updateObj, ...data.slice(objIndex + 1)
+            ];
+            }
+
+            
+            AsyncStorage.setItem("wallet@Card", JSON.stringify(result)).then(() => {
+              //  update new value succcessfully
+            });
+        })
+    }
+    catch (error){
+        console.log('async save prlm', error)
+    }
+
+}
+
 async function createNewTransection(action){
     try{
         AsyncStorage.getItem('transection@Data').then(res => {
@@ -89,9 +136,9 @@ async function createNewTransection(action){
                     'colorCode': action.result.colorCode,
                     'IconCode': action.result.IconCode,
                     'IconName': action.result.IconName,
-                    'walletId': action.result.walletId 
+                    'walletId': action.result.walletId,
+                    'transectionid': action.result.transectionid 
                 }
-                
                 AsyncStorage.setItem("transection@Data", JSON.stringify(result)).then(() => {
                     
                     ToastAndroid.show('Data save successfully', ToastAndroid.SHORT);
@@ -113,7 +160,8 @@ async function createNewTransection(action){
                              'colorCode': action.result.colorCode,
                              'IconCode': action.result.IconCode,
                              'IconName': action.result.IconName,
-                             'walletId': action.result.walletId
+                             'walletId': action.result.walletId,
+                             'transectionid': action.result.transectionid
                         }
                          
                         result.push(action_result)
@@ -129,7 +177,8 @@ async function createNewTransection(action){
                              'colorCode': action.result.colorCode,
                              'IconCode': action.result.IconCode,
                              'IconName': action.result.IconName,
-                             'walletId': action.result.walletId
+                             'walletId': action.result.walletId,
+                             'transectionid': action.result.transectionid
                          }
                          
                         result.push(action_result)
@@ -137,7 +186,8 @@ async function createNewTransection(action){
                 
                 
                 if(result){
-                    
+
+                                
                     AsyncStorage.setItem("transection@Data", JSON.stringify(result)).then(() => {
                         
                         ToastAndroid.show('Data save successfully', ToastAndroid.SHORT);
@@ -148,9 +198,7 @@ async function createNewTransection(action){
                 }else{
                     console.log("no data in our result check: saga_actions/All_Data_Transections")
                 }
-                
-
-
+            
             }
 
         })
@@ -161,5 +209,6 @@ async function createNewTransection(action){
 }
 
 export const addTransections = function* (action){
-    const create_data = yield call(createNewTransection, action);
+    yield call(UpdateBalance, action.result.walletId, action.result.amount);
+    yield call(createNewTransection, action);
 }

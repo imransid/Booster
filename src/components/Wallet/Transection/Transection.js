@@ -16,13 +16,16 @@ class Transection extends Component{
     IconGenarator() {
         if(this.props.all_leatest_transection.length == undefined){
             return(
-                <CUSTOMADDCARD 
+                <CUSTOMADDCARD
                     IconGenarater={this.props.all_leatest_transection.IconCode} 
                     colorCode={this.props.all_leatest_transection.colorCode} 
                     name={this.props.all_leatest_transection.description} 
                     iconName={this.props.all_leatest_transection.IconName} 
                     date={this.props.all_leatest_transection.date} 
-                    value={this.props.all_leatest_transection.amount} />
+                    value={this.props.all_leatest_transection.amount} 
+                    navigation={this.props.navigation}
+                    transectionid={this.props.all_leatest_transection.transectionid}
+                    selectCategory={this.props.all_leatest_transection.selectCategory}/>
             )
         }else{
 
@@ -35,7 +38,10 @@ class Transection extends Component{
                         name={e.description} 
                         iconName={e.IconName} 
                         date={e.date} 
-                        value={e.amount} />
+                        value={e.amount}
+                        navigation={this.props.navigation}
+                        transectionid={e.transectionid}
+                        selectCategory={e.selectCategory}/>
                 )
             })        
         }

@@ -36,6 +36,7 @@ async function createNewWalletCard(action){
                     'card_holder_name': action.result.card_holder_name,
                     'bank_code': action.result.bank_code,
                     'balance': action.result.balance,
+                    'avalible_balance': action.result.balance,
                     'balance_type': action.result.balance_type,
                     'wallet_add_date': action.result.wallet_add_date,
                     'card_num': action.result.card_num,
@@ -53,19 +54,23 @@ async function createNewWalletCard(action){
                 
                 if(data.length == undefined){
 
-                        result.push(data)
+                    let action_result = {
+                        'card_holder_name': action.result.card_holder_name,
+                        'bank_code': action.result.bank_code,
+                        'balance': action.result.balance,
+                        'avalible_balance': action.result.balance,
+                        'balance_type': action.result.balance_type,
+                        'wallet_add_date': action.result.wallet_add_date,
+                        'card_num': action.result.card_num,
+                        'wallet_id': action.result.wallet_id
+                    }
 
-                        let action_result = {
-                            'card_holder_name': action.result.card_holder_name,
-                            'bank_code': action.result.bank_code,
-                            'balance': action.result.balance,
-                            'balance_type': action.result.balance_type,
-                            'wallet_add_date': action.result.wallet_add_date,
-                            'card_num': action.result.card_num,
-                            'wallet_id': action.result.wallet_id
-                        }
-                         
+                    if(data.bank_code == "Initial Card"){
+                        result = action_result;
+                    }else {
+                        result.push(data)
                         result.push(action_result)
+                    }
                 }else{
                         
                         result = data;
@@ -74,6 +79,7 @@ async function createNewWalletCard(action){
                             'card_holder_name': action.result.card_holder_name,
                             'bank_code': action.result.bank_code,
                             'balance': action.result.balance,
+                            'avalible_balance': action.result.balance,
                             'balance_type': action.result.balance_type,
                             'wallet_add_date': action.result.wallet_add_date,
                             'card_num': action.result.card_num,

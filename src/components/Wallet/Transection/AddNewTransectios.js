@@ -15,8 +15,10 @@ class AddNewTransectios extends Component{
             selectCategory: "Shoping",
             description: "",
             amount: "",
+            pieValue: 0,
             date: this.DateGenrater(),
-            walletId: this.props.navigation.state.params.walletId
+            walletId: this.props.navigation.state.params.walletId,
+            transectionid: this.GenrateWalletID(12)
         }
     }
 
@@ -32,8 +34,11 @@ class AddNewTransectios extends Component{
     }
 
     componentDidMount(){
-        console.log(this.props.navigation.state.params.walletId, this.state)
-        // this.props.dispatch(letast_transection())
+
+        let usedParcentage = parseInt((this.props.UsedBlance * 100) / this.props.Balance );
+        this.setState({
+            pieValue: usedParcentage
+        })
     }
 
     ADD_New_Transection = () => {
@@ -81,17 +86,30 @@ class AddNewTransectios extends Component{
                 'colorCode': colorCode,
                 'IconCode': IconCode,
                 'IconName': IconName,
-                'walletId': this.state.walletId
+                'walletId': this.state.walletId,
+                'transectionid': this.state.transectionid
             }
 
 
-            // AddTransectionMethods(data, this.props.navigation)
-            this.props.dispatch(add_new_transection(data, this.props.navigation))
-            // this.props.navigation.navigate('WALLET');
+            if(this.props.Avalible_Balance != 0){
+                this.props.dispatch(add_new_transection(data, this.props.navigation))
+            }else {
+                alert("Not Enough Blanse to make transdrvtion")             
+            }
             
         }
         
     }
+
+    GenrateWalletID = (length) => {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+           result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+     }
     
     componentWillReceiveProps(newProps){
         //this.props.navigation.navigate('WALLET');
@@ -116,15 +134,15 @@ class AddNewTransectios extends Component{
                                         <Pie
                                             radius={75}
                                             //completly filled pie chart with radius 100
-                                            innerRadius={65}
-                                            series={[75]}
+                                            innerRadius={68}
+                                            series={[this.state.pieValue]}
                                             //values to show and color sequentially
                                             colors={['#ffffff']}
                                             backgroundColor="red"
                                         />
                                         <View style={styles.gauge}>
-                                            <Label style={styles.gaugeText}> $345.76</Label>
-                                            <Label style={styles.gaugeTextdis}>of $1234 used</Label>
+                                            <Label style={styles.gaugeText}> ${this.props.Balance}</Label>
+                                            <Label style={styles.gaugeTextdis}>of ${this.props.UsedBlance} used</Label>
                                         </View>
                                     </View>
                                 </View>
@@ -195,12 +213,19 @@ class AddNewTransectios extends Component{
 
 
 const mapStateProps = (state) => {
+    const Balance = state.TRASECTION.wallet_detaits.balance;
+
+    const UsedBlance = state.TRASECTION.wallet_detaits.balance - state.TRASECTION.wallet_detaits.avalible_balance
 
     const AddNewTransection = state.TRASECTION.AddNewTransection;
 
-    return {
-        AddNewTransection
+    const Avalible_Balance = state.TRASECTION.wallet_detaits.avalible_balance;
 
+    return {
+        AddNewTransection,
+        UsedBlance,
+        Balance,
+        Avalible_Balance
     }
 }
 
