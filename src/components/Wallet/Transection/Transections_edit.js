@@ -3,25 +3,47 @@ import { View, ScrollView, Picker, AsyncStorage, ToastAndroid } from "react-nati
 import MenuDrawerBUtton from "../../Menu/MenuButtons"
 import {Label, Card, Button, Container, Header, Content, Grid, Row, Input} from 'native-base';
 import styles from "./Styles";
+import { walletRefresher } from '../../../actions/Transection';
+import { connect } from 'react-redux';
 
-export default class Transections_edit extends Component{
+class Transections_edit extends Component{
 
     constructor(props){
         super(props);
         this.state = {
+            valuechker: '',
+            valuechkerstatus: '',
             selectCategory: props.navigation.state.params.selectCategory,
             description: props.navigation.state.params.description,
             transectionid: props.navigation.state.params.transectionId,
-            amount: props.navigation.state.params.amount,
-
+            amount: props.navigation.state.params.amount
          }
     }
 
+    BlanceUpdateAndCheker = (data) => {
+
+        let result;
+
+        if(this.state.valuechkerstatus == 1){
+            result = data - this.state.valuechker
+        }
+        else if(this.state.valuechkerstatus == 2){
+            result = this.state.valuechker + data
+        } else{
+            result = data
+        }
+
+        return result
+
+    }
+
     TransectionUpdate = () => {
+
         try{
             AsyncStorage.getItem('transection@Data').then(res => {
                 let data = JSON.parse(res);
                 let result = [];
+                let update_walletId;
 
                 let colorCode, IconCode, IconName;
                 if(this.state.selectCategory == "Shoping"){
@@ -69,24 +91,117 @@ export default class Transections_edit extends Component{
                         'transectionid': this.state.transectionid
                     }
                     
-                    result = action_result
+                result = action_result
+                data.amount > this.state.amount ? [
+                        val = parseInt(data.amount) - parseInt(this.state.amount),
+
+                        this.setState({
+                            valuechker: val,
+                            valuechkerstatus: 2 
+                        })
+
+                ] : [
+                    data.amount < this.state.amount ? [
+                        val = parseInt(this.state.amount) - parseInt(data.amount),
+                        
+                        this.setState({
+                            valuechker: val,
+                            valuechkerstatus: 1 
+                        })
+                    ] : this.setState({
+                        valuechker: 0,
+                        valuechkerstatus: 0 
+                    })
+                ]
+
+                update_walletId = data.walletId
 
                 }else{
                       
                     let objIndex = data.findIndex(obj => obj.transectionid === this.state.transectionid)
-                    // let updateObj = { ...data[objIndex], avalible_balance : data[objIndex].avalible_balance - amounT }
-                    // result = [
-                    //     ...data.slice(0, objIndex), updateObj, ...data.slice(objIndex + 1)
-                    // ];
-                    console.log('objIndex', objIndex)            
+                    let updateObj = { ...data[objIndex],
+                        amount: this.state.amount,
+                        description: this.state.description,
+                        selectCategory: this.state.selectCategory,
+                        date: data[objIndex].date,
+                        colorCode: colorCode,
+                        IconCode: IconCode,
+                        IconName: IconName,
+                        walletId: data[objIndex].walletId,
+                        transectionid: this.state.transectionid 
                     }
-                    
-                    
+                    update_walletId = data[objIndex].walletId
+                    result = [
+                        ...data.slice(0, objIndex), updateObj, ...data.slice(objIndex + 1)
+                    ];
+
+                    data[objIndex].amount > this.state.amount ? [
+                            val = parseInt(data[objIndex].amount) - parseInt(this.state.amount),
+
+                            this.setState({
+                                valuechker: val,
+                                valuechkerstatus: 2 
+                            })
+
+                    ] : [
+                        data[objIndex].amount < this.state.amount ? [
+                            val = parseInt(this.state.amount) - parseInt(data[objIndex].amount),
+                            
+                            this.setState({
+                                valuechker: val,
+                                valuechkerstatus: 1 
+                            })
+                        ] : this.setState({
+                            valuechker: 0,
+                            valuechkerstatus: 0 
+                        })
+                    ]
+
+                }
+                
+
+                if(update_walletId){
+                    AsyncStorage.getItem('wallet@Card').then(res => {
+                        let data = JSON.parse(res);
+                        let result = []
+    
+                        if(data.length == undefined){
+                            result = data
+                            result.avalible_balance = this.BlanceUpdateAndCheker(data.avalible_balance)
+            
+                        }else{
+                            let objIndex = data.findIndex(obj => obj.wallet_id === update_walletId)
+                            let updateObj = { ...data[objIndex],
+                                avalible_balance: this.BlanceUpdateAndCheker(data[objIndex].avalible_balance),
+                                balance: data[objIndex].balance,
+                                balance_type: data[objIndex].balance_type,
+                                bank_code: data[objIndex].bank_code,
+                                card_holder_name: data[objIndex].card_holder_name,
+                                card_num: data[objIndex].card_num,
+                                wallet_add_date: data[objIndex].wallet_add_date,
+                                wallet_id: data[objIndex].wallet_id
+                            }
+                            
+                            result = [
+                                ...data.slice(0, objIndex), updateObj, ...data.slice(objIndex + 1)
+                            ];                     
+                        }
+    
+                        if(result){
+                            AsyncStorage.setItem("wallet@Card", JSON.stringify(result)).then(() => {
+                                ///wallet avalible blsnce updated
+                            });
+                        }
+                        
+                    })
+                }
+                
                 if(result){
 
                         AsyncStorage.setItem("transection@Data", JSON.stringify(result)).then(() => {
                             
                             ToastAndroid.show('Data save successfully', ToastAndroid.SHORT);
+                            this.props.dispatch(walletRefresher());
                             this.props.navigation.navigate('WALLET');
                             
                         });
@@ -177,7 +292,13 @@ export default class Transections_edit extends Component{
                     </ScrollView>         
                 </Content>               
             </Container>
-
         )
     }
 }
+
+const mapStateProps = (state) => {
+    
+    return {}
+}
+
+export default connect(mapStateProps)(Transections_edit)

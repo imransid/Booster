@@ -17,7 +17,7 @@ class AddNewTransectios extends Component{
             amount: "",
             pieValue: 0,
             date: this.DateGenrater(),
-            walletId: this.props.navigation.state.params.walletId,
+            //walletId: this.props.navigation.state.params.walletId,
             transectionid: this.GenrateWalletID(12)
         }
     }
@@ -86,7 +86,7 @@ class AddNewTransectios extends Component{
                 'colorCode': colorCode,
                 'IconCode': IconCode,
                 'IconName': IconName,
-                'walletId': this.state.walletId,
+                'walletId': this.props.walletId,
                 'transectionid': this.state.transectionid
             }
 
@@ -221,11 +221,14 @@ const mapStateProps = (state) => {
 
     const Avalible_Balance = state.TRASECTION.wallet_detaits.avalible_balance;
 
+    const walletId = state.TRASECTION.wallet_id;
+
     return {
         AddNewTransection,
         UsedBlance,
         Balance,
-        Avalible_Balance
+        Avalible_Balance,
+        walletId
     }
 }
 

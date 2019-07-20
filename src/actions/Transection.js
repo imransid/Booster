@@ -15,3 +15,16 @@ export function letast_transection(data){
         walletId: data
     }
 }
+
+export function delete_transection(data){
+    return {
+        type: actionType.DELETE_TRANSECTION,
+        data: data
+    }
+}
+
+export function walletRefresher(){
+    return {
+        type: actionType.WALLET_REFRESH
+    }
+}

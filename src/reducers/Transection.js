@@ -2,7 +2,8 @@ import actionType from "../constant/constant";
 
 const initialState = {
     all_transection : null,
-    lodder : true
+    lodder : true,
+    wallet_id : ''
 }
 
 export default (state = initialState, action) => {
@@ -15,10 +16,29 @@ export default (state = initialState, action) => {
                 all_transection : action.result,
                 all_walllet_card : action.result_wallet,
                 wallet_detaits: action.wallet_detaits,
-                lodder : false
+                lodder : false,
+                wallet_id : action.wallet_id
             })
 
         case actionType.ADD_TRANSECTION:
+            return ({        
+                ...state,
+                lodder : true
+            })
+
+        case actionType.DELETE_TRANSECTION:
+            return ({        
+                ...state,
+                lodder : true
+            })
+
+        case actionType.ADD_WALLET_CARD:
+            return ({        
+                ...state,
+                lodder : true
+            })
+        
+        case actionType.WALLET_REFRESH:
             return ({        
                 ...state,
                 lodder : true

@@ -19,50 +19,47 @@ class Wallet extends Component{
             blockStatus: 'transection',
             walletId: ''
           };
-         this.navigationWillFocusListener = this.props.navigation.addListener('willFocus', () => {
-            
-            AsyncStorage.getItem('wallet@Card').then((e) =>  {
-                let data_load = JSON.parse(e);
-                if(data_load != null){
-                    if(data_load.length == undefined){
-                        console.log('data_load 1', data_load)
-                        let id = data_load.wallet_id;
-                        this.setState({walletId: id})
-                        this.props.dispatch(letast_transection(id))
-
-                    }else{
-                        console.log('data_load', data_load)
-                        let id = data_load[0].wallet_id;
-                        this.setState({walletId: id})
-                        this.props.dispatch(letast_transection(id))
-
-                    }
-
-                }else{
-                    let result = {
-                        'card_holder_name': "Hello Imran",
-                        'bank_code': 'Initial Card',
-                        'balance': 0,
-                        'avalible_balance': 0,
-                        'balance_type': 'CRADIT',
-                        'wallet_add_date': '01-12-2019',
-                        'card_num': '000000000000',
-                        'wallet_id': 'Testing'
-                    }
-                    
-                    AsyncStorage.setItem("wallet@Card", JSON.stringify(result)).then(() => {
-                        this.props.dispatch(letast_transection(result.wallet_id))
-                    });
-                }  
-            })
-
-            
-
-           });
     }
 
     componentDidMount(){
+        this.reLOadData()
+    }
+    reLOadData = () => {
+        AsyncStorage.getItem('wallet@Card').then((e) =>  {
+            let data_load = JSON.parse(e);
+            if(data_load != null){
+                if(data_load.length == undefined){
+                    let id = data_load.wallet_id;
+                    this.setState({walletId: id})
+                    this.props.dispatch(letast_transection(id))
+                }else{
+                    let id = data_load[0].wallet_id;
+                    this.setState({walletId: id})
+                    this.props.dispatch(letast_transection(id))
 
+                }
+
+            }else{
+                let result = {
+                    'card_holder_name': "Hello Imran",
+                    'bank_code': 'Initial Card',
+                    'balance': 0,
+                    'avalible_balance': 0,
+                    'balance_type': 'CRADIT',
+                    'wallet_add_date': '01-12-2019',
+                    'card_num': '000000000000',
+                    'wallet_id': 'Testing'
+                }
+                
+                AsyncStorage.setItem("wallet@Card", JSON.stringify(result)).then(() => {
+                    this.props.dispatch(letast_transection(result.wallet_id))
+                });
+            }  
+        })
+    }
+
+    componentWillReceiveProps(nextProps){
+        nextProps.lodder == true ? this.reLOadData() : null
     }
 
     ADD_transection = () => {

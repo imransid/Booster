@@ -79,7 +79,7 @@ export const all_Transection = function* (action){
     const retive_data = yield call(retrieveTransection, action.walletId);
     const retive_data_wallet = yield call(retrieveWalletCard);
     const retive_wallet_details = yield call(retrieveWalletDetails, action.walletId)
-    yield put({ type: actionType.TRANSECTION_RESULT, result: retive_data, result_wallet: retive_data_wallet, wallet_detaits : retive_wallet_details })
+    yield put({ type: actionType.TRANSECTION_RESULT, result: retive_data, result_wallet: retive_data_wallet, wallet_detaits : retive_wallet_details, wallet_id: action.walletId })
     
 }
 
@@ -108,7 +108,7 @@ const UpdateBalance = function*(walletid, amounT){
             result = [
                 ...data.slice(0, objIndex), updateObj, ...data.slice(objIndex + 1)
             ];
-            }
+            }     
 
             
             AsyncStorage.setItem("wallet@Card", JSON.stringify(result)).then(() => {
@@ -118,6 +118,83 @@ const UpdateBalance = function*(walletid, amounT){
     }
     catch (error){
         console.log('async save prlm', error)
+    }
+
+}
+
+
+const DeleteTransections = function*(props){
+    try{
+
+        AsyncStorage.getItem('transection@Data').then(res => {
+            let data = JSON.parse(res);
+            let result = [];
+            let update_walletId;
+            if(data.length == undefined){
+                result = []
+
+                update_walletId = data.walletId
+
+            }else{
+                result = data.filter((e) => e.transectionid !== props.data.transectionid )
+                let objIndex = data.findIndex(obj => obj.transectionid === props.data.transectionid)
+                update_walletId = data[objIndex].walletId
+            }
+
+            if(update_walletId){
+                AsyncStorage.getItem('wallet@Card').then(res => {
+                    let data = JSON.parse(res);
+                    let result = []
+
+                    if(data.length == undefined){
+                        result = data
+                        result.avalible_balance = parseInt(data.avalible_balance) + parseInt(props.data.value)
+        
+                    }else{
+                        let objIndex = data.findIndex(obj => obj.wallet_id === update_walletId)
+                        let updateObj = { ...data[objIndex],
+                            avalible_balance: parseInt(data[objIndex].avalible_balance) + parseInt(props.data.value),
+                            balance: data[objIndex].balance,
+                            balance_type: data[objIndex].balance_type,
+                            bank_code: data[objIndex].bank_code,
+                            card_holder_name: data[objIndex].card_holder_name,
+                            card_num: data[objIndex].card_num,
+                            wallet_add_date: data[objIndex].wallet_add_date,
+                            wallet_id: data[objIndex].wallet_id
+                        }
+                        
+                        result = [
+                            ...data.slice(0, objIndex), updateObj, ...data.slice(objIndex + 1)
+                        ];                     
+                    }
+
+                    if(result){
+                        AsyncStorage.setItem("wallet@Card", JSON.stringify(result)).then(() => {
+                            ///wallet avalible blsnce updated
+                        });
+                    }
+                    
+                })
+            }
+
+            if(result){
+
+                                
+                AsyncStorage.setItem("transection@Data", JSON.stringify(result)).then(() => {
+                    
+                    ToastAndroid.show('Data save successfully', ToastAndroid.SHORT);
+                    props.data.navigation.navigate('WALLET');
+                    
+                });
+
+            }else{
+                console.log("no data in our result check: saga_actions/All_Data_Transections")
+            }
+            
+        })
+    }
+    catch (error){
+        console.log('async sasave    v saveve prlm', error)
     }
 
 }
@@ -211,4 +288,8 @@ async function createNewTransection(action){
 export const addTransections = function* (action){
     yield call(UpdateBalance, action.result.walletId, action.result.amount);
     yield call(createNewTransection, action);
+}
+
+export const deleteTransection = function* (action){
+   const del_tranSecTions = yield call(DeleteTransections, action);
 }

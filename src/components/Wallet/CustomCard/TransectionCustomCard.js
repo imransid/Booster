@@ -125,9 +125,7 @@ const styles = StyleSheet.create({
   });
 
 const mapStateProps = (state) => {
-  return {
-
-  }
+  return {}
 }
 
 export default connect(mapStateProps)(TransectionCustomCard)

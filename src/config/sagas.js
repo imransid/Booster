@@ -1,7 +1,7 @@
 import { takeEvery, select, call, put } from 'redux-saga/effects';
 import actionType from '../constant/constant';
 
-import { all_Transection, addTransections } from "../saga_actions/All_Data_Transections";
+import { all_Transection, addTransections, deleteTransection } from "../saga_actions/All_Data_Transections";
 import { all_Wallet_Card, addWalletCard } from "../saga_actions/All_Data_Wallet";
 const API_KEY = "1e8d1babbeccde1eb21b";
 
@@ -47,6 +47,7 @@ const rootSaga = function* (){
     yield takeEvery(actionType.ADD_TRANSECTION, addTransections)
     yield takeEvery(actionType.WALLET_CARD, all_Wallet_Card)
     yield takeEvery(actionType.ADD_WALLET_CARD, addWalletCard)
+    yield takeEvery(actionType.DELETE_TRANSECTION, deleteTransection)
 }
 
 export default rootSaga;
