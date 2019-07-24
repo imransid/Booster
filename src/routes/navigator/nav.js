@@ -10,6 +10,7 @@ import ADD_TRANSECTIONS from "../../components/Wallet/Transection/AddNewTransect
 import RATE from "../../components/Rate/Rate";
 import ADD_WALLET from "../../components/Wallet/AddWallet/AddNewWallet";
 import TRANSECTIONS_EDIT from '../../components/Wallet/Transection/Transections_edit'
+import History from '../../components/Wallet/History/History'
 
 export default class nav extends Component{
     render(){
@@ -42,6 +43,9 @@ const HOME = createStackNavigator({
   },
   ADD_WALLET: {
     screen: ADD_WALLET
+  },
+  History: {
+    screen: History 
   }
 
 },

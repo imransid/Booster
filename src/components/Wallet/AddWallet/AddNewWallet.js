@@ -12,7 +12,7 @@ class AddNewWallet extends Component{
             card_holder_name: "",
             bank_code: "BRAC BANK",
             balance: "",
-            balance_type: "dabit",
+            balance_type: "CREDIT",
             wallet_add_date: this.DateGenrater(),
             card_num: "",
             wallet_id: this.GenrateWalletID(12)
@@ -46,6 +46,7 @@ class AddNewWallet extends Component{
             ToastAndroid.show("Please Cheak Again Cann't Save Empty Field", ToastAndroid.SHORT);
         }else{
 
+
             let data = {
                 'card_holder_name': this.state.card_holder_name,
                 'bank_code': this.state.bank_code,
@@ -57,7 +58,7 @@ class AddNewWallet extends Component{
             }
 
             
-            this.props.dispatch(add_new_card(data, this.props.navigation));
+           this.props.dispatch(add_new_card(data, this.props.navigation));
 
             ToastAndroid.show('Data save successfully', ToastAndroid.SHORT);
         }

@@ -20,7 +20,7 @@ def enableProguardInReleaseBuilds = false;
 public class Version { 
     private final static int VERSION_BUILD = 0; 
     private final static int VERSION_MAJOR = 1; 
-    private final static int VERSION_MINOR = 15; 
+    private final static int VERSION_MINOR = 16; 
     public static int getVersionCode() { 
         return VERSION_BUILD*1000*1000 + VERSION_MAJOR * 1000 + VERSION_MINOR; 
     }
@@ -53,6 +53,9 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+        //    versionCode Version.getVersionCode()
+        //    versionName Version.getVersionName()
     }
 
     // defaultConfig {
@@ -108,6 +111,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-html-to-pdf')
     implementation project(':react-native-vector-icons')
     implementation 'com.facebook.android:facebook-android-sdk:4.34.0'
     implementation project(':react-native-fbsdk')

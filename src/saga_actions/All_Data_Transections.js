@@ -83,18 +83,25 @@ export const all_Transection = function* (action){
     
 }
 
-const UpdateBalance = function*(walletid, amounT){
+const UpdateBalance = function*(walletid, amounT, CType, Card_Type){
     try{
         AsyncStorage.getItem('wallet@Card').then(res => {
             let data = JSON.parse(res);
             let result = [];
             let avamount;
+            let UpdatedNewBalance;
             if(data.length == undefined){
-                data.balance == 0 ? avamount = 0 : avamount = data.balance - amounT;
+                CType == 'Bill' ? avamount = parseInt(data.avalible_balance) + parseInt(amounT) : avamount = parseInt(data.avalible_balance) - parseInt(amounT);
+                if((CType == 'Bill') && (Card_Type == 'DABIT') && (avamount > parseInt(data.balance))){
+                    UpdatedNewBalance = avamount;
+                }else{
+                    UpdatedNewBalance = parseInt(data.balance);
+                }
+
                 result = {
                     'card_holder_name': data.card_holder_name,
                     'bank_code': data.bank_code,
-                    'balance': data.balance,
+                    'balance': UpdatedNewBalance,
                     'avalible_balance': avamount,
                     'balance_type': data.balance_type,
                     'wallet_add_date': data.wallet_add_date,
@@ -102,12 +109,22 @@ const UpdateBalance = function*(walletid, amounT){
                     'wallet_id': data.wallet_id
                 }
             } else{
+                let avamount;
 
-            let objIndex = data.findIndex(obj => obj.wallet_id === walletid)
-            let updateObj = { ...data[objIndex], avalible_balance : data[objIndex].avalible_balance - amounT }
-            result = [
-                ...data.slice(0, objIndex), updateObj, ...data.slice(objIndex + 1)
-            ];
+                let objIndex = data.findIndex(obj => obj.wallet_id === walletid)
+                
+                CType == 'Bill' ? avamount = parseInt(data[objIndex].avalible_balance) + parseInt(amounT) : avamount = parseInt(data[objIndex].avalible_balance) - parseInt(amounT);
+                
+                if((CType == 'Bill') && (Card_Type == 'DABIT') && (avamount > parseInt(data[objIndex].balance))){
+                        UpdatedNewBalance = avamount;
+                }else{
+                        UpdatedNewBalance = parseInt(data[objIndex].balance);
+                }
+                
+                let updateObj = { ...data[objIndex], avalible_balance : avamount, balance: UpdatedNewBalance }
+                result = [
+                    ...data.slice(0, objIndex), updateObj, ...data.slice(objIndex + 1)
+                ];
             }     
 
             
@@ -286,7 +303,7 @@ async function createNewTransection(action){
 }
 
 export const addTransections = function* (action){
-    yield call(UpdateBalance, action.result.walletId, action.result.amount);
+    yield call(UpdateBalance, action.result.walletId, action.result.amount, action.category, action.Card_Type);
     yield call(createNewTransection, action);
 }
 
