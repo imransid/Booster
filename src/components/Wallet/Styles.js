@@ -6,11 +6,7 @@ const Paddingwidth = Dimensions.get("window").width - 55;
 const styles = StyleSheet.create({
   
     footerIcon: {
-  
-        alignItems: "center",
-        marginLeft: 50,
-        
-        marginTop:7
+        marginRight: '5%'
     },
 
     footerIcon1: {
