@@ -231,7 +231,8 @@ async function createNewTransection(action){
                     'IconCode': action.result.IconCode,
                     'IconName': action.result.IconName,
                     'walletId': action.result.walletId,
-                    'transectionid': action.result.transectionid 
+                    'transectionid': action.result.transectionid,
+                    'syncStatus': false 
                 }
                 AsyncStorage.setItem("transection@Data", JSON.stringify(result)).then(() => {
                     
@@ -255,7 +256,8 @@ async function createNewTransection(action){
                              'IconCode': action.result.IconCode,
                              'IconName': action.result.IconName,
                              'walletId': action.result.walletId,
-                             'transectionid': action.result.transectionid
+                             'transectionid': action.result.transectionid,
+                             'syncStatus': false
                         }
                          
                         result.push(action_result)
@@ -272,7 +274,8 @@ async function createNewTransection(action){
                              'IconCode': action.result.IconCode,
                              'IconName': action.result.IconName,
                              'walletId': action.result.walletId,
-                             'transectionid': action.result.transectionid
+                             'transectionid': action.result.transectionid,
+                             'syncStatus': false
                          }
                          
                         result.push(action_result)

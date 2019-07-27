@@ -9,6 +9,7 @@ import ADDWALLET from "./AddWallet/AddWallet";
 import styles from "./Styles";
 import { letast_transection } from "../../actions/Transection";
 import TransectionCustomCard from "./CustomCard/TransectionCustomCard";
+import { testing } from "../../cloud/firebase_crud";
 
 class Wallet extends Component{
 
@@ -23,6 +24,7 @@ class Wallet extends Component{
 
     componentDidMount(){
         this.reLOadData()
+        //testing()
     }
     reLOadData = () => {
         AsyncStorage.getItem('wallet@Card').then((e) =>  {
@@ -174,12 +176,14 @@ const mapStateProps = (state) => {
     const all_leatest_transection = state.TRASECTION.all_transection;
     const all_walllet_card = state.TRASECTION.all_walllet_card;
     const lodder = state.TRASECTION.lodder;
+    const SyncStatus = state.TRASECTION
 
     return {
         all_leatest_transection,
         lodder,
         all_walllet_card,
-        wallet_details
+        wallet_details,
+        //SyncStatus
     }
 }
 

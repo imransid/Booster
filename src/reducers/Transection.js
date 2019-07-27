@@ -3,7 +3,20 @@ import actionType from "../constant/constant";
 const initialState = {
     all_transection : null,
     lodder : true,
-    wallet_id : ''
+    wallet_id : '',
+    sync: null
+}
+
+const SyncStatus = (transection) => {
+    let sync;
+
+    if(transection.length == undefined){
+        sync = transection.syncStatus;
+    }else{
+        transection.map((e) => e.syncStatus == false ? sync = e.syncStatus : e);
+        sync == false ? sync = false : sync = true;
+    }
+    return sync;
 }
 
 export default (state = initialState, action) => {
@@ -17,7 +30,8 @@ export default (state = initialState, action) => {
                 all_walllet_card : action.result_wallet,
                 wallet_detaits: action.wallet_detaits,
                 lodder : false,
-                wallet_id : action.wallet_id
+                wallet_id : action.wallet_id,
+                sync : SyncStatus(action.result) 
             })
 
         case actionType.ADD_TRANSECTION:
