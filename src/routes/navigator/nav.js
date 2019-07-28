@@ -11,6 +11,7 @@ import RATE from "../../components/Rate/Rate";
 import ADD_WALLET from "../../components/Wallet/AddWallet/AddNewWallet";
 import TRANSECTIONS_EDIT from '../../components/Wallet/Transection/Transections_edit'
 import History from '../../components/Wallet/History/History'
+import SETTING from '../../components/setting/Setting';
 
 export default class nav extends Component{
     render(){
@@ -72,6 +73,9 @@ const DrawerNavigator = createDrawerNavigator(
     CONVERT : {
       screen : CONVERT
     },
+    SETTING : {
+      screen : SETTING
+    }
     
 
 

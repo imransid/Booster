@@ -1,8 +1,6 @@
 import * as firebase from 'firebase';
 import { firebaseconfig } from '../config/config';
 
-import NetInfo from "@react-native-community/netinfo";
-
  
 const leer = () => {
 

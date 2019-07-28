@@ -9,7 +9,7 @@ class DrawerButtons extends Component{
             <Icon 
             name="bars" 
             size={30} 
-            color="#fff" 
+            color="#4DB6AC" 
             onPress={() => this.props.navigation.toggleDrawer()}/>
             
         )

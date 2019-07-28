@@ -9,7 +9,7 @@ import ADDWALLET from "./AddWallet/AddWallet";
 import styles from "./Styles";
 import { letast_transection } from "../../actions/Transection";
 import TransectionCustomCard from "./CustomCard/TransectionCustomCard";
-import { testing } from "../../cloud/firebase_crud";
+import {init_setting} from "../../actions/Setting";
 
 class Wallet extends Component{
 
@@ -23,7 +23,8 @@ class Wallet extends Component{
     }
 
     componentDidMount(){
-        this.reLOadData()
+        this.props.dispatch(init_setting());
+        this.reLOadData();
         //testing()
     }
     reLOadData = () => {
