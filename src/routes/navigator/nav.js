@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Dimensions } from "react-native";
-import { createStackNavigator, createAppContainer, createDrawerNavigator } from "react-navigation";
+import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator } from "react-navigation";
 import LOGIN from '../../components/Login/Login';
 import REGISTER from "../../components/Register/Register";
 import WALLET from "../../components/Wallet/Wallet";
@@ -16,7 +16,10 @@ import SETTING from '../../components/setting/Setting';
 export default class nav extends Component{
     render(){
         return(
-            <AppContainer />
+            this.props.status === false ?
+              <AppContainer />
+            :
+              <LogAppContainer />
         )
     }
 }
@@ -64,24 +67,55 @@ const DrawerNavigator = createDrawerNavigator(
     WALLET : {
       screen : HOME
     },
-    LOGIN : {
-      screen : LOGIN
-    },
-    REGISTER : {
-      screen : REGISTER
-    },
     CONVERT : {
       screen : CONVERT
     },
     SETTING : {
       screen : SETTING
     }
-    
-
-
   },
    DrawerConfig,
   
 );
 
-const AppContainer = createAppContainer(DrawerNavigator);
+const AuthStack = createStackNavigator({
+  LOGIN : {
+    screen : LOGIN
+  },
+  REGISTER : {
+    screen : REGISTER
+  },
+},{
+  headerMode : 'none',
+});
+
+const LOGGEEDD = createStackNavigator({
+  LOGIN : {
+    screen : DrawerNavigator
+  }
+},
+{
+  headerMode : 'none',
+});
+
+
+// DrawerNavigator
+const AppContainer = createAppContainer(createSwitchNavigator({
+  Auth : AuthStack,
+  LOGGED : LOGGEEDD
+},
+{
+  headerMode : 'none',
+  initialRouteName: 'Auth'
+}
+));
+
+const LogAppContainer = createAppContainer(createSwitchNavigator({
+  Auth : AuthStack,
+  LOGGED : LOGGEEDD
+},
+{
+  headerMode : 'none',
+  initialRouteName: 'LOGGED'
+}
+));

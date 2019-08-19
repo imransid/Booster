@@ -4,7 +4,7 @@ import MenuDrawerBUtton from "../Menu/MenuButtons"
 import {Label, Card, Button, Container, Header, Content, Icon, Badge, ListItem} from 'native-base';
 import { connect } from 'react-redux';
 import styles from "./Styles";
-
+import { insertCloud } from "../../actions/Setting"
 class Setting extends Component{
 
     constructor(props){
@@ -23,6 +23,7 @@ class Setting extends Component{
         this.setState({
             loading: !this.state.loading
         })
+        this.props.dispatch(insertCloud());
     }
 
     toggledata = (value1, value2) => {
@@ -127,6 +128,7 @@ class Setting extends Component{
 
 
 const mapStateProps = (state) => {
+    console.log('sr\e', state)
     const sync = state.SETTING.sync;
     const loaded = state.SETTING.loading;
     const eventnotification = state.SETTING.eventnotification;

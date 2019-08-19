@@ -9,7 +9,7 @@ import ADDWALLET from "./AddWallet/AddWallet";
 import styles from "./Styles";
 import { letast_transection } from "../../actions/Transection";
 import TransectionCustomCard from "./CustomCard/TransectionCustomCard";
-import {init_setting} from "../../actions/Setting";
+import {Loged_init_setting} from "../../actions/Setting";
 
 class Wallet extends Component{
 
@@ -22,11 +22,24 @@ class Wallet extends Component{
           };
     }
 
-    componentDidMount(){
-        this.props.dispatch(init_setting());
-        this.reLOadData();
-        //testing()
+    async LoginChker(){
+        try{
+    
+            const logged = await AsyncStorage.multiGet(['LoginStatus']);
+            let status = false;
+            logged[0][1] != 1 ? null : this.props.dispatch(Loged_init_setting(status));
+            this.reLOadData();
+
+        }catch{
+            console.log('LoginChker() AsyncStorage problem')
+        }
+        
     }
+
+    componentDidMount(){
+        
+    }
+    
     reLOadData = () => {
         AsyncStorage.getItem('wallet@Card').then((e) =>  {
             let data_load = JSON.parse(e);
@@ -44,7 +57,7 @@ class Wallet extends Component{
 
             }else{
                 let result = {
-                    'card_holder_name': "Hello Imran",
+                    'card_holder_name': this.props.name,
                     'bank_code': 'Initial Card',
                     'balance': 0,
                     'avalible_balance': 0,
@@ -177,13 +190,14 @@ const mapStateProps = (state) => {
     const all_leatest_transection = state.TRASECTION.all_transection;
     const all_walllet_card = state.TRASECTION.all_walllet_card;
     const lodder = state.TRASECTION.lodder;
-    const SyncStatus = state.TRASECTION
-
+    const SyncStatus = state.TRASECTION;
+    const name = state.SETTING.name;
     return {
         all_leatest_transection,
         lodder,
         all_walllet_card,
         wallet_details,
+        name
         //SyncStatus
     }
 }

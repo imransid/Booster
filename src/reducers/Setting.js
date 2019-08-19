@@ -5,7 +5,8 @@ const initialState = {
     sync : null,
     eventnotification : true,
     alert: null,
-    loading: false
+    loading: false,
+    useremail: null
 }
 
 
@@ -16,7 +17,10 @@ export default (state = initialState, action) => {
                 ...state,
                 sync : action.sync,
                 eventnotification: action.eventnotification,
-                alert: action.alert
+                alert: action.alert,
+                useremail: action.email,
+                name: action.name
+
             })
         default:
             return state;

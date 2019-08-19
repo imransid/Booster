@@ -1,7 +1,7 @@
 import actionType from "../constant/constant";
 
 const initialState = {
-    all_transection : null,
+    all_transection : '',
     lodder : true,
     wallet_id : '',
     sync: null
@@ -10,11 +10,17 @@ const initialState = {
 const SyncStatus = (transection) => {
     let sync;
 
-    if(transection.length == undefined){
-        sync = transection.syncStatus;
-    }else{
-        transection.map((e) => e.syncStatus == false ? sync = e.syncStatus : e);
-        sync == false ? sync = false : sync = true;
+    if(transection == null){
+        sync = false
+    }
+    else{
+
+        if(transection.length == undefined){
+            sync = transection.syncStatus;
+        }else{
+            transection.map((e) => e.syncStatus == false ? sync = e.syncStatus : e);
+            sync == false ? sync = false : sync = true;
+        }
     }
     return sync;
 }

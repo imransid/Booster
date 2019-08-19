@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
+import {AsyncStorage} from 'react-native';
 import BackGroundImage from './BackGroundImage.js';
 import PushNotification from 'react-native-push-notification';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import * as firebase from 'firebase';
 import { firebaseconfig } from '../../config/config';
 import { AccessToken, LoginManager, } from 'react-native-fbsdk';
+import { connect } from 'react-redux';
+import {init_setting} from "../../actions/Setting";
 
 firebase.initializeApp(firebaseconfig)
 
-export default class HomeScreen extends Component {
+class Login extends Component {
 // for fblogin
 
 isFBLogged = () => {
@@ -47,9 +50,6 @@ isFBLogged = () => {
                        
                   })
                   .done(); 
-
-                  
-
           }
         );
       }
@@ -60,12 +60,6 @@ isFBLogged = () => {
     }
   );
 }
-
-
-
-
-
-
 
 
   //-----pushcontroler for push notification----
@@ -113,11 +107,9 @@ _configureGoogleSignIn() {
 
 
 onSignIn = googleUser => {
-  console.log("work", googleUser)
   // console.log('Google Auth Response', googleUser.user.email);
 
   // Alert.alert(googleUser.user.email);
-  
   
   var unsubscribe = firebase.auth().onAuthStateChanged(function(firebaseUser) {
     unsubscribe();
@@ -166,6 +158,7 @@ onSignIn = googleUser => {
         var credential = error.credential;
         // ...
       });
+
     } else {
       console.log('User already signed-in Firebase.');
     }
@@ -181,10 +174,9 @@ _Google_signIn = async () => {
   try {
     await GoogleSignin.hasPlayServices();
     const userInfo = await GoogleSignin.signIn();
-    
-    alert(userInfo.user.name)
 
     this.onSignIn(userInfo);
+    this._social_SuccessLogin(userInfo.user.email, userInfo.user.name, userInfo.user.photo);
 
   } catch (error) {
 
@@ -206,6 +198,16 @@ _Google_signIn = async () => {
   }
 };
 
+_social_SuccessLogin = (userEmail, UserName, UserPic) => {
+
+  let status = true;
+  // okk
+  
+  this.props.dispatch(init_setting(userEmail, UserName, UserPic, status));
+
+  this.props.navigation.navigate('WALLET', {status: true})
+  
+}
 
   render() {
     return (
@@ -216,3 +218,10 @@ _Google_signIn = async () => {
     );
   }
 }
+
+const mapStateProps = (state) => {
+  return {
+  }
+}
+
+export default connect(mapStateProps)(Login)
