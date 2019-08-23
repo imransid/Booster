@@ -25,6 +25,20 @@ const SyncStatus = (transection) => {
     return sync;
 }
 
+const BalanceChk = (id, wallet) => {
+
+    let result;
+
+    if(wallet.length == undefined){
+        result = wallet.avalible_balance;
+    }else{
+        wallet.map((e) => e.wallet_id == id ? result = e.avalible_balance : e);
+    }
+
+    return result;
+
+}
+
 export default (state = initialState, action) => {
 
     switch (action.type){
@@ -37,7 +51,8 @@ export default (state = initialState, action) => {
                 wallet_detaits: action.wallet_detaits,
                 lodder : false,
                 wallet_id : action.wallet_id,
-                sync : SyncStatus(action.result) 
+                sync : SyncStatus(action.result),
+                walletBlance : BalanceChk(action.wallet_id, action.wallet_detaits) 
             })
 
         case actionType.ADD_TRANSECTION:

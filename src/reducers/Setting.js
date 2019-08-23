@@ -6,7 +6,9 @@ const initialState = {
     eventnotification : true,
     alert: null,
     loading: false,
-    useremail: null
+    useremail: null,
+    userpic: null,
+    logstatus: ''
 }
 
 
@@ -19,8 +21,9 @@ export default (state = initialState, action) => {
                 eventnotification: action.eventnotification,
                 alert: action.alert,
                 useremail: action.email,
-                name: action.name
-
+                name: action.name,
+                userpic: action.userpic,
+                logstatus: action.logstatus
             })
         default:
             return state;

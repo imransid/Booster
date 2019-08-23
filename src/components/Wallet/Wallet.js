@@ -37,10 +37,14 @@ class Wallet extends Component{
     }
 
     componentDidMount(){
-        
+        this.props.name !== undefined ? 
+            this.LoginChker() 
+            :
+            null
     }
     
     reLOadData = () => {
+
         AsyncStorage.getItem('wallet@Card').then((e) =>  {
             let data_load = JSON.parse(e);
             if(data_load != null){
@@ -63,7 +67,7 @@ class Wallet extends Component{
                     'avalible_balance': 0,
                     'balance_type': 'CRADIT',
                     'wallet_add_date': '01-12-2019',
-                    'card_num': '000000000000',
+                    'card_num': '0000',
                     'wallet_id': 'Testing'
                 }
                 
@@ -75,7 +79,11 @@ class Wallet extends Component{
     }
 
     componentWillReceiveProps(nextProps){
-        nextProps.lodder == true ? this.reLOadData() : null
+        if(nextProps.name !== undefined){
+            nextProps.lodder == true ? this.reLOadData() : null
+        }else{
+            null
+        }        
     }
 
     ADD_transection = () => {
@@ -192,6 +200,7 @@ const mapStateProps = (state) => {
     const lodder = state.TRASECTION.lodder;
     const SyncStatus = state.TRASECTION;
     const name = state.SETTING.name;
+
     return {
         all_leatest_transection,
         lodder,

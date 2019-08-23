@@ -1,12 +1,21 @@
 import React, {Component} from "react";
 import {Dimensions, View, Text, StyleSheet, TouchableOpacity,Image } from "react-native";
 import { Thumbnail, Label } from "native-base";
+import { connect } from 'react-redux';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 
 class MenuDrawer extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = { 
+            urlIMG : false,
+            dataURL: ''
+          };
+    }
 
     navImage(nav){
         if(nav == "WALLET"){
@@ -50,33 +59,66 @@ class MenuDrawer extends Component {
         )
 
     }
+
+    renderIamgeScreen() {
+        return (
+            this.props.logstatus == true ?
+                <Thumbnail style={{width: 80, height: 80}} source={{uri: this.props.userpic}}/>
+            :
+                <Thumbnail style={{width: 80, height: 80}} source={{uri: `data:image/png;base64,${this.state.dataURL}`}}/>
+        );
+      }
+
+    componentWillReceiveProps(nextProps){
+
+        if(nextProps.userpic !== null){
+            this.setState({
+                    urlIMG: true,
+                    dataURL: this.props.userpic
+                })
+        } 
+
+    }
     
     render(){
         return(
             <View style={styles.container}>
                 <View style={styles.container_head}>
                     <View style={{flexDirection: 'row', marginBottom: 10}}>
-                        <View style={{width: "50%"}}>  
-                            <Thumbnail style={{width: 80, height: 80}} source={require("../../assets/images/Vector_Smart_Object.png" )} />
+                        <View style={{width: "50%"}}>
+                          
+                            {   
+                                this.state.urlIMG == false ?                                
+                                    <Thumbnail style={{width: 80, height: 80}} source={require("../../assets/images/Vector_Smart_Object.png" )}/>
+                                 :
+                                    this.renderIamgeScreen()
+                                
+                            }
                         </View>
                         <View>
                             <Label style={{fontWeight: "400", color: "black"}}>
                                     Wallet Balance:
                             </Label>
                             <Label style={{fontWeight: "800", fontSize: 25 , color: "black"}}>
-                                    $2500.00
+                                   ${
+                                        this.props.walletBlance
+                                    }
                             </Label>
                         </View>
                     </View>
                     <View style={{flexDirection : "column",justifyContent:'flex-end', marginTop:10}}>
                         <View>
                             <Label style={{color: "black"}}>
-                                Imran Khan
+                                {
+                                    this.props.name
+                                }
                             </Label>
                         </View>
                         <View>
                             <Label>
-                                emailofimran1992@gmail.com
+                                {
+                                    this.props.email
+                                }
                             </Label>
                         </View>
 
@@ -121,4 +163,23 @@ const styles = StyleSheet.create({
     }
 });
 
-export default MenuDrawer;
+// export default MenuDrawer;
+
+const mapStateProps = (state) => {
+
+    const userpic = state.SETTING.userpic;
+    const name = state.SETTING.name;
+    const email = state.SETTING.useremail;
+    const walletBlance = state.TRASECTION.walletBlance;
+    const logstatus = state.SETTING.logstatus;
+    return {
+        name,
+        email,
+        walletBlance,
+        userpic,
+        logstatus
+        //SyncStatus
+    }
+}
+
+export default connect(mapStateProps)(MenuDrawer)
