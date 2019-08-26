@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "470491176372-jbpl6uhbajt7nsqbqvp93ddos0no51jg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.booster",
+            "certificate_hash": "27bdeb49a47bec711972d43dd09f3ffb0000e89c"
+          }
+        },
+        {
           "client_id": "470491176372-1s9m2hav9sumo2hv39pe3r8l2sbf8pi7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -23,7 +23,7 @@ export default class BackGroundImage extends Component{
 
                             </View>
                             
-                            <View style={{ flex: 1, marginBottom: "20%", width:'80%',marginLeft:30,marginTop:30}}>
+                            {/* <View style={{ flex: 1, marginBottom: "20%", width:'80%',marginLeft:30,marginTop:30}}>
                                 <Form>
                                     <Item floatingLabel>
                                         <Label>Email</Label>
@@ -34,8 +34,8 @@ export default class BackGroundImage extends Component{
                                         <Input />
                                     </Item>
                                 </Form>
-                            </View>
-                            <View style={{ flex: 1, alignItems: 'center', marginBottom: "30%"}}>
+                            </View> */}
+                            {/* <View style={{ flex: 1, alignItems: 'center', marginBottom: "30%"}}>
                             
                                     <View style={{width: '50%', marginBottom: "5%"}}>
                                         <Button block light small style={{borderRadius : 15}}>
@@ -49,12 +49,12 @@ export default class BackGroundImage extends Component{
                                         </Button>
                                     </View>
 
-                            </View>
+                            </View> */}
                             
 
-                            <View style={{ flex: 1, alignItems: 'center', flexDirection: 'row', justifyContent:'space-between'}}>
+                            <View style={{ marginTop: 150, flex: 1, alignItems: 'center', flexDirection: 'row', justifyContent:'space-between'}}>
                                     
-                            <View style={{ marginLeft: "30%" }}>
+                                    <View style={{ marginLeft: "30%" }}>
                                         <FBbutton
                                         fb_metgod = {this.props.facebook} 
                                         />

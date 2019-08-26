@@ -150,10 +150,10 @@ export const all_Setting = function* (action){
         var picURL = yield call(DownLoad, action.pic);
         retive_data = yield call(RetrieveSetting, action.email, action.status, action.name, picURL)
         const UpdateAsync = yield call(UpdateLoginAsync)
-        yield put({ type: actionType.LOAD_SETTING, sync: retive_data.sync, name: retive_data.name, eventnotification: retive_data.eventnotification, alert: retive_data.alert, email: retive_data.email, userpic: action.pic, logstatus: action.status })
+        yield put({ type: actionType.LOAD_SETTING, sync: retive_data.sync, name: retive_data.name, eventnotification: retive_data.eventnotification, alert: retive_data.alert, email: retive_data.email, userpic: action.pic, logstatus: action.status, loadedData: true })
     }else{
         retive_data = yield call(RetrieveSetting, action.email, action.status, action.name)
-        yield put({ type: actionType.LOAD_SETTING, sync: retive_data.sync, name: retive_data.name, eventnotification: retive_data.eventnotification, alert: retive_data.alert, email: retive_data.email, userpic: retive_data.picURL, logstatus: action.status })
+        yield put({ type: actionType.LOAD_SETTING, sync: retive_data.sync, name: retive_data.name, eventnotification: retive_data.eventnotification, alert: retive_data.alert, email: retive_data.email, userpic: retive_data.picURL, logstatus: action.status, loadedData: true })
     }
     
         

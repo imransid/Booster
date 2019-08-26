@@ -28,7 +28,7 @@ class Wallet extends Component{
             const logged = await AsyncStorage.multiGet(['LoginStatus']);
             let status = false;
             logged[0][1] != 1 ? null : this.props.dispatch(Loged_init_setting(status));
-            this.reLOadData();
+            //this.reLOadData();
 
         }catch{
             console.log('LoginChker() AsyncStorage problem')
@@ -36,11 +36,8 @@ class Wallet extends Component{
         
     }
 
-    componentDidMount(){
-        this.props.name !== undefined ? 
+    componentDidMount(){ 
             this.LoginChker() 
-            :
-            null
     }
     
     reLOadData = () => {
@@ -79,11 +76,14 @@ class Wallet extends Component{
     }
 
     componentWillReceiveProps(nextProps){
-        if(nextProps.name !== undefined){
-            nextProps.lodder == true ? this.reLOadData() : null
-        }else{
-            null
-        }        
+        if(nextProps.loadedData == true){
+            if(nextProps.name !== undefined){
+                nextProps.lodder == true ? this.reLOadData() : null
+            }else{
+                null
+            }
+        }
+
     }
 
     ADD_transection = () => {
@@ -200,13 +200,14 @@ const mapStateProps = (state) => {
     const lodder = state.TRASECTION.lodder;
     const SyncStatus = state.TRASECTION;
     const name = state.SETTING.name;
-
+    const loadedData = state.SETTING.loadedData;
     return {
         all_leatest_transection,
         lodder,
         all_walllet_card,
         wallet_details,
-        name
+        name,
+        loadedData
         //SyncStatus
     }
 }

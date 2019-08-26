@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { ScrollView } from "react-native";
 import {Label, Card, Button} from 'native-base';
 import CUSTOMADDCARD from "../CustomCard/CustomCard";
+import { connect } from 'react-redux';
 
 class Transection extends Component{
 
@@ -10,7 +11,10 @@ class Transection extends Component{
     }
 
     ADD_New_Transection = () =>{
-        this.props.navigation.navigate("ADD_TRANSECTIONS", { walletId: this.props.walletId })
+        this.props.walletId == 'Testing' ?
+            alert("! You Cann't Make Transection In Intial Wallet Card Please Add Your Card")
+        :
+            this.props.navigation.navigate("ADD_TRANSECTIONS", { walletId: this.props.walletId })
     }
 
     IconGenarator() {
@@ -70,4 +74,26 @@ class Transection extends Component{
     }
 }
 
-export default Transection;
+// export default Transection;
+
+const mapStateProps = (state) => {
+
+    const wallet_details = state.TRASECTION.wallet_detaits
+    const all_leatest_transection = state.TRASECTION.all_transection;
+    const all_walllet_card = state.TRASECTION.all_walllet_card;
+    const lodder = state.TRASECTION.lodder;
+    const SyncStatus = state.TRASECTION;
+    const name = state.SETTING.name;
+    const loadedData = state.SETTING.loadedData;
+    return {
+        all_leatest_transection,
+        lodder,
+        all_walllet_card,
+        wallet_details,
+        name,
+        loadedData
+        //SyncStatus
+    }
+}
+
+export default connect(mapStateProps)(Transection)

@@ -8,7 +8,8 @@ const initialState = {
     loading: false,
     useremail: null,
     userpic: null,
-    logstatus: ''
+    logstatus: '',
+    loadedData: false
 }
 
 
@@ -23,7 +24,8 @@ export default (state = initialState, action) => {
                 useremail: action.email,
                 name: action.name,
                 userpic: action.userpic,
-                logstatus: action.logstatus
+                logstatus: action.logstatus,
+                loadedData: action.loadedData
             })
         default:
             return state;
