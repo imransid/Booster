@@ -28,12 +28,12 @@ const SyncStatus = (transection) => {
 const BalanceChk = (id, wallet) => {
 
     let result;
-
+    
     if(wallet.length == undefined){
         result = wallet.avalible_balance;
-    }else{
-        wallet.map((e) => e.wallet_id == id ? result = e.avalible_balance : e);
-    }
+     }else{
+         wallet.map((e) => e.wallet_id == id ? result = e.avalible_balance : e);
+     }
 
     return result;
 
@@ -67,7 +67,7 @@ export default (state = initialState, action) => {
                 lodder : true
             })
 
-        case actionType.ADD_WALLET_CARD:
+        case actionType.ADD_WALLET_CARD_SUCCESSFULLY:
             return ({        
                 ...state,
                 lodder : true

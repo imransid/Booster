@@ -1,7 +1,6 @@
 import { takeEvery, select, call, put } from 'redux-saga/effects';
 import { AsyncStorage, ToastAndroid } from "react-native";
 import actionType from '../constant/constant';
-import { CloudService } from "../cloud/firebase_crud";
 import RNFetchBlob from 'rn-fetch-blob';
 import {PermissionsAndroid} from 'react-native';
 
@@ -157,8 +156,4 @@ export const all_Setting = function* (action){
     }
     
         
-}
-
-export const insertdata = function* (action){
-    CloudService(a='123')
 }

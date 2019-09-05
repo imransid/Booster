@@ -1,10 +1,11 @@
 import React, {Component} from "react";
-import { View, ToastAndroid, ScrollView, Picker } from "react-native";
+import { View, ToastAndroid, ScrollView, Picker, AsyncStorage } from "react-native";
 import MenuDrawerBUtton from "../../Menu/MenuButtons"
 import {Label, Card, Button, Container, Header, Content, Input} from 'native-base';
 import { connect } from 'react-redux';
 import styles from "../../Wallet/Transection/Styles";
-import { add_new_card } from "../../../actions/WalletCard";
+import { add_new_card, Init_Wallet } from "../../../actions/WalletCard";
+
 class AddNewWallet extends Component{
     constructor(){
         super();
@@ -41,12 +42,30 @@ class AddNewWallet extends Component{
 
     }
 
+    async InitialWallet_Chk(){
+
+        let data = await AsyncStorage.getItem('wallet@Card');
+        let result = JSON.parse(data)
+        let finalResult;
+        result.wallet_id == "Testing" ? finalResult = true : finalResult = false;
+        return finalResult; 
+
+    }
+
+    async WalletInitDataUpadte(result){
+
+        AsyncStorage.setItem("wallet@Card", JSON.stringify(result))
+        .then(() => {
+            ToastAndroid.show('Wallet Add successfully', ToastAndroid.SHORT);
+            this.props.dispatch(Init_Wallet());
+            this.props.navigation.navigate('WALLET');
+        });
+    }
+
     ADD_New_Wallet = () => {
         if(this.state.card_holder_name == "" && this.state.bank_code == "" && this.state.balance == "" && this.state.balance_type == "" && this.state.card_num == ""){
             ToastAndroid.show("Please Cheak Again Cann't Save Empty Field", ToastAndroid.SHORT);
         }else{
-
-
             let data = {
                 'card_holder_name': this.state.card_holder_name,
                 'bank_code': this.state.bank_code,
@@ -54,13 +73,17 @@ class AddNewWallet extends Component{
                 'balance_type': this.state.balance_type,
                 'wallet_add_date': this.state.wallet_add_date,
                 'card_num': this.state.card_num,
-                'wallet_id': this.state.wallet_id
+                'wallet_id': this.state.wallet_id,
+                'avalible_balance': this.state.balance,
             }
 
-            
-           this.props.dispatch(add_new_card(data, this.props.navigation));
-
-            ToastAndroid.show('Data save successfully', ToastAndroid.SHORT);
+            this.InitialWallet_Chk().then((e) => {
+                if(e == true){
+                    this.WalletInitDataUpadte(data)
+                }else{
+                    this.props.dispatch(add_new_card(data, this.props.navigation));
+                }
+            })
         }
         
     }
@@ -149,7 +172,7 @@ class AddNewWallet extends Component{
                                                 </Label>
                                             </View>
                                             <View style={{width: "60%", alignItems: "center", height: "100%", padding: 8}}>
-                                                <Input onChangeText={card_num => this.setState({ card_num })} placeholder="Enter Card Num" placeholderTextColor="#fff" style={{width: "100%", color: "#fff"}} />
+                                                <Input onChangeText={card_num => this.setState({ card_num })} placeholder="Enter Card Last 4 Degit" placeholderTextColor="#fff" style={{width: "100%", color: "#fff"}} />
                                             </View>
                                         </Card>
                                         <Card style={styles.saveTransectionCard}>
@@ -174,11 +197,7 @@ class AddNewWallet extends Component{
 
 const mapStateProps = (state) => {
 
-    
-
-    return {
-        
-
+    return {        
     }
 }
 

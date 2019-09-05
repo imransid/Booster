@@ -4,7 +4,7 @@ import MenuDrawerBUtton from "../Menu/MenuButtons"
 import {Label, Card, Button, Container, Header, Content, Icon, Badge, ListItem} from 'native-base';
 import { connect } from 'react-redux';
 import styles from "./Styles";
-import { insertCloud } from "../../actions/Setting"
+import { insertCloud } from "../../actions/Setting";
 class Setting extends Component{
 
     constructor(props){
@@ -17,13 +17,13 @@ class Setting extends Component{
     }
 
     componentDidMount(){
-    }
+     }
 
     SyncFirebase = () => {
         this.setState({
             loading: !this.state.loading
         })
-        this.props.dispatch(insertCloud());
+        this.props.dispatch(insertCloud(this.props.userID, this.props.all_walllet_card, this.props.all_transection));
     }
 
     toggledata = (value1, value2) => {
@@ -32,8 +32,6 @@ class Setting extends Component{
             AlertData : value2
         })
     }
-
-
 
     syncdone = () => {
         return(
@@ -60,6 +58,14 @@ class Setting extends Component{
                 <ActivityIndicator size="small" color="#00ff00" />
             </Badge>
         )
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.loaded == false){
+            this.setState({
+                loading: false
+            })
+        }
     }
 
     render(){
@@ -128,16 +134,21 @@ class Setting extends Component{
 
 
 const mapStateProps = (state) => {
-    console.log('sr\e', state)
     const sync = state.SETTING.sync;
     const loaded = state.SETTING.loading;
     const eventnotification = state.SETTING.eventnotification;
     const alertData = state.SETTING.alert;
+    const userID = state.SETTING.useremail;
+    const all_walllet_card = state.TRASECTION.all_walllet_card;
+    const all_transection = state.TRASECTION.all_transection;
     return {
         sync,
         loaded,
         eventnotification,
-        alertData
+        alertData,
+        userID,
+        all_walllet_card,
+        all_transection
     }
 }
 

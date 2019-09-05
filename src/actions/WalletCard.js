@@ -1,6 +1,6 @@
 import actionType from '../constant/constant';
 
-
+//
 export function add_new_card(data, nav){
     return {
         type: actionType.ADD_WALLET_CARD,
@@ -13,5 +13,11 @@ export function letast_wallet(data){
     return {
         type: actionType.WALLET_CARD,
         result: data
+    }
+}
+
+export function Init_Wallet(){
+    return{
+        type: actionType.ADD_WALLET_CARD_SUCCESSFULLY
     }
 }

@@ -31,8 +31,11 @@ export function Loged_init_setting(status){
     }
 }
 
-export function insertCloud(){
+export function insertCloud(user, wallet, transcetion){
     return {
-        type: actionType.INSERT
+        type: actionType.SYNC,
+        userID: user,
+        wallet: wallet,
+        transcetion: transcetion
     }
 }

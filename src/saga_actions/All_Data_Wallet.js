@@ -46,7 +46,7 @@ async function createNewWalletCard(action){
                 AsyncStorage.setItem("wallet@Card", JSON.stringify(result)).then(() => {
                     
                     ToastAndroid.show('Wallet Add successfully', ToastAndroid.SHORT);
-                    action.nav.navigate('WALLET');
+                    
                 });
 
             } else{
@@ -91,11 +91,10 @@ async function createNewWalletCard(action){
                 
                 
                 if(result){
-                    
+
                     AsyncStorage.setItem("wallet@Card", JSON.stringify(result)).then(() => {
                         
                         ToastAndroid.show('Wallet Add successfully', ToastAndroid.SHORT);
-                        action.nav.navigate('WALLET');
                         
                     });
 
@@ -103,8 +102,6 @@ async function createNewWalletCard(action){
                     console.log("no data in our result check: saga_actions/All_Data_Wallet")
                 }
                 
-
-
             }
 
         })
@@ -114,6 +111,10 @@ async function createNewWalletCard(action){
     }
 }
 
+
+
 export const addWalletCard = function* (action){
     const create_data = yield call(createNewWalletCard, action);
+    yield put({ type: actionType.ADD_WALLET_CARD_SUCCESSFULLY});
+    action.nav.navigate('WALLET');
 }

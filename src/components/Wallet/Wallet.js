@@ -76,6 +76,7 @@ class Wallet extends Component{
     }
 
     componentWillReceiveProps(nextProps){
+
         if(nextProps.loadedData == true){
             if(nextProps.name !== undefined){
                 nextProps.lodder == true ? this.reLOadData() : null

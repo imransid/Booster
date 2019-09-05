@@ -1,6 +1,7 @@
 import { takeEvery, select, call, put } from 'redux-saga/effects';
 import actionType from '../constant/constant';
-import { all_Setting, insertdata } from '../saga_actions/Setting';
+import { CloudService } from  "../cloud/firebase_crud";
+import { all_Setting } from '../saga_actions/Setting';
 import { all_Transection, addTransections, deleteTransection } from "../saga_actions/All_Data_Transections";
 import { all_Wallet_Card, addWalletCard } from "../saga_actions/All_Data_Wallet";
 const API_KEY = "1e8d1babbeccde1eb21b";
@@ -49,7 +50,7 @@ const rootSaga = function* (){
     yield takeEvery(actionType.ADD_WALLET_CARD, addWalletCard)
     yield takeEvery(actionType.DELETE_TRANSECTION, deleteTransection)
     yield takeEvery(actionType.INITIAL_SETTING, all_Setting)
-    yield takeEvery(actionType.INSERT, insertdata)
+    yield takeEvery(actionType.SYNC, CloudService)
 }
 
 export default rootSaga;
