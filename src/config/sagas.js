@@ -50,7 +50,6 @@ const rootSaga = function* (){
     yield takeEvery(actionType.ADD_WALLET_CARD, addWalletCard)
     yield takeEvery(actionType.DELETE_TRANSECTION, deleteTransection)
     yield takeEvery(actionType.INITIAL_SETTING, all_Setting)
-    yield takeEvery(actionType.SYNC, CloudService)
 }
 
 export default rootSaga;

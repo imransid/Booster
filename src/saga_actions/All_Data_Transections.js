@@ -50,6 +50,7 @@ async function retrieveTransection(walletIdNo){
         if(data !== null){
             let data_load = JSON.parse(data);
             
+
             let output_result;
             if(data_load.length != undefined){
                 output_result = data_load.map( e => 
@@ -63,9 +64,9 @@ async function retrieveTransection(walletIdNo){
             }else{
                 data_load.walletId == walletIdNo ? output_result = data_load : output_result = null
             }
-
+            
             return output_result
-        
+            
         }else{
             return null
         }
@@ -75,7 +76,7 @@ async function retrieveTransection(walletIdNo){
 }
 
 export const all_Transection = function* (action){
-
+    
     const retive_data = yield call(retrieveTransection, action.walletId);
     const retive_data_wallet = yield call(retrieveWalletCard);
     const retive_wallet_details = yield call(retrieveWalletDetails, action.walletId)
@@ -106,7 +107,8 @@ const UpdateBalance = function*(walletid, amounT, CType, Card_Type){
                     'balance_type': data.balance_type,
                     'wallet_add_date': data.wallet_add_date,
                     'card_num': data.card_num,
-                    'wallet_id': data.wallet_id
+                    'wallet_id': data.wallet_id,
+                    'syncStatus': data.syncStatus
                 }
             } else{
                 let avamount;
@@ -126,7 +128,6 @@ const UpdateBalance = function*(walletid, amounT, CType, Card_Type){
                     ...data.slice(0, objIndex), updateObj, ...data.slice(objIndex + 1)
                 ];
             }     
-
             
             AsyncStorage.setItem("wallet@Card", JSON.stringify(result)).then(() => {
               //  update new value succcessfully
@@ -177,7 +178,8 @@ const DeleteTransections = function*(props){
                             card_holder_name: data[objIndex].card_holder_name,
                             card_num: data[objIndex].card_num,
                             wallet_add_date: data[objIndex].wallet_add_date,
-                            wallet_id: data[objIndex].wallet_id
+                            wallet_id: data[objIndex].wallet_id,
+                            syncStatus: data[objIndex].syncStatus
                         }
                         
                         result = [
@@ -218,7 +220,7 @@ const DeleteTransections = function*(props){
 
 async function createNewTransection(action){
     try{
-        AsyncStorage.getItem('transection@Data').then(res => {
+        await AsyncStorage.getItem('transection@Data').then(res => {
             let data = JSON.parse(res);
             let result = []
             if (data === null) {
@@ -307,7 +309,7 @@ async function createNewTransection(action){
 
 export const addTransections = function* (action){
     yield call(UpdateBalance, action.result.walletId, action.result.amount, action.category, action.Card_Type);
-    yield call(createNewTransection, action);
+    const result = yield call(createNewTransection, action);
 }
 
 export const deleteTransection = function* (action){

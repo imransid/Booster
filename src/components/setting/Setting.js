@@ -1,10 +1,12 @@
 import React, {Component} from "react";
-import { View, ScrollView, Switch, ActivityIndicator, TouchableOpacity } from "react-native";
+import { View, ScrollView, Switch, ActivityIndicator, TouchableOpacity, AsyncStorage } from "react-native";
 import MenuDrawerBUtton from "../Menu/MenuButtons"
 import {Label, Card, Button, Container, Header, Content, Icon, Badge, ListItem} from 'native-base';
 import { connect } from 'react-redux';
+import { cloud_Data_Check } from '../../cloud/crud_update_cloud';
 import styles from "./Styles";
 import { insertCloud } from "../../actions/Setting";
+//
 class Setting extends Component{
 
     constructor(props){
@@ -12,18 +14,65 @@ class Setting extends Component{
         this.state = {
             Eventnotification: this.props.eventnotification,
             AlertData: this.props.alertData,
-            loading: this.props.loaded
+            loading: false
+        }
+        this.navigationWillFocusListener = props.navigation.addListener('willFocus', () => {
+            this.SyncChkerDevice();
+        });
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+      }
+
+    SyncChkerDevice = async () => {
+        try{
+            const data = await AsyncStorage.getItem('setting@Data');
+
+            let result;
+
+            if(data !== null){
+                let data_load = JSON.parse(data);
+                
+                result = data_load.sync;
+
+                if(this.state.loading != result){
+                    this.setState({
+                        loading: result
+                    })
+                }
+
+            }else{
+                console.log("Setting Have No Datas")
+            }
+        }catch{
+            console.log("Setting Async Error")
         }
     }
 
     componentDidMount(){
+
      }
 
-    SyncFirebase = () => {
+    SyncFirebase = async () => {
         this.setState({
             loading: !this.state.loading
         })
-        this.props.dispatch(insertCloud(this.props.userID, this.props.all_walllet_card, this.props.all_transection));
+
+        let CloudResult = await cloud_Data_Check(this.props.userID, this.props.all_walllet_card, this.props.all_transection)
+
+        if(CloudResult == true){
+            this.props.dispatch(insertCloud())
+            this.setState({
+                loading: !this.state.loading
+            })
+        }else{
+            this.setState({
+                loading: !this.state.loading
+            })
+            
+        }
+        //this.props.dispatch(insertCloud(this.props.userID, this.props.all_walllet_card, this.props.all_transection));
     }
 
     toggledata = (value1, value2) => {
@@ -58,14 +107,6 @@ class Setting extends Component{
                 <ActivityIndicator size="small" color="#00ff00" />
             </Badge>
         )
-    }
-
-    componentWillReceiveProps(nextProps){
-        if(nextProps.loaded == false){
-            this.setState({
-                loading: false
-            })
-        }
     }
 
     render(){
@@ -105,7 +146,7 @@ class Setting extends Component{
                                 <View style={{flex: 1, width: '50%'}}>
                                     {
                                        this.state.loading == true ? this.loader() : (
-                                           this.props.sync == true ? this.syncdone() : this.syncnotdone() 
+                                            this.props.sync == true ? this.syncdone() : this.syncnotdone() 
                                        )
                                     }
                                 </View>
@@ -134,13 +175,15 @@ class Setting extends Component{
 
 
 const mapStateProps = (state) => {
-    const sync = state.SETTING.sync;
+    
+    const sync = state.TRASECTION.sync;
     const loaded = state.SETTING.loading;
     const eventnotification = state.SETTING.eventnotification;
     const alertData = state.SETTING.alert;
     const userID = state.SETTING.useremail;
     const all_walllet_card = state.TRASECTION.all_walllet_card;
     const all_transection = state.TRASECTION.all_transection;
+    const WalidChker = state.SETTING.WalidChker;
     return {
         sync,
         loaded,
@@ -148,7 +191,8 @@ const mapStateProps = (state) => {
         alertData,
         userID,
         all_walllet_card,
-        all_transection
+        all_transection,
+        WalidChker
     }
 }
 

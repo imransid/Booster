@@ -40,7 +40,8 @@ async function createNewWalletCard(action){
                     'balance_type': action.result.balance_type,
                     'wallet_add_date': action.result.wallet_add_date,
                     'card_num': action.result.card_num,
-                    'wallet_id': action.result.wallet_id
+                    'wallet_id': action.result.wallet_id,
+                    'syncStatus': false
                 }
                 
                 AsyncStorage.setItem("wallet@Card", JSON.stringify(result)).then(() => {
@@ -62,7 +63,8 @@ async function createNewWalletCard(action){
                         'balance_type': action.result.balance_type,
                         'wallet_add_date': action.result.wallet_add_date,
                         'card_num': action.result.card_num,
-                        'wallet_id': action.result.wallet_id
+                        'wallet_id': action.result.wallet_id,
+                        'syncStatus': false
                     }
 
                     if(data.bank_code == "Initial Card"){
@@ -83,7 +85,8 @@ async function createNewWalletCard(action){
                             'balance_type': action.result.balance_type,
                             'wallet_add_date': action.result.wallet_add_date,
                             'card_num': action.result.card_num,
-                            'wallet_id': action.result.wallet_id
+                            'wallet_id': action.result.wallet_id,
+                            'syncStatus': false
                          }
                          
                         result.push(action_result)
@@ -116,5 +119,5 @@ async function createNewWalletCard(action){
 export const addWalletCard = function* (action){
     const create_data = yield call(createNewWalletCard, action);
     yield put({ type: actionType.ADD_WALLET_CARD_SUCCESSFULLY});
-    action.nav.navigate('WALLET');
+    action.nav.navigate('WALLET');//
 }

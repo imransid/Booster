@@ -7,20 +7,28 @@ const initialState = {
     sync: null
 }
 
-const SyncStatus = (transection) => {
+const SyncStatus = (transection, wallet) => {
     let sync;
 
-    if(transection == null){
-        sync = false
+    if(transection == null || transection.length == undefined || transection.length == 0){
+   
+        
+        if( transection !== null && transection.IconCode !== undefined){
+            transection.syncStatus == false ? sync = false : sync = true;
+        }else{
+            if(wallet.length == undefined){
+                sync = wallet.syncStatus;
+            }else{
+                wallet.map((e) => e.syncStatus == false ? sync = e.syncStatus : e);
+                sync == false ? sync = false : sync = true;
+            }
+        }        
     }
     else{
 
-        if(transection.length == undefined){
-            sync = transection.syncStatus;
-        }else{
             transection.map((e) => e.syncStatus == false ? sync = e.syncStatus : e);
             sync == false ? sync = false : sync = true;
-        }
+        
     }
     return sync;
 }
@@ -51,7 +59,7 @@ export default (state = initialState, action) => {
                 wallet_detaits: action.wallet_detaits,
                 lodder : false,
                 wallet_id : action.wallet_id,
-                sync : SyncStatus(action.result),
+                sync : SyncStatus(action.result, action.result_wallet),
                 walletBlance : BalanceChk(action.wallet_id, action.wallet_detaits) 
             })
 
@@ -59,6 +67,12 @@ export default (state = initialState, action) => {
             return ({        
                 ...state,
                 lodder : true
+            })
+
+        case actionType.SYNC:
+            return ({
+                ...state,
+                sync: true
             })
 
         case actionType.DELETE_TRANSECTION:

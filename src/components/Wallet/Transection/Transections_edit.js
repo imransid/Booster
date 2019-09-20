@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import { View, ScrollView, Picker, AsyncStorage, ToastAndroid } from "react-native";
 import MenuDrawerBUtton from "../../Menu/MenuButtons"
-import {Label, Card, Button, Container, Header, Content, Grid, Row, Input} from 'native-base';
+import {Label, Card, Button, Container, Header, Content, Input} from 'native-base';
 import styles from "./Styles";
-import { walletRefresher } from '../../../actions/Transection';
 import { connect } from 'react-redux';
+import {walletRefresher} from '../../../actions/Transection';
 
 class Transections_edit extends Component{
 
@@ -40,6 +40,7 @@ class Transections_edit extends Component{
     TransectionUpdate = () => {
 
         try{
+            
             AsyncStorage.getItem('transection@Data').then(res => {
                 let data = JSON.parse(res);
                 let result = [];
@@ -179,7 +180,8 @@ class Transections_edit extends Component{
                                 card_holder_name: data[objIndex].card_holder_name,
                                 card_num: data[objIndex].card_num,
                                 wallet_add_date: data[objIndex].wallet_add_date,
-                                wallet_id: data[objIndex].wallet_id
+                                wallet_id: data[objIndex].wallet_id,
+                                syncStatus: data[objIndex].syncStatus
                             }
                             
                             result = [
@@ -189,6 +191,7 @@ class Transections_edit extends Component{
     
                         if(result){
                             AsyncStorage.setItem("wallet@Card", JSON.stringify(result)).then(() => {
+                            
                                 ///wallet avalible blsnce updated
                             });
                         }
@@ -201,7 +204,7 @@ class Transections_edit extends Component{
                         AsyncStorage.setItem("transection@Data", JSON.stringify(result)).then(() => {
                             
                             ToastAndroid.show('Data save successfully', ToastAndroid.SHORT);
-                            this.props.dispatch(walletRefresher());
+                            this.props.dispatch(walletRefresher())
                             this.props.navigation.navigate('WALLET');
                             
                         });

@@ -65,7 +65,8 @@ class Wallet extends Component{
                     'balance_type': 'CRADIT',
                     'wallet_add_date': '01-12-2019',
                     'card_num': '0000',
-                    'wallet_id': 'Testing'
+                    'wallet_id': 'Testing',
+                    'syncStatus': false
                 }
                 
                 AsyncStorage.setItem("wallet@Card", JSON.stringify(result)).then(() => {

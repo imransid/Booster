@@ -9,7 +9,8 @@ const initialState = {
     useremail: null,
     userpic: null,
     logstatus: '',
-    loadedData: false
+    loadedData: false,
+    WalidChker: false
 }
 
 
@@ -27,13 +28,7 @@ export default (state = initialState, action) => {
                 logstatus: action.logstatus,
                 loadedData: action.loadedData
             })
-        
-        case actionType.SYNC_CLOUD:
-            return ({
-                ...state,
-                sync : true,
-                loadedData: false
-            })
+            
         default:
             return state;
     }

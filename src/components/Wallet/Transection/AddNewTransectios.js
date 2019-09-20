@@ -232,13 +232,11 @@ class AddNewTransectios extends Component{
 const mapStateProps = (state) => {
     const Balance = state.TRASECTION.wallet_detaits.balance;
     const Card_Type = state.TRASECTION.wallet_detaits.balance_type;
-    const UsedBlance = state.TRASECTION.wallet_detaits.balance - state.TRASECTION.wallet_detaits.avalible_balance
-    const AddNewTransection = state.TRASECTION.AddNewTransection;
+    const UsedBlance = state.TRASECTION.wallet_detaits.balance - state.TRASECTION.wallet_detaits.avalible_balance;
     const Avalible_Balance = state.TRASECTION.wallet_detaits.avalible_balance;
     const walletId = state.TRASECTION.wallet_id;
-
+    
     return {
-        AddNewTransection,
         UsedBlance,
         Balance,
         Avalible_Balance,

@@ -52,7 +52,7 @@ class AddNewWallet extends Component{
 
     }
 
-    async WalletInitDataUpadte(result){
+    WalletInitDataUpadte(result){
 
         AsyncStorage.setItem("wallet@Card", JSON.stringify(result))
         .then(() => {
@@ -75,6 +75,7 @@ class AddNewWallet extends Component{
                 'card_num': this.state.card_num,
                 'wallet_id': this.state.wallet_id,
                 'avalible_balance': this.state.balance,
+                'syncStatus': false
             }
 
             this.InitialWallet_Chk().then((e) => {
@@ -144,7 +145,7 @@ class AddNewWallet extends Component{
                                                 </Label>
                                             </View>
                                             <View style={{width: "60%", alignItems: "center", height: "100%", padding: 8}}>
-                                                <Input onChangeText={balance => this.setState({ balance })} placeholder="Enter Amount" placeholderTextColor="#fff" style={{width: "100%", color: "#fff"}} />
+                                                <Input keyboardType='numeric' onChangeText={balance => this.setState({ balance })} placeholder="Enter Amount" placeholderTextColor="#fff" style={{width: "100%", color: "#fff"}} />
                                             </View>
                                         </Card>
                                         <Card style={{flexDirection: "row", backgroundColor: "#171818", height: 80}}>
@@ -172,7 +173,7 @@ class AddNewWallet extends Component{
                                                 </Label>
                                             </View>
                                             <View style={{width: "60%", alignItems: "center", height: "100%", padding: 8}}>
-                                                <Input onChangeText={card_num => this.setState({ card_num })} placeholder="Enter Card Last 4 Degit" placeholderTextColor="#fff" style={{width: "100%", color: "#fff"}} />
+                                                <Input keyboardType='numeric' onChangeText={card_num => this.setState({ card_num })} placeholder="Enter Card Last 4 Degit" placeholderTextColor="#fff" style={{width: "100%", color: "#fff"}} />
                                             </View>
                                         </Card>
                                         <Card style={styles.saveTransectionCard}>
