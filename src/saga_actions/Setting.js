@@ -12,7 +12,7 @@ async function DownLoad(URL_Image) {
         // if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         //     return DownLoad_Image(URL_Image)
         // }else{
-        //     console.log('Stroge permission denied');
+          // console.log('Stroge permission denied');
         // }
 
             const fs = RNFetchBlob.fs;
@@ -26,6 +26,7 @@ async function DownLoad(URL_Image) {
             .then(resp => {
                 // the image path you can use it directly with Image component
                 imagePath = resp.path();
+            //    console.log('Stroge perm');
                 return resp.readFile("base64");
             })
             .then(base64Data => {

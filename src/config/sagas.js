@@ -1,6 +1,5 @@
 import { takeEvery, select, call, put } from 'redux-saga/effects';
 import actionType from '../constant/constant';
-import { CloudService } from  "../cloud/firebase_crud";
 import { all_Setting } from '../saga_actions/Setting';
 import { all_Transection, addTransections, deleteTransection } from "../saga_actions/All_Data_Transections";
 import { all_Wallet_Card, addWalletCard } from "../saga_actions/All_Data_Wallet";

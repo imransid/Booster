@@ -12,17 +12,21 @@ import ADD_WALLET from "../../components/Wallet/AddWallet/AddNewWallet";
 import TRANSECTIONS_EDIT from '../../components/Wallet/Transection/Transections_edit'
 import History from '../../components/Wallet/History/History'
 import SETTING from '../../components/setting/Setting';
+import { connect } from 'react-redux';
 
-export default class nav extends Component{
-    render(){
+class nav extends Component{
+
+  render(){
         return(
             this.props.status === false ?
               <AppContainer />
             :
               <LogAppContainer />
         )
-    }
+  }
 }
+
+
 
 const WIDTH = Dimensions.get('window').width;
 
@@ -119,3 +123,11 @@ const LogAppContainer = createAppContainer(createSwitchNavigator({
   initialRouteName: 'LOGGED'
 }
 ));
+
+
+const mapStateProps = (state) => {
+  return {
+  }
+}
+
+export default connect(mapStateProps)(nav)

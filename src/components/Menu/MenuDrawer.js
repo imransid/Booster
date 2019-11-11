@@ -13,9 +13,12 @@ class MenuDrawer extends Component {
         super(props)
         this.state = { 
             urlIMG : false,
-            dataURL: ''
-          };
+            dataURL: '',
+            user: ''
+          }
     }
+
+
 
     navImage(nav){
         if(nav == "WALLET"){

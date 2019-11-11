@@ -18,9 +18,17 @@ class Wallet extends Component{
         this.state = { 
             pressStatus: 'transection',
             blockStatus: 'transection',
-            walletId: ''
-          };
+            walletId: '',
+            user: ''
+          }
+        this.navigationWillFocusListener = props.navigation.addListener('willFocus', () => {
+           if(this.props.refreshforsettingupdate == true){
+                this.props.lodder == true ? this.reLOadData() : null;
+           }
+        });
     }
+
+    // refreshUser = () => this.setState({user: 'admin'})
 
     async LoginChker(){
         try{
@@ -37,7 +45,7 @@ class Wallet extends Component{
     }
 
     componentDidMount(){ 
-            this.LoginChker() 
+        this.LoginChker() 
     }
     
     reLOadData = () => {
@@ -103,6 +111,7 @@ class Wallet extends Component{
     }
 
     render(){
+        
         return(
             this.props.lodder ? 
                     <View style={{ flex:1,alignItems:'center',justifyContent:'center',backgroundColor: '#1b2129' }}>
@@ -196,7 +205,8 @@ class Wallet extends Component{
 
 const mapStateProps = (state) => {
 
-    const wallet_details = state.TRASECTION.wallet_detaits
+    const wallet_details = state.TRASECTION.wallet_detaits;
+    const refreshforsettingupdate = state.TRASECTION.refreshforsettingupdate; 
     const all_leatest_transection = state.TRASECTION.all_transection;
     const all_walllet_card = state.TRASECTION.all_walllet_card;
     const lodder = state.TRASECTION.lodder;
@@ -209,7 +219,8 @@ const mapStateProps = (state) => {
         all_walllet_card,
         wallet_details,
         name,
-        loadedData
+        loadedData,
+        refreshforsettingupdate
         //SyncStatus
     }
 }

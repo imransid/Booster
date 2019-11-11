@@ -4,12 +4,14 @@ const initialState = {
     all_transection : '',
     lodder : true,
     wallet_id : '',
-    sync: null
+    sync: null,
+    refreshforsettingupdate: false
 }
 
 const SyncStatus = (transection, wallet) => {
     let sync;
 
+    console.log('transection, wallet', transection, wallet)
     if(transection == null || transection.length == undefined || transection.length == 0){
    
         
@@ -58,6 +60,7 @@ export default (state = initialState, action) => {
                 all_walllet_card : action.result_wallet,
                 wallet_detaits: action.wallet_detaits,
                 lodder : false,
+                refreshforsettingupdate: false,
                 wallet_id : action.wallet_id,
                 sync : SyncStatus(action.result, action.result_wallet),
                 walletBlance : BalanceChk(action.wallet_id, action.wallet_detaits) 
@@ -66,31 +69,37 @@ export default (state = initialState, action) => {
         case actionType.ADD_TRANSECTION:
             return ({        
                 ...state,
-                lodder : true
+                lodder : true,
+                refreshforsettingupdate: false
             })
 
         case actionType.SYNC:
             return ({
                 ...state,
-                sync: true
+                sync: true,
+                refreshforsettingupdate: true,
+                lodder : true
             })
 
         case actionType.DELETE_TRANSECTION:
             return ({        
                 ...state,
-                lodder : true
+                lodder : true,
+                refreshforsettingupdate: false,
             })
 
         case actionType.ADD_WALLET_CARD_SUCCESSFULLY:
             return ({        
                 ...state,
-                lodder : true
+                lodder : true,
+                refreshforsettingupdate: false
             })
         
         case actionType.WALLET_REFRESH:
             return ({        
                 ...state,
-                lodder : true
+                lodder : true,
+                refreshforsettingupdate: false
             })
 
         default:

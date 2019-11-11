@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { cloud_Data_Check } from '../../cloud/crud_update_cloud';
 import styles from "./Styles";
 import { insertCloud } from "../../actions/Setting";
+import { letast_transection } from "../../actions/Transection";
 //
 class Setting extends Component{
 
@@ -65,7 +66,8 @@ class Setting extends Component{
             this.props.dispatch(insertCloud())
             this.setState({
                 loading: !this.state.loading
-            })
+            });
+            // this.props.navigation.state.params
         }else{
             this.setState({
                 loading: !this.state.loading
