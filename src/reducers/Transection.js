@@ -85,6 +85,7 @@ export default (state = initialState, action) => {
             return ({        
                 ...state,
                 lodder : true,
+                sync : false,
                 refreshforsettingupdate: false,
             })
 

@@ -3,16 +3,15 @@ import { Dimensions } from "react-native";
 import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator } from "react-navigation";
 import LOGIN from '../../components/Login/Login';
 import REGISTER from "../../components/Register/Register";
-import WALLET from "../../components/Wallet/Wallet";
+
 import CONVERT from "../../components/Converter/Converter";
 import SideDrawer from "../../components/Menu/MenuDrawer";
-import ADD_TRANSECTIONS from "../../components/Wallet/Transection/AddNewTransectios";
 import RATE from "../../components/Rate/Rate";
-import ADD_WALLET from "../../components/Wallet/AddWallet/AddNewWallet";
-import TRANSECTIONS_EDIT from '../../components/Wallet/Transection/Transections_edit'
-import History from '../../components/Wallet/History/History'
+
 import SETTING from '../../components/setting/Setting';
 import { connect } from 'react-redux';
+
+import WALLET from '../../components/Wallet/walletHomeScreen';
 
 class nav extends Component{
 
@@ -38,38 +37,13 @@ const DrawerConfig = {
   }
 }
 
-const HOME = createStackNavigator({
-
-  WALLET: {
-    screen : WALLET
-  },
-  TRANSECTIONS_EDIT: {
-    screen: TRANSECTIONS_EDIT
-  },
-  ADD_TRANSECTIONS: {
-    screen: ADD_TRANSECTIONS
-  },
-  ADD_WALLET: {
-    screen: ADD_WALLET
-  },
-  History: {
-    screen: History 
-  }
-
-},
-{
- headerMode : 'none',
- initialRouteName: "WALLET"
-}
-)
-
 const DrawerNavigator = createDrawerNavigator(
   {
     RATE : {
       screen: RATE
     },
     WALLET : {
-      screen : HOME
+      screen : WALLET
     },
     CONVERT : {
       screen : CONVERT

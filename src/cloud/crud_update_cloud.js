@@ -18,19 +18,16 @@ export const cloud_Data_Check = async (userID, walletOLD, transcetionOLD) => {
     }else{
         //checking database..
         let result = await CloudInitDataBase(DB)
-        if(result == true){ // result is true when cloud have no data..
+        if(result === true){ // result is true when cloud have no data..
 
             if(wallet.wallet_id == 'Testing'){
-                alert("You Cann't Cloud DataBase Add Initial Card..");
+                alert("You Cann't Use Cloud DataBase Using Initial Card..");
             }else{
-                return _SaveAllData(wallet, transcetion, true, DB);
+                //return _SaveAllData(wallet, transcetion, true, DB);
             }
         }
         else{ //when cloud have data
 
-            if(wallet.wallet_id == 'Testing'){
-                alert("You Cann't Cloud DataBase Add Initial Card..");
-            }else{
                 let ResultGen = await _ArrayValueCheck(result, wallet, transcetion)
 
                 let Final_transection = ResultGen[0];
@@ -38,7 +35,7 @@ export const cloud_Data_Check = async (userID, walletOLD, transcetionOLD) => {
 
 
                 return _SaveAllData(Final_wallet, Final_transection, false, DB)
-            }
+
 
         }
     }

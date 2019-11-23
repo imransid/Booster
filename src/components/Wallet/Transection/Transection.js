@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import { ScrollView } from "react-native";
-import {Label, Card, Button} from 'native-base';
+import { ScrollView, Text, View, TouchableHighlight } from "react-native";
+import {Label, Card} from 'native-base';
 import CUSTOMADDCARD from "../CustomCard/CustomCard";
 import { connect } from 'react-redux';
-
+import stylesTran from "./Styles";
+import ENTYPO_ICON from 'react-native-vector-icons/Entypo';
 class Transection extends Component{
 
     constructor(props){
@@ -60,14 +61,31 @@ class Transection extends Component{
                     : null
 
                 }
+                {
+                    this.props.all_leatest_transection == null ? 
+                        <View style={{marginBottom : 50}}>
+                            <Text>
+                                Opps...!!! You didn't make any transection yet.
+                                
+                            </Text>
+                        </View>
+                    : null
+                }
 
-                <Card style={{borderColor : "#171818", paddingTop: 20 , height : 70, backgroundColor: "#171818"}}>
-                {/* borderColor : "#3E287B", borderRadius: 5  */}
-                        <Button block success onPress={ () => this.ADD_New_Transection() }>
-                            <Label style={{fontWeight: "900", color: "#ffffff"}}>Add Transection</Label>
-                        </Button>
-                </Card>
-                
+                <View style={{width: '100%', alignItems: 'center', bottom: 0}}>
+                    <TouchableHighlight style={stylesTran.defaultButtonTransection} onPress={ () => this.ADD_New_Transection() }>
+                        <View style={{flexDirection: 'row'}}>
+                            <ENTYPO_ICON 
+                                name= "plus" 
+                                size={24} 
+                                color="#fff"/>
+                            <Text style={ stylesTran.ButtonAddTransectionText }>
+                                Add Transection
+                            </Text>
+                        </View>                        
+                    </TouchableHighlight>
+                </View>
+
             </ScrollView>
             
         )

@@ -29,6 +29,8 @@ export const _SaveAllData = async (walletOLD, transcetion, activeaction, DB) => 
     }
 
     if(InitialArrayResultIs){
+
+            console.log('InitialArrayResultIs', InitialArrayResultIs)
             
             if(transcetion != null){
                 resultIs = await TransectionUpdate(transcetion);

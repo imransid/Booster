@@ -92,14 +92,7 @@ class AddNewWallet extends Component{
     render(){
         return(
             <Container style={{backgroundColor: "#171820"}}>
-                <Header style={{alignContent: "stretch", backgroundColor: '#000000', borderColor: "red"}}>
-                    <View style={{flexDirection: "row", width: "100%", paddingTop: 15}}>
-                            <MenuDrawerBUtton navigation={this.props.navigation}/>
-                            <Label style={{marginLeft: 30, color: "#FFFFFF", fontSize: 20}}>
-                            Add Wallet      
-                            </Label>
-                    </View>
-                </Header>
+            
                 <Content>
                     <ScrollView style={{paddingTop: 5 }}>
                         <View style={{flexDirection: "column", padding : 10}}>

@@ -5,14 +5,42 @@ import Swiper from 'react-native-swiper';
 import { connect } from 'react-redux';
 import { letast_transection } from "../../../actions/Transection";
 
+const ImageGrt = (bank_code) => {
+
+  if(bank_code == 'BRAC BANK'){
+    return(
+      <Image
+                    style={{width: "100%", height: "100%", borderRadius: 8, flex: 1, position: "absolute", resizeMode: "cover"}}
+                    source={require('../../../assets/images/card4.png')}
+      />
+    )
+  }else if(bank_code == 'CITY BANK'){
+    return(
+      <Image
+                    style={{width: "100%", height: "100%", borderRadius: 8, flex: 1, position: "absolute", resizeMode: "cover"}}
+                    source={require('../../../assets/images/card2.png')}
+      />
+    )
+  }else{
+    return(
+      <Image
+                    style={{width: "100%", height: "100%", borderRadius: 8, flex: 1, position: "absolute", resizeMode: "cover"}}
+                    source={require('../../../assets/images/card3.png')}
+      />
+    )
+  }
+
+
+}
+
 const CustomTransectionCustomCard = (props) => {
     return(
-        <Card style={{height: "100%", borderRadius: 8}}>    
-            
-              <Image
-                  style={{width: "100%", height: "100%", borderRadius: 8, flex: 1, position: "absolute", resizeMode: "cover"}}
-                  source={require('../../../assets/card_a.png')}
-              />
+        <View style={{height: "100%", borderRadius: 10, marginLeft: 15, marginRight: 15}}>    
+
+              {
+                ImageGrt(props.data.bank_code)
+              }   
+              
             <View style={{width: "100%", paddingTop: 10}}>
                     <Text style={{textAlign: 'right', fontSize: 20, fontWeight: "800"}}>
                       {
@@ -34,7 +62,7 @@ const CustomTransectionCustomCard = (props) => {
               }
               </Text>
             </View>         
-        </Card>
+        </View>
     )
 }
 

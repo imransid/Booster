@@ -1,83 +1,59 @@
 import React, {Component} from "react";
-import { View, ImageBackground, Image,StyleSheet } from "react-native";
-import { Form, Item, Label, Input, Icon,Button, Container, Content, Footer, Body, Text, Left, Right} from 'native-base';
-import {GoogleSigninButton} from 'react-native-google-signin';
-
+import { View, ImageBackground, Text, Image } from "react-native";
 import FBbutton from './facebookButton/fb_Button';
 import GooGleButton from './googleButton/google_button';
-import { white } from "ansi-colors";
-
+import styles from './styles';
 export default class BackGroundImage extends Component{
-
 
     render(){
         return(
-                <Container>
-                    <ImageBackground source={require('../../assets/images/Back.png')} style={{width: '100%', height: '100%', alignSelf: 'stretch',flex:1}}>
+            <ImageBackground source={require('../../assets/images/Back.png')} style={styles.backgroundDefault}>
 
-                        <Content>
-                            <View  style={{flex: 1, alignItems: 'center', flexDirection: 'column',}} >
-                                {/* <View style={styles.headerLogo}> */}<View style={{marginTop:80}} >
-                                    <Image source={require('../../assets/images/appLogo.png')  } />
+                <View  style={styles.bodyContainer} >
+                    <View style={styles.headContainer}>
+                        <View style={styles.headerFixedheight}>
+                        </View>
+                        <View style={styles.headerFixedheight}>
+                            <Image source={require('../../assets/images/logo_.png')  } />
+                        </View>
+                        <View style={styles.headerTextBoxA}>
+                            <Text style={styles.headerTextA}>
+                                ECO
+                            </Text>
+                            <Text style={styles.headerTextB}>
+                                BOOSTER
+                            </Text>
+                        </View>
+                        <View style={styles.headerTextBoxB}>
+                            <Text style={styles.headerTextC}>
+                                Your Untimate Booster of your own money
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={styles.footerContainer}>
+                                <View style={styles.headerTextc}></View>
+                                <View style={styles.footerContentX}>
+                                    <Text style={styles.footerContentText}>
+                                        Get Connect With
+                                    </Text>
                                 </View>
-
-                            </View>
-                            
-                            {/* <View style={{ flex: 1, marginBottom: "20%", width:'80%',marginLeft:30,marginTop:30}}>
-                                <Form>
-                                    <Item floatingLabel>
-                                        <Label>Email</Label>
-                                        <Input />
-                                    </Item>
-                                    <Item floatingLabel>
-                                        <Label>Password</Label>
-                                        <Input />
-                                    </Item>
-                                </Form>
-                            </View> */}
-                            {/* <View style={{ flex: 1, alignItems: 'center', marginBottom: "30%"}}>
-                            
-                                    <View style={{width: '50%', marginBottom: "5%"}}>
-                                        <Button block light small style={{borderRadius : 15}}>
-                                            <Text>Sign in</Text>
-                                        </Button>
-                                    </View>
-
-                                    <View style={{width: '50%'}}>
-                                        <Button block transparent small style={{borderRadius : 15, borderColor: 'white', borderWidth: 1}}>
-                                            <Text style={{color: 'white'}}>Create Account</Text>
-                                        </Button>
-                                    </View>
-
-                            </View> */}
-                            
-
-                            <View style={{ marginTop: 150, flex: 1, alignItems: 'center', flexDirection: 'row', justifyContent:'space-between'}}>
-                                    
-                                    <View style={{ marginLeft: "30%" }}>
+                                <View style={styles.footerContentY}>
+                                    <View style={styles.footerFake}></View>
+                                    <View style={styles.footerSocial}>
                                         <FBbutton
-                                        fb_metgod = {this.props.facebook} 
-                                        />
-                                    </View>
-                                    
-                                    
-                                    
-                                    
-                                    <View style={{ marginRight: "30%"}}>
-                                        <GooGleButton
-                                        g_method = {this.props.google} 
-                                        />
-                                    </View>
-                                   
-                                                                
+                                                fb_metgod = {this.props.facebook} 
+                                            />
                                 
-                            </View>
+                                        <GooGleButton
+                                            g_method = {this.props.google} 
+                                        />
+                                    </View>
+                                    <View style={styles.footerFake}></View>    
+                                </View>
                         
-                        </Content>
-
-                    </ImageBackground>
-                    
-                </Container>
+                    </View>
+                </View>
+            </ImageBackground>
             
         )
     }

@@ -41,9 +41,30 @@ const styles = StyleSheet.create({
     },
     DescriptionInputBox: {
         width: "100%", 
-        color: "#fff", 
+        color: "#313BDD", 
         fontSize: 20
+    },
+
+    // Wallet Button
+    ButtonAddTransectionText: {
+        fontWeight: "900", 
+        color: "#FFFFFF",
+        fontSize: 16,
+        marginLeft: 10
+    },
+
+    /// transection
+
+    defaultButtonTransection: {
+        borderRadius: 10,
+        backgroundColor: '#343EDE',
+        height: 40,
+        alignItems: 'center',
+        width: '70%',
+        paddingTop: 8,
     }
+
+
 });
 
 export default styles;

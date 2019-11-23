@@ -88,7 +88,7 @@ export const ArrayGenaratorWallet = (wallet, transcetion) => {
 //Cloud All Data Processing here..
 export const _ArrayValueCheck = async (onlineData, wallet, transection) => {
 
-    let ReturnResult, SYNCTransection;
+    let SYNCTransection;
     let OurTransection = [];
 
 
@@ -132,14 +132,24 @@ export const _ArrayValueCheck = async (onlineData, wallet, transection) => {
                 )
             )
         ))
-
-        SYNCTransection = OurTransection;
+        
+        if(OurTransection.length == 0){
+            if(transection != null){
+                if(transection.length == 0){
+                    SYNCTransection.push(transection)
+                }else{
+                    SYNCTransection = transection;
+                }
+            }
+        }else{
+            SYNCTransection = OurTransection;
+        }
 
     }
 
     let marged_wallet = LOCALandGlobalMargeWallet(onlineData, wallet)
 
-    console.log('marged_wallet', marged_wallet)
+    console.log('marged_wallet', SYNCTransection)
 
     if(marged_wallet){
         return [SYNCTransection, marged_wallet]
@@ -333,12 +343,24 @@ const LOCALandGlobalMargeWallet = (onlineData, LocalData) => {
         }else{ ///when Loacl and cloud have only single object.
             // console.log(onlineData, LocalData)
 
-            delete onlineData["transection"];
+            if(LocalData.wallet_id == "Testing"){
 
-            if(onlineData.wallet_id == LocalData.wallet_id){
-                ReturnArray.push(onlineData)
+                delete onlineData["transection"];
+
+                if(onlineData.wallet_id == LocalData.wallet_id){
+                    ReturnArray.push(onlineData)
+                }else{
+                    ReturnArray.push(onlineData)
+                }
+
             }else{
-                ReturnArray.push(onlineData, LocalData)
+                delete onlineData["transection"];
+
+                if(onlineData.wallet_id == LocalData.wallet_id){
+                    ReturnArray.push(onlineData)
+                }else{
+                    ReturnArray.push(onlineData, LocalData)
+                }
             }
 
             return ReturnArray

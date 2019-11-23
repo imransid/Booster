@@ -1,11 +1,13 @@
 import React, {Component} from "react";
-import { View, ScrollView, Picker, ToastAndroid } from "react-native";
+import { View, ScrollView, Picker, ToastAndroid, ImageBackground, Image, TouchableHighlight } from "react-native";
 import MenuDrawerBUtton from "../../Menu/MenuButtons"
-import {Label, Card, Button, Container, Header, Content, Grid, Row, Input} from 'native-base';
+import {Label, Card, Input} from 'native-base';
 import Pie from 'react-native-pie';
 import { connect } from 'react-redux';
 import styles from "./Styles";
 import { add_new_transection } from "../../../actions/Transection";
+import HeaderMenu from "../ComponentHeader/HeaderMenu";
+import ENTYPO_ICON from 'react-native-vector-icons/Entypo';
 
 class AddNewTransectios extends Component{
 
@@ -134,96 +136,113 @@ class AddNewTransectios extends Component{
 
     render(){
         return(
-            <Container style={{backgroundColor: "#171820"}}>
-                <Header style={{alignContent: "stretch", backgroundColor: '#000000', borderColor: "red"}}>
-                    <View style={{flexDirection: "row", width: "100%", paddingTop: 15}}>
-                            <MenuDrawerBUtton navigation={this.props.navigation}/>
-                            <Label style={{marginLeft: 30, color: "#FFFFFF", fontSize: 20}}>
-                            Add Transection      
-                            </Label>
+            <ImageBackground source={require('../../../assets/images/add-transection-bg.png')} style={{flex: 1}} >
+                
+                <View style={{flexDirection: 'column'}}>
+                    <HeaderMenu props={this.props} title="Add Transection"/>
+                    <View style={{ width: '100%', height: '50%', alignItems: 'center', paddingTop: 20}}> 
+
+                        <Image style={{height: 180, width: '50%'}} source={require('../../../assets/images/circle.png')} />
+                        <View style={{position: 'absolute', marginTop: 35}}>
+                            <Pie
+                                radius={75}
+                                //completly filled pie chart with radius 100
+                                innerRadius={68}
+                                series={[this.state.pieValue]}
+                                //values to show and color sequentially
+                                colors={['#ffffff']}
+                                backgroundColor="#1DE9B6"
+                            />
+                            <View style={styles.gauge}>
+                                <Label style={styles.gaugeText}> ${this.props.Balance}</Label>
+                                <Label style={styles.gaugeTextdis}>of ${this.props.UsedBlance} used</Label>
+                            </View>
+                        </View>
+                        
                     </View>
-                </Header>
-                <Content>
-                    <ScrollView style={{paddingTop: 50 }}>
-                        <View style={{flexDirection: "column", padding : 10}}>
-                                <View style={{alignItems: "center", width: "100%"}}>
-                                    <View>
-                                        <Pie
-                                            radius={75}
-                                            //completly filled pie chart with radius 100
-                                            innerRadius={68}
-                                            series={[this.state.pieValue]}
-                                            //values to show and color sequentially
-                                            colors={['#ffffff']}
-                                            backgroundColor="red"
-                                        />
-                                        <View style={styles.gauge}>
-                                            <Label style={styles.gaugeText}> ${this.props.Balance}</Label>
-                                            <Label style={styles.gaugeTextdis}>of ${this.props.UsedBlance} used</Label>
-                                        </View>
+                    <ScrollView style={{height: '40%', width: '100%', paddingBottom: 50}}>
+                    <View style={{width: '100%', height: '100%', flexDirection: 'column', padding: 13}}>
+                    
+                        <View style={{ width: '100%'}}>
+                            <Card style={{ height: 50, width: '100%'}}>
+                                <View style={{flexDirection: 'row',  padding: 10}}>
+                                    <View style={{width: '40%'}}>
+                                        <Label style={{fontWeight: '900'}}>Category</Label>
+                                    </View>
+                                    <View style={{width: '60%'}}>
+                                        <Picker style={{color: "#313BDD", height: 25}}
+                                        selectedValue={this.state.selectCategory}
+                                        onValueChange={(itemValue) =>this.setState({ selectCategory: itemValue})}>
+                                            <Picker.Item label="Shoping" value="Shoping" />
+                                            <Picker.Item label="Eating" value="Eating" />
+                                            <Picker.Item label="Party" value="Party" />
+                                            <Picker.Item label="Gift" value="Gift" />
+                                            <Picker.Item label="Bill" value="Bill" />
+                                            <Picker.Item label="Travel" value="Travel" />
+                                            <Picker.Item label="Other" value="Other" />
+                                        </Picker>
                                     </View>
                                 </View>
-                                <View style={{marginTop: 50}}>
-                                        <Card style={{flexDirection: "row", backgroundColor: "#171818", height: 80}}>
-                                            <View style={{width: "40%", paddingLeft: 20, height: "100%", paddingTop: 20}}>
-                                                    <Label style={styles.TransectionCardHeaderText}>
-                                                        Category
-                                                    </Label>
-                                            </View>
-                                            <View style={{width: "60%", height: "100%", padding: 8}}>
-                                            <ScrollView style={{ height: "100%"}}>
-                                                <Picker style={{color: "#fff"}}
-                                                    selectedValue={this.state.selectCategory}
-                                                    onValueChange={(itemValue) =>this.setState({ selectCategory: itemValue})}>
-                                
-                                                        <Picker.Item label="Shoping" value="Shoping" />
-                                                        <Picker.Item label="Eating" value="Eating" />
-                                                        <Picker.Item label="Party" value="Party" />
-                                                        <Picker.Item label="Gift" value="Gift" />
-                                                        <Picker.Item label="Bill" value="Bill" />
-                                                        <Picker.Item label="Travel" value="Travel" />
-                                                        <Picker.Item label="Other" value="Other" />
-                                                    
-                                                </Picker>
-                                                </ScrollView>  
-                                            </View>
-                                        </Card>
-                                        <Card style={{flexDirection: "row", backgroundColor: "#171818", height: 80}}>
-                                            <View style={{width: "40%", paddingLeft: 20, height: "100%", paddingTop: 20}} >
-                                                <Label style={styles.TransectionCardHeaderText}>
-                                                    Amount
-                                                </Label>
-                                            </View>
-                                            <View style={{width: "60%", alignItems: "center", height: "100%", padding: 8}}>
-                                                <Input onChangeText={amount => this.setState({ amount })} placeholder="Enter Amount" placeholderTextColor="#fff" style={{width: "100%", color: "#fff"}} />
-                                            </View>
-                                        </Card>
-                                        <Card style={{backgroundColor: "#171818", height: 150, flexDirection: "column"}}>
-                                            <View style={{ paddingLeft: 20, width: "100%", height: "30%", paddingTop: "3%"}}>
-                                                <Label style={styles.TransectionCardHeaderText}>
-                                                    Description
-                                                </Label>
-                                            </View>
-                                            <View style={styles.DescriptionInputView}>
-                                                <Input onChangeText={description => this.setState({ description })} placeholder="Enter Description" placeholderTextColor="#fff" style={styles.DescriptionInputBox} />
-                                            </View>
-                                            
-                                        </Card>
-                                        <Card style={styles.saveTransectionCard}>
-                                         
-                                            <Button block success onPress={ () => this.ADD_New_Transection() } style={styles.saveTransectionButton}>
-                                                <Label style={styles.saveTransectionButtonText}>
-                                                    Save Transection
-                                                </Label>
-                                            </Button>
-                                            
-                                        </Card>
-                                </View>
+                            </Card>
                         </View>
-                    </ScrollView>         
-                </Content>               
-            </Container>
 
+                        <View style={{ width: '100%'}}>
+                            <Card style={{ height: 50, width: '100%'}}>
+                                <View style={{flexDirection: 'row'}}>
+                                    <View style={{width: '40%', padding: 10}}>
+                                        <Label style={{fontWeight: '900'}}>Enter Amount</Label>
+                                    </View>
+                                    <View style={{width: '60%', height: 40, marginBottom: 10}}>
+                                        <Input 
+                                            onChangeText={amount => this.setState({ amount })} 
+                                            placeholder="Enter Amount" 
+                                            placeholderTextColor="#313BDD" 
+                                            style={{width: "100%", color: "#313BDD"}} />
+                                    </View>
+                                </View>
+                            </Card>
+                        </View>
+
+                        <View style={{ width: '100%'}}>
+                            <Card style={{ height: 120, width: '100%'}}>
+                                <View style={{flexDirection: 'column'}}>
+                                    <View style={{width: '100%', padding: 10}}>
+                                        <Label style={{fontWeight: '900'}}>Enter Amount</Label>
+                                    </View>
+                                    <View style={{width: '100%', height: 40, marginBottom: 10}}>
+                                        <Input 
+                                            onChangeText={description => this.setState({ description })} 
+                                            placeholder="Enter Description" 
+                                            placeholderTextColor="#313BDD" 
+                                            style={styles.DescriptionInputBox} />
+                                    </View>
+                                </View>
+                            </Card>
+                        </View>
+                        
+                        <View style={{width: '100%', alignItems: 'center', marginTop: 15}}>
+                            
+                            <View style={{width: '100%', alignItems: 'center'}}>
+                                <TouchableHighlight style={styles.defaultButtonTransection} onPress={ () => this.ADD_New_Transection() }>
+                                    <View style={{flexDirection: 'row'}}>
+                                        <ENTYPO_ICON 
+                                            name= "save" 
+                                            size={18} 
+                                            color="#fff"/>
+                                        <Label style={ styles.ButtonAddTransectionText }>
+                                            Save
+                                        </Label>
+                                    </View>                        
+                                </TouchableHighlight>
+                            </View>
+
+                        </View>
+
+                    </View>
+                    </ScrollView>
+                </View>
+                
+            </ImageBackground>
         )
     }
 }

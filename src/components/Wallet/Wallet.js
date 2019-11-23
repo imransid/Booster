@@ -1,9 +1,7 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
 import { View, Image, AsyncStorage } from "react-native";
-import {Label, Container, Content, Header, Card, Footer, Grid, Row, Button} from 'native-base';
-import  MenuDrawerBUtton  from "../Menu/MenuButtons";
-import CustomFooter from "./WalletFotter/CustomFooter";
+import {Label, Container, Content, Header, Grid, Row, Button} from 'native-base';
 import TransectionData from "./Transection/Transection";
 import ADDWALLET from "./AddWallet/AddWallet";
 import styles from "./Styles";
@@ -118,45 +116,42 @@ class Wallet extends Component{
                         <Image source={require('../../assets/load.gif')} style={{height:60, width:60}}></Image>
                     </View> 
             :
-            <Container style={{backgroundColor: "#171818"}}>
-                    <Header style={{alignContent: "stretch", backgroundColor: '#000000', borderColor: "red"}}>
-                        <View style={{flexDirection: "row", width: "100%", paddingTop: 15}}>
-                            <MenuDrawerBUtton navigation={this.props.navigation}/>
-                            <Label style={{marginLeft: 30, color: "#FFFFFF", fontSize: 20}}>
-                                Wallet      
-                            </Label>
-                        </View>
-                    </Header>
-                    <Header style={{height: 320, backgroundColor: "#171818"}}>
-                        <View style={{width: '100%'}}>
+            <Container style={styles.defaultWalletContet}>
+                    
+                    <Header style={styles.defaultHeaderBlock}>
+                        <View style={ styles.walletHomeHeight }>
                         {
                             this.props.all_walllet_card == null ? alert("!No Wallet Found. Please Add Wallet") : <TransectionCustomCard card_data={this.props.all_walllet_card}/> 
                         }
-                        <Card style={{backgroundColor : "#282A29", height: 50, borderColor: "#282A29"}}>
+                        <View style={styles.defaultHeaderBlockCard}>
                             <View style={{flexDirection: "row"}}>
-                                <View style={{width: "50%", height: "100%", alignItems: "center"}}>
+                                <View style={ styles.walletHomeTabBlock }>
                                         <Button block style={ this.state.pressStatus == "transection"
                                         ? styles.buttonPress
                                         : styles.button }
                                         onPress= {() => this.ADD_transection()} >
-                                            <Label style={{color: "white"}}>
+                                            <Label style={ this.state.pressStatus == "transection"
+                                        ? styles.buttonPressTextColor
+                                        : styles.buttonTextColoris }>
                                                 Transection
                                             </Label>
                                         </Button>
                                 </View>
-                                <View style={{width: "50%", height: "100%", alignItems: "center"}}>
+                                <View style={ styles.walletHomeTabBlock }>
                                         <Button block style={ this.state.pressStatus == "wallet"
                                         ? styles.buttonPress
                                         : styles.button }
                                         onPress={()=>this.ADD_WALLET()} >
-                                            <Label style={{color: "white"}}>
-                                                Wallet details
+                                            <Label style={ this.state.pressStatus == "transection"
+                                        ? styles.buttonTextColoris
+                                        : styles.buttonPressTextColor }>
+                                                Wallet Details
                                             </Label>
                                         </Button>
                                 </View>
 
                             </View>
-                        </Card>
+                        </View>
 
 
                         </View>
@@ -192,9 +187,6 @@ class Wallet extends Component{
                         </Grid>
 
                     </Content>
-                    <Footer>
-                        <CustomFooter />    
-                    </Footer>
 
             </Container>
             
@@ -213,7 +205,11 @@ const mapStateProps = (state) => {
     const SyncStatus = state.TRASECTION;
     const name = state.SETTING.name;
     const loadedData = state.SETTING.loadedData;
+    const logstatus = state.SETTING.logstatus;
+    const userpic = state.SETTING.userpic;
     return {
+        logstatus,
+        userpic,
         all_leatest_transection,
         lodder,
         all_walllet_card,
