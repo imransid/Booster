@@ -1,6 +1,27 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+    
+    CardTextSyle: {
+        height: 50, 
+        width: '50%', 
+        padding: 15, 
+        alignItems: 'flex-start'
+    },
+    CardText: {
+        fontSize: 16, 
+        fontWeight: '500', 
+        color: '#000'
+    },
+    CardBlockSyle: {
+        width: '100%', 
+        flexDirection: 'row', 
+        marginBottom: 10, 
+        height: 55, 
+        borderRadius: 1, 
+        borderColor: '#000', 
+        borderWidth: 2
+    },
     gauge: {
       position: 'absolute',
       width: 140,

@@ -83,9 +83,9 @@ const Rootnavigator = createBottomTabNavigator({
     swipeEnabled: true,
     tabBarOptions: {
       activeTintColor: 'white',
-      activeBackgroundColor: '#1f2f46',
+      activeBackgroundColor: '#4527A0',
       inactiveTintColor: 'gray',
-      inactiveBackgroundColor: '#1f2f46',      
+      inactiveBackgroundColor: '#4527A0',      
     },
     initialRouteName: 'WALLET',
   }

@@ -108,7 +108,7 @@ class TransectionCustomCard extends Component {
 
     render() {
         return (
-            <View style={{height: 250, width: "100%", padding: 20}}>
+            <View style={{height: 250, width: "100%", marginBottom: 10}}>
               <Swiper 
                 showsButtons={false}
                 index={0}

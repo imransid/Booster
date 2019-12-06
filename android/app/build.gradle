@@ -111,6 +111,12 @@ android {
 }
 
 dependencies {
+
+    implementation 'com.facebook.fresco:fresco:1.+'
+
+    // For animated GIF support
+    implementation 'com.facebook.fresco:animated-gif:1.+'
+
     implementation project(':rn-fetch-blob')
     implementation project(':react-native-html-to-pdf')
     implementation project(':react-native-vector-icons')
@@ -128,6 +134,7 @@ dependencies {
 
 
     implementation(project(":react-native-google-signin"))
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
 }
 

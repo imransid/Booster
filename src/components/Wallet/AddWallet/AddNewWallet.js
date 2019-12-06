@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import { View, ToastAndroid, ScrollView, Picker, AsyncStorage } from "react-native";
-import MenuDrawerBUtton from "../../Menu/MenuButtons"
+import { View, ToastAndroid, ScrollView, Picker, AsyncStorage, Text, TouchableHighlight } from "react-native";
 import {Label, Card, Button, Container, Header, Content, Input} from 'native-base';
 import { connect } from 'react-redux';
 import styles from "../../Wallet/Transection/Styles";
 import { add_new_card, Init_Wallet } from "../../../actions/WalletCard";
+import ENTYPO_ICON from 'react-native-vector-icons/Entypo';
 
 class AddNewWallet extends Component{
     constructor(){
@@ -91,99 +91,100 @@ class AddNewWallet extends Component{
     
     render(){
         return(
-            <Container style={{backgroundColor: "#171820"}}>
-            
-                <Content>
-                    <ScrollView style={{paddingTop: 5 }}>
-                        <View style={{flexDirection: "column", padding : 10}}>
-                                <View style={{marginTop: 20}}>
-                                        <Card style={{flexDirection: "row", backgroundColor: "#171818", height: 80}}>
-                                            <View style={{width: "40%", paddingLeft: 20, height: "100%", paddingTop: 20}} >
-                                                <Label style={styles.TransectionCardHeaderText}>
-                                                    Card Holder Name :
-                                                </Label>
-                                            </View>
-                                            <View style={{width: "60%", alignItems: "center", height: "100%", padding: 8}}>
-                                                <Input onChangeText={card_holder_name => this.setState({ card_holder_name })} placeholder="Enter Name" placeholderTextColor="#fff" style={{width: "100%", color: "#fff"}} />
-                                            </View>
-                                        </Card>
-                                        <Card style={{flexDirection: "row", backgroundColor: "#171818", height: 80}}>
-                                            <View style={{width: "40%", paddingLeft: 20, height: "100%", paddingTop: 20}}>
-                                                    <Label style={styles.TransectionCardHeaderText}>
-                                                        BANK Name :
-                                                    </Label>
-                                            </View>
-                                            <View style={{width: "60%", height: "100%", padding: 8}}>
-                                            <ScrollView style={{ height: "100%"}}>
-                                                <Picker style={{color: "#fff"}}
-                                                    selectedValue={this.state.bank_code}
-                                                    onValueChange={(itemValue) =>this.setState({ bank_code: itemValue})}>
+            <View style={{flex:1, backgroundColor: '#FFF'}}>
+                <ScrollView style={{padding: 10 }}>
+                    <View style={{flexDirection: 'column', width: '100%', height: '100%'}}>
+                        <View style={styles.CardBlockSyle}>
+                            <View style={styles.CardTextSyle}>
+                                    <Text style={styles.CardText}>
+                                        Card Holder Name
+                                    </Text>
+                            </View>
+                            <View>
+                              <Input onChangeText={card_holder_name => this.setState({ card_holder_name })} placeholder="Enter Name" placeholderTextColor="#304FFE" style={{width: "100%", color: "#304FFE"}} />
+                            </View>
+                        </View>
+                        <View style={styles.CardBlockSyle}>
+                            <View style={styles.CardTextSyle}>
+                                    <Text style={styles.CardText}>
+                                        Bank Name
+                                    </Text>
+                            </View>
+                            <View style={{width: '50%', height: '100%'}}>
+
+                            <Picker style={{color: "#304FFE"}}
+                                    selectedValue={this.state.bank_code}
+                                    onValueChange={(itemValue) =>this.setState({ bank_code: itemValue})}>
                                 
-                                                        <Picker.Item label="BRAC BANK" value="BRAC BANK" />
-                                                        <Picker.Item label="CITY BANK" value="CITY BANK" />
-                                                        <Picker.Item label="DBBL" value="DBBL" />
-                                                        <Picker.Item label="Dhaka Bank" value="Dhaka Bank" />
-                                                        <Picker.Item label="NRB BANK" value="NRB BANK" />
-                                                        <Picker.Item label="EBL BANK" value="EBL BANK" />
-                                                        <Picker.Item label="Others Bank" value="Others Bank" />
+                                        <Picker.Item label="BRAC BANK" value="BRAC BANK" />
+                                        <Picker.Item label="CITY BANK" value="CITY BANK" />
+                                        <Picker.Item label="DBBL" value="DBBL" />
+                                        <Picker.Item label="Dhaka Bank" value="Dhaka Bank" />
+                                        <Picker.Item label="NRB BANK" value="NRB BANK" />
+                                        <Picker.Item label="EBL BANK" value="EBL BANK" />
+                                        <Picker.Item label="Others Bank" value="Others Bank" />
                                                     
-                                                </Picker>
-                                                </ScrollView>  
-                                            </View>
-                                        </Card>
-                                        <Card style={{flexDirection: "row", backgroundColor: "#171818", height: 80}}>
-                                            <View style={{width: "40%", paddingLeft: 20, height: "100%", paddingTop: 20}} >
-                                                <Label style={styles.TransectionCardHeaderText}>
-                                                    Balance : 
-                                                </Label>
-                                            </View>
-                                            <View style={{width: "60%", alignItems: "center", height: "100%", padding: 8}}>
-                                                <Input keyboardType='numeric' onChangeText={balance => this.setState({ balance })} placeholder="Enter Amount" placeholderTextColor="#fff" style={{width: "100%", color: "#fff"}} />
-                                            </View>
-                                        </Card>
-                                        <Card style={{flexDirection: "row", backgroundColor: "#171818", height: 80}}>
-                                            <View style={{width: "40%", paddingLeft: 20, height: "100%", paddingTop: 20}}>
-                                                    <Label style={styles.TransectionCardHeaderText}>
-                                                        Balance Type : 
-                                                    </Label>
-                                            </View>
-                                            <View style={{width: "60%", height: "100%", padding: 8}}>
-                                            <ScrollView style={{ height: "100%"}}>
-                                                <Picker style={{color: "#fff"}}
+                            </Picker>
+
+                            </View>
+                        </View>
+                        <View style={styles.CardBlockSyle}>
+                            <View style={styles.CardTextSyle}>
+                                <Text style={styles.CardText}>
+                                    Balance
+                                </Text>
+                            </View>
+                            <View>
+                                <Input keyboardType='numeric' onChangeText={balance => this.setState({ balance })} placeholder="Enter Amount" placeholderTextColor="#304FFE" style={{width: "100%", color: "#304FFE"}} />
+                            </View>
+                        </View>
+                        <View style={styles.CardBlockSyle}>
+                            <View style={styles.CardTextSyle}>
+                                    <Text style={styles.CardText}>
+                                        Balance Type
+                                    </Text>
+                            </View>
+                            <View style={{width: '50%', height: '100%'}}>
+                                        <Picker style={{color: "#304FFE"}}
                                                     selectedValue={this.state.balance_type}
                                                     onValueChange={(itemValue) =>this.setState({ balance_type: itemValue})}>
                                 
                                                         <Picker.Item label="CREDIT" value="CREDIT" />
                                                         <Picker.Item label="DABIT" value="DABIT" />
-                                                </Picker>
-                                                </ScrollView>  
-                                            </View>
-                                        </Card>
-                                        <Card style={{flexDirection: "row", backgroundColor: "#171818", height: 80}}>
-                                            <View style={{width: "40%", paddingLeft: 20, height: "100%", paddingTop: 20}} >
-                                                <Label style={styles.TransectionCardHeaderText}>
-                                                    Card Num :
-                                                </Label>
-                                            </View>
-                                            <View style={{width: "60%", alignItems: "center", height: "100%", padding: 8}}>
-                                                <Input keyboardType='numeric' onChangeText={card_num => this.setState({ card_num })} placeholder="Enter Card Last 4 Degit" placeholderTextColor="#fff" style={{width: "100%", color: "#fff"}} />
-                                            </View>
-                                        </Card>
-                                        <Card style={styles.saveTransectionCard}>
-                                         
-                                            <Button block success onPress={ () => this.ADD_New_Wallet() } style={styles.saveTransectionButton}>
-                                                <Label style={styles.saveTransectionButtonText}>
-                                                    Save Wallet
-                                                </Label>
-                                            </Button>
-                                            
-                                        </Card>
-                                </View>
+                                        </Picker>
+                            </View>
                         </View>
-                    </ScrollView>         
-                </Content>               
-            </Container>
 
+                        <View style={styles.CardBlockSyle}>
+                            <View style={styles.CardTextSyle}>
+                                    <Text style={styles.CardText}>
+                                     Card Num
+                                    </Text>
+                            </View>
+                            <View>
+                                <Input keyboardType='numeric' onChangeText={card_num => this.setState({ card_num })} placeholder="Enter Card Last 4 Degit" placeholderTextColor="#304FFE" style={{width: "100%", color: "#304FFE"}} />
+                            </View>
+                        </View>
+                        <View style={{width: '100%', height: 70, marginTop: 100, flexDirection: 'row'}}>
+                            <View style={{width: '15%'}}></View>
+                            <View style={{width: '70%', alignItems: 'center'}}>
+                                <TouchableHighlight style={styles.defaultButtonTransection} onPress={ () => this.ADD_New_Wallet() } >
+                                    <View style={{flexDirection: 'row'}}>
+                                        <ENTYPO_ICON 
+                                            name= "plus" 
+                                            size={18} 
+                                            color="#fff"/>
+                                        <Label style={ styles.ButtonAddTransectionText }>
+                                            Add Wallet
+                                        </Label>
+                                    </View>                        
+                                </TouchableHighlight>
+                            </View>
+                            <View style={{width: '15%'}}></View>
+                        </View>
+                    </View>
+                </ScrollView>
+            </View>
         )
     }
 }

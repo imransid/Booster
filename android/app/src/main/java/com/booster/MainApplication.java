@@ -49,7 +49,8 @@ public class MainApplication extends Application implements ReactApplication {
             new FBSDKPackage(mCallbackManager),
             new RNGoogleSigninPackage(),
             new RNGestureHandlerPackage(),
-            new ReactNativePushNotificationPackage()
+            new ReactNativePushNotificationPackage(),
+            new SharedStoragePackager()
       );
     }
 
