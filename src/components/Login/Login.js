@@ -12,7 +12,7 @@ import {init_setting} from "../../actions/Setting";
 firebase.initializeApp(firebaseconfig)
 
 class Login extends Component {
-// for fblogin
+// for fblogin //
 
 isFBLogged = () => {
 

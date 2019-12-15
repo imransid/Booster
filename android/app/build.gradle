@@ -58,16 +58,6 @@ android {
         //    versionName Version.getVersionName()
     }
 
-    // defaultConfig {
-    //     applicationId "com.booster"
-    //     minSdkVersion 18
-    //     targetSdkVersion 27
-    //     versionCode Version.getVersionCode()
-    //     versionName Version.getVersionName()
-    //     ndk {
-    //         abiFilters "armeabi-v7a", "x86"
-    //     }
-    // }
 
     signingConfigs {
         release {
@@ -111,6 +101,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-splash-screen')
 
     implementation 'com.facebook.fresco:fresco:1.+'
 

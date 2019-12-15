@@ -137,13 +137,12 @@ class AddNewTransectios extends Component{
     render(){
         return(
             <ImageBackground source={require('../../../assets/images/add-transection-bg.png')} style={{flex: 1}} >
-                
                 <View style={{flexDirection: 'column'}}>
                     <HeaderMenu props={this.props} title="Add Transection"/>
                     <View style={{ width: '100%', height: '50%', alignItems: 'center', paddingTop: 20}}> 
 
-                        <Image style={{height: 180, width: '50%'}} source={require('../../../assets/images/circle.png')} />
-                        <View style={{position: 'absolute', marginTop: 35}}>
+                        <Image style={{height: 205, width: '50%'}} source={require('../../../assets/images/circle.png')} />
+                        <View style={{position: 'absolute', marginTop: 45}}>
                             <Pie
                                 radius={75}
                                 //completly filled pie chart with radius 100
@@ -209,7 +208,7 @@ class AddNewTransectios extends Component{
                                     <View style={{width: '100%', padding: 10}}>
                                         <Label style={{fontWeight: '900'}}>Enter Amount</Label>
                                     </View>
-                                    <View style={{width: '100%', height: 40, marginBottom: 10}}>
+                                    <View style={{width: '100%', height: 60, marginBottom: 10}}>
                                         <Input 
                                             onChangeText={description => this.setState({ description })} 
                                             placeholder="Enter Description" 
@@ -241,7 +240,6 @@ class AddNewTransectios extends Component{
                     </View>
                     </ScrollView>
                 </View>
-                
             </ImageBackground>
         )
     }

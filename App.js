@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
-import {Image, View, NativeModules} from 'react-native';
-import Routes from './src/routes/navigator/nav';
-import store from './src/config/store';
-import {Provider} from 'react-redux';
-import './src/reducers';
-import {LoginChker} from './src/config/AppMethod';
+import React, { Component } from "react";
+import { Image, View, NativeModules } from "react-native";
+import Routes from "./src/routes/navigator/nav";
+import store from "./src/config/store";
+import { Provider } from "react-redux";
+import "./src/reducers";
+import { LoginChker } from "./src/config/AppMethod";
+import SplashScreen from "react-native-splash-screen";
 
 const SharedStorage = NativeModules.SharedStorage;
 
@@ -12,7 +13,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogged: null,
+      isLogged: null
     };
   }
 
@@ -22,7 +23,7 @@ export default class App extends Component {
     LoginChker(datathis);
 
     SharedStorage.set(
-      JSON.stringify({text: 'This is data from the React Native app'}),
+      JSON.stringify({ text: "This is data from the React Native app" })
     );
   }
 
@@ -31,13 +32,15 @@ export default class App extends Component {
       <View
         style={{
           flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#1b2129',
-        }}>
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "#FFFFFF"
+        }}
+      >
         <Image
-          source={require('./src/assets/load.gif')}
-          style={{height: 60, width: 60}}></Image>
+          source={require("./src/assets/loader.gif")}
+          style={{ height: 330, width: 330 }}
+        ></Image>
       </View>
     ) : (
       <Provider store={store}>
