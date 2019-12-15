@@ -226,7 +226,7 @@ class TransectionCustomCard extends Component {
         style={{
           height: 270,
           width: "100%",
-          backgroundColor: "#A9A9A9",
+          backgroundColor: "#DBDBDB",
           padding: 15
         }}
       >
