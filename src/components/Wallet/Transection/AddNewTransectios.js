@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { View, ScrollView, Picker, ToastAndroid, ImageBackground, Image, TouchableHighlight } from "react-native";
-import MenuDrawerBUtton from "../../Menu/MenuButtons"
+
 import {Label, Card, Input} from 'native-base';
 import Pie from 'react-native-pie';
 import { connect } from 'react-redux';
@@ -8,6 +8,7 @@ import styles from "./Styles";
 import { add_new_transection } from "../../../actions/Transection";
 import HeaderMenu from "../ComponentHeader/HeaderMenu";
 import ENTYPO_ICON from 'react-native-vector-icons/Entypo';
+import moment from "moment";
 
 class AddNewTransectios extends Component{
 
@@ -44,7 +45,8 @@ class AddNewTransectios extends Component{
     }
 
     ADD_New_Transection = () => {
-        
+        let Unix_Data = moment().valueOf();
+
         if(this.state.amount == "" && this.state.description == ""){
 
         }else{
@@ -89,7 +91,8 @@ class AddNewTransectios extends Component{
                 'IconCode': IconCode,
                 'IconName': IconName,
                 'walletId': this.props.walletId,
-                'transectionid': this.state.transectionid
+                'transectionid': this.state.transectionid,
+                'Unix_Data' : Unix_Data
             }
 
             if(this.state.selectCategory == 'Bill'){

@@ -14,6 +14,7 @@ import styles from "../../Wallet/Transection/Styles";
 import { add_new_card, Init_Wallet } from "../../../actions/WalletCard";
 import ENTYPO_ICON from "react-native-vector-icons/Entypo";
 import HeaderMenu from "../../Wallet/ComponentHeader/HeaderMenu";
+import moment from "moment";
 
 class AddNewWallet extends Component {
   constructor() {
@@ -71,6 +72,8 @@ class AddNewWallet extends Component {
   }
 
   ADD_New_Wallet = () => {
+    let Unix_Data = moment().valueOf();
+
     if (
       this.state.card_holder_name == "" &&
       this.state.bank_code == "" &&
@@ -92,7 +95,8 @@ class AddNewWallet extends Component {
         card_num: this.state.card_num,
         wallet_id: this.state.wallet_id,
         avalible_balance: this.state.balance,
-        syncStatus: false
+        syncStatus: false,
+        Unix_Data: Unix_Data
       };
 
       this.InitialWallet_Chk().then(e => {

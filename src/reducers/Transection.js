@@ -7,7 +7,7 @@ const initialState = {
     sync: null,
     refreshforsettingupdate: false
 }
-
+//
 const SyncStatus = (transection, wallet) => {
     let sync;
 

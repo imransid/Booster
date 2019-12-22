@@ -27,21 +27,4 @@ class walletHomeScreen extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//     return ({
-//         MarketStaus: state.browseReducer.MarketActive,
-//         fetchRealTime: state.browseReducer.fetchRealTime
-//     })
-// } {/* <Rootnavigator /> */}
-
-// function mapDispatchToProps(dispatch) {
-//     return ({
-//         browseAction: () => {
-//             dispatch(browseAction())
-//         }
-//     })
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(walletHomeScreen);
-
 export default walletHomeScreen;

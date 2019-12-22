@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  View,
-  Image,
-  StyleSheet,
-  AsyncStorage,
-  ImageBackground
-} from "react-native";
+import { View, StyleSheet, AsyncStorage, ImageBackground } from "react-native";
 import { Card, Text } from "native-base";
 import Swiper from "react-native-swiper";
 import { connect } from "react-redux";

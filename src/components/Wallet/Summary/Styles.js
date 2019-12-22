@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     color: "#206BCA"
   },
   Summary_card_Image: {
-    width: 350,
-    height: 70,
+    width: "103%", //350,
+    height: "95%", //70
     padding: 10
   },
   Summary_card_Image_Text_1: {

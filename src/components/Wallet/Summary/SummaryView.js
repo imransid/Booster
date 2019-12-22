@@ -3,6 +3,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import React, { Component } from "react";
 import { Text, ImageBackground, TouchableOpacity } from "react-native";
 import { Card, Grid, Col, Row, Label } from "native-base";
+import SUMMARY_IMAGE from "./SummmaryImage";
 
 export default class SummaryView extends Component {
   constructor(props) {
@@ -25,23 +26,11 @@ export default class SummaryView extends Component {
             </Col>
           </Row>
           <Row>
-            <ImageBackground
-              source={require("../../../assets/images/card_summary_1.png")}
-              style={styles.Summary_card_Image}
-            >
-              <Col>
-                <Row>
-                  <Label style={styles.Summary_card_Image_Text_1}>
-                    Wallet ID
-                  </Label>
-                </Row>
-                <Row>
-                  <Text style={styles.Summary_card_Image_Text_2}>
-                    {this.props.cardId}
-                  </Text>
-                </Row>
-              </Col>
-            </ImageBackground>
+            <SUMMARY_IMAGE
+              cardID={this.props.cardId}
+              Action={this.props.title}
+            />
+            {/*  */}
           </Row>
           <Row>
             <Col>
