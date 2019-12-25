@@ -1,22 +1,22 @@
-import React, {Component} from "react";
-import {TouchableHighlight, View, Text } from "react-native";
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import React, { Component } from "react";
+import Icon from "react-native-vector-icons/FontAwesome5";
+import { connect } from "react-redux";
 
-class DrawerButtons extends Component{
+const DrawerButtons = props => {
+  return (
+    <Icon
+      name="align-justify"
+      size={30}
+      color="#0091EA"
+      onPress={() => props.nav.toggleDrawer()}
+    />
+  );
+};
 
-    render(){
-        return(
-            <Icon 
-            name="align-justify" 
-            size={30} 
-            color="#0091EA" 
-            onPress={() => this.props.navigation.toggleDrawer()}/>
-            
-        )
-    }
-
-}
-
-
-export default DrawerButtons;
-
+const mapStateProps = state => {
+  const nav = state.audit.nav;
+  return {
+    nav
+  };
+};
+export default connect(mapStateProps)(DrawerButtons);

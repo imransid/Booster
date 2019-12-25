@@ -66,6 +66,7 @@ buck-out/
 android/bin/
 android/gen/
 android/out/
+android/java_pid5139.hprof
 
 # Gradle files
 android/.gradle/

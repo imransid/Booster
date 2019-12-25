@@ -17,6 +17,8 @@ import {
   Summary_Month_Now,
   Summary_Year_Now
 } from "../saga_actions/All_Data_Summary";
+
+import { customNavigationUpdater } from "../saga_actions/customNavigation";
 const API_KEY = "1e8d1babbeccde1eb21b";
 
 const url = "https://free.currconv.com/api/v7/convert?q";
@@ -66,6 +68,7 @@ const rootSaga = function*() {
   yield takeEvery(actionType.SUMMARY_WEEK, SummaryWeek);
   yield takeEvery(actionType.SUMMARY_MONTH, Summary_Month_Now);
   yield takeEvery(actionType.SUMMARY_YEAR, Summary_Year_Now);
+  yield takeEvery(actionType.CUSNAV, customNavigationUpdater);
 };
 
 export default rootSaga;
