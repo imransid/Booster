@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     height: 140
   },
   footerCus: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "transparent",
     height: 80,
     padding: 10
   },
@@ -21,6 +21,31 @@ const styles = StyleSheet.create({
   input_Item: {
     marginBottom: 10,
     borderColor: "#FFFFFF"
+  },
+  input_header: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#7B1FA2"
+  },
+  cus_placeColorA: {
+    color: "#a9a9a9"
+  },
+  cus_placeColorB: {
+    color: "#4527A0"
+  },
+  colorA: {
+    fontWeight: "bold",
+    color: "#a9a9a9"
+  },
+  colorB: {
+    fontWeight: "bold",
+    color: "#4527A0"
+  },
+  input_Item_Cus_txtArea: {
+    borderColor: "#D3D3D3",
+    borderWidth: 1,
+    // width: "100%"
+    flex: 1
   }
 });
 

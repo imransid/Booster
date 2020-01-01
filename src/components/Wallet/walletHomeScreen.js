@@ -18,7 +18,6 @@ class walletHomeScreen extends Component {
   }
 
   render() {
-    let title = "Wallet";
     return (
       <View style={{ flex: 1 }}>
         <Rootnavigator />
