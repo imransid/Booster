@@ -13,7 +13,11 @@ const Event_Card = props => {
               <ICONS name="controller-record" size={18} color="#1A1EEF" />
             </Col>
             <Col>
-              <Label style={{ color: "#000000" }}>{props.Event_Name}</Label>
+              <Label style={{ color: "#000000" }}>
+                {props.Event_Name == "LOANCALCULATOR"
+                  ? "Loan Calculator"
+                  : props.Event_Name}
+              </Label>
             </Col>
             <Col style={{ width: "10%", alignItems: "center" }}>
               <ICONS name="chevron-right" size={20} color="#1A1EEF" />

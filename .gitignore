@@ -90,6 +90,9 @@ android/keystores/debug.keystore
 android/app/my-release-key.keystore
 android/gradle.properties
 
+android/java_pid11377.hprof
+android/java_pid2975.hprof
+
 # VSCODE
 jsconfig.json
 .vscode/launchReactNative.js

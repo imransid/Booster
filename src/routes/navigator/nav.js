@@ -17,6 +17,7 @@ import SETTING from "../../components/setting/Setting";
 import { connect } from "react-redux";
 
 import WALLET from "../../components/Wallet/walletHomeScreen";
+import LOAN from "../../components/Wallet/EventActivator/LoanCalculator/LoanCalculator";
 
 class nav extends Component {
   render() {

@@ -226,6 +226,13 @@ const addLoan = props => {
             </Col>
           </Row>
           <Row>
+            <TouchableOpacity
+              style={{ backgroundColor: "#7B1FA2", borderRadius: 10 }}
+            >
+              <Text>Proceed </Text>
+            </TouchableOpacity>
+          </Row>
+          <Row>
             <CUSFOOTER cus_func={() => props.customCencel()} cencel={false} />
           </Row>
         </Grid>

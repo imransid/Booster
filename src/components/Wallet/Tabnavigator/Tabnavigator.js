@@ -17,6 +17,7 @@ import Summary from "../Summary/Summary";
 import ADD_TRANSECTIONS from "../Transection/AddNewTransectios";
 import ADD_WALLET from "../AddWallet/AddNewWallet";
 import TRANSECTIONS_EDIT from "../Transection/Transections_edit";
+import LOANCALCULATOR from "../EventActivator/LoanCalculator/LoanCalculator";
 
 // LOAN FOR EVENT ACTIVATOR MODULE
 import LOAN from "../EventActivator/Loan/Loan";
@@ -28,6 +29,9 @@ const EVENT_AC = createStackNavigator(
     },
     EventActivator: {
       screen: EventActivator
+    },
+    LOANCALCULATOR: {
+      screen: LOANCALCULATOR
     }
   },
   {

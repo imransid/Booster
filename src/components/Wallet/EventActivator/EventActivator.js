@@ -20,6 +20,7 @@ class EventActivator extends Component {
           <EVNTCARD Event_Name={"LOAN"} Nav={this.props.navigation} />
           <EVNTCARD Event_Name={"EMI"} Nav={this.props.navigation} />
           <EVNTCARD Event_Name={"DEPOSITE"} Nav={this.props.navigation} />
+          <EVNTCARD Event_Name={"LOANCALCULATOR"} Nav={this.props.navigation} />
         </ScrollView>
       </Container>
     );
