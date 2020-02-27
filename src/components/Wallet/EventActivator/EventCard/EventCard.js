@@ -13,9 +13,9 @@ const Event_Card = props => {
               <ICONS name="controller-record" size={18} color="#1A1EEF" />
             </Col>
             <Col>
-              <Label style={{ color: "#000000" }}>
+              <Label style={{ color: "#000000", fontFamily: "Audrey-Bold" }}>
                 {props.Event_Name == "LOANCALCULATOR"
-                  ? "Loan Calculator"
+                  ? "LOAN CALCULATOR"
                   : props.Event_Name}
               </Label>
             </Col>
