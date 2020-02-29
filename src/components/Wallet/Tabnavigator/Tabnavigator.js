@@ -18,6 +18,9 @@ import ADD_TRANSECTIONS from "../Transection/AddNewTransectios";
 import ADD_WALLET from "../AddWallet/AddNewWallet";
 import TRANSECTIONS_EDIT from "../Transection/Transections_edit";
 import LOANCALCULATOR from "../EventActivator/LoanCalculator/LoanCalculator";
+import MCM from "../EventActivator/MothlyCostManagement/MCM";
+import MCM_Details from "../EventActivator/MCMDetails/MCMDetails";
+import AddMCM from "../EventActivator/AddMCM/AddMCM";
 
 // LOAN FOR EVENT ACTIVATOR MODULE
 import LOAN from "../EventActivator/Loan/Loan";
@@ -32,6 +35,15 @@ const EVENT_AC = createStackNavigator(
     },
     LOANCALCULATOR: {
       screen: LOANCALCULATOR
+    },
+    MCM: {
+      screen: MCM
+    },
+    MCM_Details: {
+      screen: MCM_Details
+    },
+    AddMCM: {
+      screen: AddMCM
     }
   },
   {
