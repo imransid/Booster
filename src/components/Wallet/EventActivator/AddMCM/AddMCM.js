@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { ScrollView, Text, TouchableOpacity, StatusBar } from "react-native";
+import {
+  Modal,
+  Text,
+  TouchableOpacity,
+  StatusBar,
+  AsyncStorage,
+  Picker
+} from "react-native";
 import {
   Container,
   Card,
@@ -7,7 +14,6 @@ import {
   Input,
   Item,
   Label,
-  Picker,
   Textarea,
   Button
 } from "native-base";
@@ -18,71 +24,111 @@ let check = moment(new Date());
 
 let Current_month = check.format("MMMM");
 
-const CusTomText = props => {
+const CustomItem = props => {
   return (
-    <Text
-      style={{
-        fontFamily: "Audrey-Bold",
-        color: props.name == "Add Expence" ? "#000" : "#FFF",
-        textAlign: "center",
-        fontSize: 18
-      }}
-    >
-      {props.name}
-    </Text>
-  );
-};
-
-const CustomCard = props => {
-  return (
-    <Card
-      style={{
-        backgroundColor: props.name == "Add Expence" ? "#FFA000" : "#0091EA",
-        padding: 10
-      }}
-    >
-      <TouchableOpacity onPress={() => alert("okkk")}>
-        <CusTomText name={props.name} />
-      </TouchableOpacity>
-    </Card>
+    <View style={{ flex: 1 }}>
+      <Item floatingLabel>
+        <Label>{props.name}</Label>
+        <Input keyboardType="numeric" onChangeText={e => props.setter(e)} />
+      </Item>
+    </View>
   );
 };
 
 const AddMCM = props => {
   const title = "Add Today Expence";
 
-  const [PickerData, setPickerData] = useState(["bbok", "data", "new"]);
+  const [PickerData, setPickerData] = useState([
+    "Select Category",
+    "Shop",
+    "Eat",
+    "Food"
+  ]);
+
+  const [itemname, setItemname] = useState("");
+
+  const [modalVisibilty, setModalVisibilty] = useState(false);
+
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
-    console.log("okokko");
-    // setPickerData(["bbok", "data", "new"]);
-  }, [PickerData]);
+    // Using an IIFE
+    (async function PickerDataCreater() {
+      try {
+        // Load picker Save all value From DB
+        const value = await AsyncStorage.getItem("PickerDataCategory");
+
+        if (value == null) {
+          await AsyncStorage.setItem(
+            "PickerDataCategory",
+            JSON.stringify(PickerData)
+          );
+        } else {
+          let data_load = JSON.parse(value);
+
+          setPickerData(data_load);
+        }
+      } catch (error) {
+        console.log("Error is PickerDataCreater ", error);
+      }
+    })();
+  }, []);
 
   return (
     <Container>
       <StatusBar hidden />
       <HeaderMenu props={props.navigation} title={title} />
+
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisibilty}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+        }}
+      >
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 20
+          }}
+        >
+          <View
+            style={{ flex: 0.5, backgroundColor: "#D3D3D3", width: "100%" }}
+          >
+            <View style={{ flex: 1 }}></View>
+
+            <View style={{ flex: 1 }}></View>
+
+            <View style={{ flex: 1 }}>
+              <Button success block onPress={() => setModalVisibilty(false)}>
+                <Text style={{ color: "#FFF" }}>Add New Category</Text>
+              </Button>
+            </View>
+
+            <View style={{ flex: 1 }}>
+              <Button danger block onPress={() => setModalVisibilty(false)}>
+                <Text style={{ color: "#FFF" }}>Cencel</Text>
+              </Button>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
       <View style={{ flex: 1, padding: 10 }}>
         {/* Item name */}
-        <View style={{ flex: 1 }}>
-          <Item floatingLabel>
-            <Label>Item Name</Label>
-            <Input />
-          </Item>
-        </View>
+
+        <CustomItem name="Item Name" setter={e => setItemname(e)} />
 
         {/* Price */}
 
-        <View style={{ flex: 1 }}>
-          <Item floatingLabel>
-            <Label>Price</Label>
-            <Input />
-          </Item>
-        </View>
+        <CustomItem name="price" setter={e => setPrice(e)} />
 
         {/* Category */}
 
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1.8 }}>
           <Picker
             mode="dropdown"
             placeholder="Select your SIM"
@@ -100,7 +146,14 @@ const AddMCM = props => {
               />
             ))}
           </Picker>
+          <Button block primary onPress={() => setModalVisibilty(true)}>
+            <Text style={{ color: "#FFF" }}>Add More Category</Text>
+          </Button>
         </View>
+
+        {/* Fake */}
+
+        <View style={{ flex: 0.5 }}></View>
 
         {/* Add Remark Or Comments */}
 
