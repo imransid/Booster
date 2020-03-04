@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  Modal,
-  Text,
-  TouchableOpacity,
-  StatusBar,
-  AsyncStorage,
-  Picker
-} from "react-native";
+import { Text, StatusBar, AsyncStorage, Picker } from "react-native";
 import {
   Container,
-  Card,
   View,
   Input,
   Item,
@@ -18,18 +10,18 @@ import {
   Button
 } from "native-base";
 import HeaderMenu from "../../ComponentHeader/HeaderMenu";
-import moment from "moment";
-
-let check = moment(new Date());
-
-let Current_month = check.format("MMMM");
+import CustomModal from "./CustomModal";
+import _cusMethods from "./extraMethod";
 
 const CustomItem = props => {
   return (
     <View style={{ flex: 1 }}>
       <Item floatingLabel>
         <Label>{props.name}</Label>
-        <Input keyboardType="numeric" onChangeText={e => props.setter(e)} />
+        <Input
+          keyboardType={props.name == "Item Name" ? "default" : "numeric"}
+          onChangeText={e => props.setter(e)}
+        />
       </Item>
     </View>
   );
@@ -51,71 +43,52 @@ const AddMCM = props => {
 
   const [price, setPrice] = useState(0);
 
+  const [selectCatagory, setselectCatagory] = useState("Select Category");
+
   useEffect(() => {
     // Using an IIFE
     (async function PickerDataCreater() {
       try {
         // Load picker Save all value From DB
-        const value = await AsyncStorage.getItem("PickerDataCategory");
-
-        if (value == null) {
-          await AsyncStorage.setItem(
-            "PickerDataCategory",
-            JSON.stringify(PickerData)
-          );
-        } else {
-          let data_load = JSON.parse(value);
-
-          setPickerData(data_load);
-        }
+        await _picker_Data_Load();
       } catch (error) {
         console.log("Error is PickerDataCreater ", error);
       }
     })();
   }, []);
 
+  _picker_Data_Load = async () => {
+    try {
+      // Load picker Save all value From DB
+      const value = await AsyncStorage.getItem("PickerDataCategory");
+
+      if (value == null) {
+        await AsyncStorage.setItem(
+          "PickerDataCategory",
+          JSON.stringify(PickerData)
+        );
+      } else {
+        let data_load = JSON.parse(value);
+
+        setPickerData(data_load);
+      }
+    } catch (error) {
+      console.log("Error is _picker_Data_Load ", error);
+    }
+  };
+
   return (
     <Container>
       <StatusBar hidden />
       <HeaderMenu props={props.navigation} title={title} />
 
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVisibilty}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
-      >
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            padding: 20
-          }}
-        >
-          <View
-            style={{ flex: 0.5, backgroundColor: "#D3D3D3", width: "100%" }}
-          >
-            <View style={{ flex: 1 }}></View>
+      {/* For Modal */}
 
-            <View style={{ flex: 1 }}></View>
-
-            <View style={{ flex: 1 }}>
-              <Button success block onPress={() => setModalVisibilty(false)}>
-                <Text style={{ color: "#FFF" }}>Add New Category</Text>
-              </Button>
-            </View>
-
-            <View style={{ flex: 1 }}>
-              <Button danger block onPress={() => setModalVisibilty(false)}>
-                <Text style={{ color: "#FFF" }}>Cencel</Text>
-              </Button>
-            </View>
-          </View>
-        </View>
-      </Modal>
+      <CustomModal
+        visibitity={modalVisibilty}
+        SetVisibility={() => setModalVisibilty(false)}
+        loadData={() => _picker_Data_Load()}
+      />
 
       <View style={{ flex: 1, padding: 10 }}>
         {/* Item name */}
@@ -135,8 +108,8 @@ const AddMCM = props => {
             placeholderStyle={{ color: "#bfc6ea" }}
             placeholderIconColor="#007aff"
             style={{ width: undefined }}
-            selectedValue={"book"}
-            onValueChange={e => console.log(e)}
+            selectedValue={selectCatagory}
+            onValueChange={e => setselectCatagory(e)}
           >
             {PickerData.map(e => (
               <Picker.Item
@@ -166,7 +139,11 @@ const AddMCM = props => {
         </View>
 
         <View style={{ flex: 1 }}>
-          <Button block success>
+          <Button
+            block
+            success
+            onPress={() => _cusMethods(props, selectCatagory, itemname, price)}
+          >
             <Text style={{ color: "#FFF" }}>SAVE</Text>
           </Button>
         </View>
