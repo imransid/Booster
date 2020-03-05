@@ -30,7 +30,10 @@ const constantDataType = {
   SUMMARY_YEAR: "SUMMARY_YEAR",
   SUMMARY_YEAR_LOAD: "SUMMARY_YEAR_LOAD",
   CUSNAV: "CUSNAV",
-  CUSNAVLOAD: "CUSNAVLOAD"
+  CUSNAVLOAD: "CUSNAVLOAD",
+
+  // For MCM
+  LOAD_MCM_DB: "LOAD_MCM_DB"
 };
 
 export default constantDataType;
