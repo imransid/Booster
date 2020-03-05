@@ -6,7 +6,7 @@ const check = moment(new Date());
 const Current_Date = check.format("DD-MM-YYYY");
 
 //save MCM data
-const extraMethod = async (props, Catagory, itemname, price) => {
+const extraMethod = async (props, Catagory, itemname, price, notes) => {
   try {
     if (Catagory == "Select Category" || itemname == "" || price == 0) {
       Alert.alert("! Please Check Again...");
@@ -21,7 +21,8 @@ const extraMethod = async (props, Catagory, itemname, price) => {
           name: itemname,
           catagory: Catagory,
           price: price,
-          data: Current_Date
+          date: Current_Date,
+          notes: notes
         }
       ];
 
@@ -37,7 +38,8 @@ const extraMethod = async (props, Catagory, itemname, price) => {
           name: itemname,
           catagory: Catagory,
           price: price,
-          data: Current_Date
+          date: Current_Date,
+          notes: notes
         });
         // OK array add now save in DB
         await AsyncStorage.setItem(

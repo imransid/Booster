@@ -6,6 +6,7 @@ import TRASECTION from "./Transection";
 import HISTORY from "./History";
 import SETTING from "./Setting";
 import SUMMARY from "./Summary";
+import EVENT_AC from "./EventActivator";
 
 export default combineReducers({
   audit,
@@ -13,5 +14,6 @@ export default combineReducers({
   TRASECTION,
   HISTORY,
   SETTING,
-  SUMMARY
+  SUMMARY,
+  EVENT_AC
 });

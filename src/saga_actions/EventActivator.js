@@ -4,15 +4,14 @@ import actionType from "../constant/constant";
 
 export async function _loadMCMDetailsDB() {
   try {
-    console.log("OK Working Plan");
-    // const data = await AsyncStorage.getItem("wallet@Card");
-    // let data_load;
-    // if (data !== null) {
-    //   data_load = JSON.parse(data);
-    // } else {
-    //   data_load = [];
-    // }
-    // return data_load;
+    const data = await AsyncStorage.getItem("MCM@all@Data");
+    let data_load;
+    if (data !== null) {
+      data_load = JSON.parse(data);
+    } else {
+      data_load = [];
+    }
+    return data_load;
   } catch (error) {
     console.log("async retrive prlm loadMCMDetails : ", error);
   }
@@ -21,5 +20,10 @@ export async function _loadMCMDetailsDB() {
 export const loadMCMDetails = function*(action) {
   const retive_data = yield call(_loadMCMDetailsDB);
 
-  //yield put({ type: actionType.TRANSECTION_RESULT, result: retive_data })
+  console.log("retive_data", retive_data);
+
+  yield put({
+    type: actionType.LOADED_MCM_DB,
+    loaded_data: retive_data
+  });
 };

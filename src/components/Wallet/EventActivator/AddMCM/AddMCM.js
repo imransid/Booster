@@ -37,6 +37,8 @@ const AddMCM = props => {
     "Food"
   ]);
 
+  const [notes, setNotes] = useState("");
+
   const [itemname, setItemname] = useState("");
 
   const [modalVisibilty, setModalVisibilty] = useState(false);
@@ -135,6 +137,7 @@ const AddMCM = props => {
             rowSpan={5}
             bordered
             placeholder="Add Remarks Or Comments"
+            onChangeText={e => setNotes(e)}
           />
         </View>
 
@@ -142,7 +145,9 @@ const AddMCM = props => {
           <Button
             block
             success
-            onPress={() => _cusMethods(props, selectCatagory, itemname, price)}
+            onPress={() =>
+              _cusMethods(props, selectCatagory, itemname, price, notes)
+            }
           >
             <Text style={{ color: "#FFF" }}>SAVE</Text>
           </Button>

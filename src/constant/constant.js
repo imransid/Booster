@@ -33,7 +33,8 @@ const constantDataType = {
   CUSNAVLOAD: "CUSNAVLOAD",
 
   // For MCM
-  LOAD_MCM_DB: "LOAD_MCM_DB"
+  LOAD_MCM_DB: "LOAD_MCM_DB",
+  LOADED_MCM_DB: "LOADED_MCM_DB"
 };
 
 export default constantDataType;

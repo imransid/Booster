@@ -71,7 +71,7 @@ const rootSaga = function*() {
   yield takeEvery(actionType.SUMMARY_MONTH, Summary_Month_Now);
   yield takeEvery(actionType.SUMMARY_YEAR, Summary_Year_Now);
   yield takeEvery(actionType.CUSNAV, customNavigationUpdater);
-  yield takeEvery(actionType.LOAD_MCM_DB, customNavigationUpdater);
+  yield takeEvery(actionType.LOAD_MCM_DB, loadMCMDetails);
 };
 
 export default rootSaga;
