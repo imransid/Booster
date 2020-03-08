@@ -57,11 +57,14 @@ const MCM_Details = props => {
 
   const loader = useSelector(state => state.EVENT_AC.load);
   const loaded_data = useSelector(state => state.EVENT_AC.loaded_data);
+  const total_price = useSelector(state => state.EVENT_AC.total_price);
 
   const dispatch = useDispatch();
+  const sess = props.navigation.state.params.session;
 
   useEffect(() => {
-    dispatch(load_all_mcm_details("month"));
+    console.log(sess);
+    dispatch(load_all_mcm_details(sess));
   }, []);
   return (
     <Container>
@@ -93,6 +96,43 @@ const MCM_Details = props => {
           {loaded_data.map((e, i) => (
             <CustomCard data={e} key={i} />
           ))}
+          <View
+            style={{
+              height: 50,
+              width: "100%",
+              paddingTop: 10
+            }}
+          >
+            <View
+              style={{ backgroundColor: "#000", height: 2, width: "100%" }}
+            ></View>
+            <Grid>
+              <Col>
+                <Text
+                  style={{
+                    fontFamily: "AlexandriaFLF-Bold",
+                    fontSize: 22,
+                    color: "#000",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Total :
+                </Text>
+              </Col>
+              <Col>
+                <Text
+                  style={{
+                    fontFamily: "AlexandriaFLF-Bold",
+                    fontSize: 22,
+                    color: "#6A0DAD",
+                    fontWeight: "bold"
+                  }}
+                >
+                  {total_price}
+                </Text>
+              </Col>
+            </Grid>
+          </View>
         </ScrollView>
       )}
     </Container>

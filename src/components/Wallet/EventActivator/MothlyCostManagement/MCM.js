@@ -35,7 +35,7 @@ const CustomCard = props => {
         onPress={() =>
           props.name == "Add Expence"
             ? props.nav.navigate("AddMCM")
-            : props.nav.navigate("MCM_Details")
+            : props.nav.navigate("MCM_Details", { session: props.sess })
         }
       >
         <CusTomText name={props.name} />
@@ -52,10 +52,14 @@ const MCM = props => {
       <StatusBar hidden />
       <HeaderMenu props={props.navigation} title={title} />
       <View style={{ flex: 1, padding: 10 }}>
-        <CustomCard name="Previous Year" nav={props.navigation} />
-        <CustomCard name="Curent Year" nav={props.navigation} />
-        <CustomCard name="Previous Month" nav={props.navigation} />
-        <CustomCard name={Current_month} nav={props.navigation} />
+        <CustomCard name="Previous Year" nav={props.navigation} sess="p_year" />
+        <CustomCard name="Curent Year" nav={props.navigation} sess="year" />
+        <CustomCard
+          name="Previous Month"
+          nav={props.navigation}
+          sess="p_month"
+        />
+        <CustomCard name={Current_month} nav={props.navigation} sess="month" />
         <CustomCard name="Add Expence" nav={props.navigation} />
       </View>
     </Container>

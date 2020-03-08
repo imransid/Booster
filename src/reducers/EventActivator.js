@@ -3,7 +3,8 @@ import actionType from "../constant/constant";
 
 const initialState = {
   load: true,
-  loaded_data: []
+  loaded_data: [],
+  total_price: 0
 };
 
 export default (state = initialState, action) => {
@@ -13,7 +14,8 @@ export default (state = initialState, action) => {
         ...state,
         sync: action.sync,
         loaded_data: action.loaded_data,
-        load: false
+        load: false,
+        total_price: action.total_price
       };
 
     default:

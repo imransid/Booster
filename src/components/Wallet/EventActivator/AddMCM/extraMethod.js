@@ -41,10 +41,11 @@ const extraMethod = async (props, Catagory, itemname, price, notes) => {
           date: Current_Date,
           notes: notes
         });
+
         // OK array add now save in DB
         await AsyncStorage.setItem(
           "MCM@all@Data",
-          JSON.stringify(_data_load)
+          JSON.stringify(data_load)
         ).then(() => {
           props.navigation.goBack();
         });
