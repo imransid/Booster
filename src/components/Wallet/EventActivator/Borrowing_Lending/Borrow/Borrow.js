@@ -5,15 +5,27 @@ import {
   TouchableOpacity,
   Text
 } from "react-native";
-import { Container, View, Card, Grid, Col, Row, Label } from "native-base";
+import {
+  Container,
+  View,
+  Card,
+  Grid,
+  Col,
+  Row,
+  Label,
+  Button
+} from "native-base";
 import HeaderMenu from "../../../ComponentHeader/HeaderMenu";
 import BLaNK_Notify from "../../BankNotityCard/Blank_Notify";
 
 import EVNTCARD from "../../EventCard/EventCard";
 
 import { useSelector, useDispatch } from "react-redux";
+import Modal from "react-native-modal";
 
 import { LoadBorrow } from "../../../../../actions/EventActivator";
+
+import { _update_borrow } from "./Func_Methods";
 
 const Custom_Row = props => {
   return (
@@ -40,9 +52,8 @@ const Custom_Row = props => {
 };
 
 const CUSTOM_CARD = props => {
-  console.log(props);
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => (props._modalOn(), props._dataSet())}>
       <Card style={{ height: 100, padding: 10 }}>
         <Grid>
           <Col>
@@ -62,6 +73,9 @@ const CUSTOM_CARD = props => {
 const Borrow = props => {
   const title = "Borrow List";
   const [loader, setLoader] = useState(true);
+  const [selectedData, setSelectedData] = useState([]);
+
+  const [modalstatus, setModalstatus] = useState(false);
 
   const load_borrow_data = useSelector(
     state => state.EVENT_AC.load_borrow_data
@@ -87,6 +101,44 @@ const Borrow = props => {
       <StatusBar hidden />
       <HeaderMenu props={props.navigation} title={title} />
 
+      {modalstatus == true ? (
+        <Modal isVisible={modalstatus}>
+          <View
+            style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+          >
+            <Card style={{ width: "80%", height: 200, padding: 20 }}>
+              <Label style={{ color: "#000" }}>
+                Thank you For Your Transection !{" "}
+              </Label>
+              <View style={{ flex: 0.7 }}></View>
+              <View style={{ flex: 1 }}>
+                <Grid>
+                  <Col>
+                    <TouchableOpacity
+                      style={{ alignItems: "center" }}
+                      onPress={() => (
+                        setModalstatus(false),
+                        _update_borrow(selectedData, props)
+                      )}
+                    >
+                      <Text>Confirm</Text>
+                    </TouchableOpacity>
+                  </Col>
+                  <Col>
+                    <TouchableOpacity
+                      style={{ alignItems: "center" }}
+                      onPress={() => setModalstatus(false)}
+                    >
+                      <Text>Cencel</Text>
+                    </TouchableOpacity>
+                  </Col>
+                </Grid>
+              </View>
+            </Card>
+          </View>
+        </Modal>
+      ) : null}
+
       {loader == true ? (
         <View
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
@@ -111,7 +163,13 @@ const Borrow = props => {
           ) : (
             load_borrow_data.map((e, i) => (
               <View style={{ width: "100%" }}>
-                <CUSTOM_CARD key={Math.floor(Math.random() * i)} data={e} />
+                <CUSTOM_CARD
+                  key={Math.floor(Math.random() * i)}
+                  data={e}
+                  _dataSet={() => setSelectedData(e)}
+                  _modalOn={() => setModalstatus(true)}
+                  _modalOff={() => setModalstatus(false)}
+                />
               </View>
             ))
           )}

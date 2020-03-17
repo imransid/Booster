@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { ScrollView, Text, TouchableOpacity, StatusBar } from "react-native";
+import { Text, Platform, StatusBar } from "react-native";
 import { Container, Item, View, Input, Label, Button } from "native-base";
 import HeaderMenu from "../../../ComponentHeader/HeaderMenu";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 import { _save_borrow } from "./Func_Methods";
 
@@ -24,8 +25,25 @@ const AddBorrow = props => {
 
   const [itemname, setItemname] = useState("");
   const [amount, setAmount] = useState("");
-  const [itemdate, setItemDate] = useState("");
+  const [show, setShow] = useState(false);
+  const [mode, setMode] = useState("date");
+  const [itemdate, setItemDate] = useState(new Date());
   const [note, setNote] = useState("");
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || itemdate;
+    setShow(Platform.OS === "ios");
+    setItemDate(event.nativeEvent.timestamp);
+  };
+
+  const showMode = currentMode => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode("date");
+  };
 
   return (
     <Container>
@@ -38,12 +56,44 @@ const AddBorrow = props => {
           paddingRight: 20
         }}
       >
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            timeZoneOffsetInMinutes={0}
+            value={itemdate}
+            mode={mode}
+            is24Hour={true}
+            display="default"
+            onChange={onChange}
+          />
+        )}
+
         <View style={{ flex: 0.7 }}></View>
         <CustomItem name="Creditor Name" setter={e => setItemname(e)} />
         <View style={{ flex: 0.7 }}></View>
         <CustomItem name="Borrow Amount" setter={e => setAmount(e)} />
         <View style={{ flex: 0.7 }}></View>
-        <CustomItem name="Return Date" setter={e => setItemDate(e)} />
+        <View style={{ flex: 1 }}>
+          <Button
+            info
+            onPress={showDatepicker}
+            style={{
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            <Text
+              style={{
+                color: "#FFF",
+                fontSize: 18,
+                fontWeight: "bold"
+              }}
+            >
+              Return Date
+            </Text>
+          </Button>
+        </View>
         <View style={{ flex: 0.7 }}></View>
         <CustomItem name="Comments" setter={e => setNote(e)} />
         <View style={{ flex: 0.7 }}></View>
