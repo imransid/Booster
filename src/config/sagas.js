@@ -18,7 +18,10 @@ import {
   Summary_Year_Now
 } from "../saga_actions/All_Data_Summary";
 
-import { loadMCMDetails } from "../saga_actions/EventActivator";
+import {
+  loadMCMDetails,
+  _loadBorrowORLendDB
+} from "../saga_actions/EventActivator";
 
 import { customNavigationUpdater } from "../saga_actions/customNavigation";
 const API_KEY = "1e8d1babbeccde1eb21b";
@@ -72,6 +75,7 @@ const rootSaga = function*() {
   yield takeEvery(actionType.SUMMARY_YEAR, Summary_Year_Now);
   yield takeEvery(actionType.CUSNAV, customNavigationUpdater);
   yield takeEvery(actionType.LOAD_MCM_DB, loadMCMDetails);
+  yield takeEvery(actionType.LOAD_BORROWORLEND_DB, _loadBorrowORLendDB);
 };
 
 export default rootSaga;

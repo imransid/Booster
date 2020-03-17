@@ -24,6 +24,10 @@ import AddMCM from "../EventActivator/AddMCM/AddMCM";
 
 // LOAN FOR EVENT ACTIVATOR MODULE
 import LOAN from "../EventActivator/Loan/Loan";
+// borrow_lending
+import borrow_lending from "../EventActivator/Borrowing_Lending/Borrowing_lending";
+import borrow from "../EventActivator/Borrowing_Lending/Borrow/Borrow";
+import add_borrow_list from "../EventActivator/Borrowing_Lending/Borrow/AddBorrow";
 
 const EVENT_AC = createStackNavigator(
   {
@@ -44,6 +48,15 @@ const EVENT_AC = createStackNavigator(
     },
     AddMCM: {
       screen: AddMCM
+    },
+    borrow_lending: {
+      screen: borrow_lending
+    },
+    borrow: {
+      screen: borrow
+    },
+    add_borrow_list: {
+      screen: add_borrow_list
     }
   },
   {

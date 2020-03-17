@@ -66,3 +66,44 @@ const _total_Cost = async Data_array => {
 
   return total_prices;
 };
+
+export const _loadBorrowORLendDB = function*(action) {
+  const BorrowData = yield call(_loadBorroewDB);
+
+  console.log("act", action, BorrowData);
+
+  yield put({
+    type: actionType.LOADED_BORROWORLEND_DB,
+    load_borrow_data: BorrowData,
+    load_borrow: true
+  });
+};
+
+export async function _loadBorroewDB() {
+  try {
+    const data = await AsyncStorage.getItem("BORROW@all@Data");
+    let data_load;
+    if (data !== null) {
+      _data = JSON.parse(data);
+      data_load = _status_Checker(_data);
+    } else {
+      data_load = [];
+    }
+    return data_load;
+  } catch (error) {
+    console.log("async retrive prlm _loadBorroewDB : ", error);
+  }
+}
+
+const _status_Checker = data => {
+  let _return_data;
+  let _result = data.filter(e => {
+    if (e.status == true) {
+      return e;
+    }
+  });
+
+  _result.length == 0 ? (_return_data = []) : (_return_data = _result);
+
+  return _return_data;
+};
