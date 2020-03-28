@@ -17,7 +17,14 @@ const _makeid = () => {
   return result;
 };
 
-export const _save_borrow = async (props, itemname, amount, itemdate, note) => {
+export const _save_borrow = async (
+  props,
+  itemname,
+  amount,
+  itemdate,
+  note,
+  NameOf
+) => {
   try {
     if (itemname == "" || amount == "" || itemdate == "") {
       Alert.alert("! Please Check Again...");
@@ -27,7 +34,10 @@ export const _save_borrow = async (props, itemname, amount, itemdate, note) => {
       const ent_Date = check_in.format("DD-MM-YYYY");
 
       // Everything is Fine
-      const value = await AsyncStorage.getItem("BORROW@all@Data");
+      const value = await AsyncStorage.getItem(
+        NameOf == "ADD LEND LIST" ? "LEND@all@Data" : "BORROW@all@Data"
+      );
+
       let data_load = JSON.parse(value);
 
       let _data_load = [
@@ -45,10 +55,10 @@ export const _save_borrow = async (props, itemname, amount, itemdate, note) => {
 
       if (data_load == null) {
         await AsyncStorage.setItem(
-          "BORROW@all@Data",
+          NameOf == "ADD LEND LIST" ? "LEND@all@Data" : "BORROW@all@Data",
           JSON.stringify(_data_load)
         ).then(() => {
-          props.navigation.goBack();
+          props.navigation.navigate("borrow_lending");
         });
       } else {
         data_load.push({
@@ -64,7 +74,7 @@ export const _save_borrow = async (props, itemname, amount, itemdate, note) => {
 
         // OK array add now save in DB
         await AsyncStorage.setItem(
-          "BORROW@all@Data",
+          NameOf == "ADD LEND LIST" ? "LEND@all@Data" : "BORROW@all@Data",
           JSON.stringify(data_load)
         ).then(() => {
           props.navigation.navigate("borrow_lending");
@@ -96,9 +106,11 @@ const _array_update = info => {
   }
 };
 
-export const _update_borrow = async (data, props) => {
+export const _update_borrow = async (data, props, NameOFDes) => {
   try {
-    const value = await AsyncStorage.getItem("BORROW@all@Data");
+    const value = await AsyncStorage.getItem(
+      NameOFDes == "lend" ? "LEND@all@Data" : "BORROW@all@Data"
+    );
     let data_load = JSON.parse(value);
 
     let array_update = data_load.map(e =>
@@ -106,7 +118,7 @@ export const _update_borrow = async (data, props) => {
     );
 
     await AsyncStorage.setItem(
-      "BORROW@all@Data",
+      NameOFDes == "lend" ? "LEND@all@Data" : "BORROW@all@Data",
       JSON.stringify(array_update)
     ).then(() => {
       props.navigation.navigate("borrow_lending");

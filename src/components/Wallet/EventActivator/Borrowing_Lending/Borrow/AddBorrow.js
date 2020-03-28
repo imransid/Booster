@@ -21,7 +21,11 @@ const CustomItem = props => {
 };
 
 const AddBorrow = props => {
-  const title = "Add Borrow List";
+  let title;
+  const NameOf = props.navigation.state.params.names;
+  NameOf == "ADD LEND LIST"
+    ? (title = "Add Lend List")
+    : (title = "Add Borrow List");
 
   const [itemname, setItemname] = useState("");
   const [amount, setAmount] = useState("");
@@ -102,7 +106,7 @@ const AddBorrow = props => {
             success
             full
             onPress={() =>
-              _save_borrow(props, itemname, amount, itemdate, note)
+              _save_borrow(props, itemname, amount, itemdate, note, NameOf)
             }
           >
             <Text style={{ color: "#FFF", fontSize: 18, fontWeight: "bold" }}>

@@ -1,3 +1,5 @@
+// This page dynamicly show borrow and lend
+
 import React, { useEffect, useState } from "react";
 import {
   StatusBar,
@@ -26,6 +28,7 @@ import Modal from "react-native-modal";
 import { LoadBorrow } from "../../../../../actions/EventActivator";
 
 import { _update_borrow } from "./Func_Methods";
+import { ScrollView } from "react-native-gesture-handler";
 
 const Custom_Row = props => {
   return (
@@ -71,7 +74,6 @@ const CUSTOM_CARD = props => {
 };
 
 const Borrow = props => {
-  const title = "Borrow List";
   const [loader, setLoader] = useState(true);
   const [selectedData, setSelectedData] = useState([]);
 
@@ -83,13 +85,20 @@ const Borrow = props => {
   const load_borrow = useSelector(state => state.EVENT_AC.load_borrow);
   const dispatch = useDispatch();
 
+  // name Of description
+
+  let NameOFDes = props.navigation.state.params.names;
+
+  const title = NameOFDes.toUpperCase() + " " + "List";
+
   useEffect(() => {
     load_borrow == true ? setLoader(false) : null;
 
     // Using an IIFE
     (async function DataCreater() {
       try {
-        dispatch(LoadBorrow("borrow"));
+        // NameOFDes
+        dispatch(LoadBorrow(NameOFDes));
       } catch (error) {
         console.log("Error is Borrow useEffect ", error);
       }
@@ -118,7 +127,7 @@ const Borrow = props => {
                       style={{ alignItems: "center" }}
                       onPress={() => (
                         setModalstatus(false),
-                        _update_borrow(selectedData, props)
+                        _update_borrow(selectedData, props, NameOFDes)
                       )}
                     >
                       <Text>Confirm</Text>
@@ -157,25 +166,34 @@ const Borrow = props => {
           {load_borrow_data.length == 0 ? (
             <View style={{ width: "100%" }}>
               <BLaNK_Notify
-                msg={"You Don't have any current Borrow right now."}
+                msg={
+                  "You Don't have any current " +
+                  (NameOFDes == "lend" ? "Lend" : "Borrow") +
+                  " right now."
+                }
               />
             </View>
           ) : (
-            load_borrow_data.map((e, i) => (
-              <View style={{ width: "100%" }}>
-                <CUSTOM_CARD
-                  key={Math.floor(Math.random() * i)}
-                  data={e}
-                  _dataSet={() => setSelectedData(e)}
-                  _modalOn={() => setModalstatus(true)}
-                  _modalOff={() => setModalstatus(false)}
-                />
-              </View>
-            ))
+            <ScrollView style={{ width: "100%" }}>
+              {load_borrow_data.map((e, i) => (
+                <View style={{ width: "100%" }}>
+                  <CUSTOM_CARD
+                    key={Math.floor(Math.random() * i)}
+                    data={e}
+                    _dataSet={() => setSelectedData(e)}
+                    _modalOn={() => setModalstatus(true)}
+                    _modalOff={() => setModalstatus(false)}
+                  />
+                </View>
+              ))}
+            </ScrollView>
           )}
 
           <View style={{ width: "100%" }}>
-            <EVNTCARD Event_Name={"ADD BORROW LIST"} Nav={props.navigation} />
+            <EVNTCARD
+              Event_Name={"ADD " + NameOFDes.toUpperCase() + " LIST"}
+              Nav={props.navigation}
+            />
           </View>
         </View>
       )}

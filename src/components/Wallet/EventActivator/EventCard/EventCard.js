@@ -12,7 +12,10 @@ const Event_Card = props => {
             ? "borrow_lending"
             : props.Event_Name == "ADD BORROW LIST"
             ? "add_borrow_list"
-            : props.Event_Name
+            : props.Event_Name == "ADD LEND LIST"
+            ? "add_borrow_list"
+            : props.Event_Name,
+          { names: props.Event_Name }
         )
       }
     >
@@ -20,7 +23,11 @@ const Event_Card = props => {
         style={{
           height: 50,
           backgroundColor:
-            props.Event_Name == "ADD BORROW LIST" ? "#1A1EEF" : "#FFF"
+            props.Event_Name == "ADD BORROW LIST"
+              ? "#1A1EEF"
+              : props.Event_Name == "ADD LEND LIST"
+              ? "#1A1EEF"
+              : "#FFF"
         }}
       >
         <Grid>
@@ -30,11 +37,17 @@ const Event_Card = props => {
                 name={
                   props.Event_Name == "ADD BORROW LIST"
                     ? "plus"
+                    : props.Event_Name == "ADD LEND LIST"
+                    ? "plus"
                     : "controller-record"
                 }
                 size={18}
                 color={
-                  props.Event_Name == "ADD BORROW LIST" ? "#FFF" : "#1A1EEF"
+                  props.Event_Name == "ADD BORROW LIST"
+                    ? "#FFF"
+                    : props.Event_Name == "ADD LEND LIST"
+                    ? "#FFF"
+                    : "#1A1EEF"
                 }
               />
             </Col>
@@ -42,7 +55,11 @@ const Event_Card = props => {
               <Label
                 style={{
                   color:
-                    props.Event_Name == "ADD BORROW LIST" ? "#FFF" : "#000000",
+                    props.Event_Name == "ADD BORROW LIST"
+                      ? "#FFF"
+                      : props.Event_Name == "ADD LEND LIST"
+                      ? "#FFF"
+                      : "#000000",
                   fontFamily: "Audrey-Bold"
                 }}
               >

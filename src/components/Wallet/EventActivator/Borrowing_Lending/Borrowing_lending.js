@@ -12,7 +12,9 @@ const CustomCard = props => {
         width: "80%"
       }}
     >
-      <TouchableOpacity onPress={() => props.nav.navigate("borrow")}>
+      <TouchableOpacity
+        onPress={() => props.nav.navigate("borrow", { names: props.name })}
+      >
         <Text
           style={{
             fontFamily: "Audrey-Bold",
@@ -44,8 +46,8 @@ const Borrowing_lending = props => {
           justifyContent: "center"
         }}
       >
-        <CustomCard name="Lending" nav={props.navigation} />
-        <CustomCard name="Borrowing" nav={props.navigation} />
+        <CustomCard name="lend" nav={props.navigation} />
+        <CustomCard name="borrow" nav={props.navigation} />
       </View>
     </Container>
   );

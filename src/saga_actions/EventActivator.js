@@ -68,9 +68,7 @@ const _total_Cost = async Data_array => {
 };
 
 export const _loadBorrowORLendDB = function*(action) {
-  const BorrowData = yield call(_loadBorroewDB);
-
-  console.log("act", action, BorrowData);
+  const BorrowData = yield call(_loadBorroewDB, action.name);
 
   yield put({
     type: actionType.LOADED_BORROWORLEND_DB,
@@ -79,9 +77,14 @@ export const _loadBorrowORLendDB = function*(action) {
   });
 };
 
-export async function _loadBorroewDB() {
+export async function _loadBorroewDB(name) {
   try {
-    const data = await AsyncStorage.getItem("BORROW@all@Data");
+    console.log("name", name);
+    let data;
+    name == "lend"
+      ? (data = await AsyncStorage.getItem("LEND@all@Data"))
+      : (data = await AsyncStorage.getItem("BORROW@all@Data"));
+
     let data_load;
     if (data !== null) {
       _data = JSON.parse(data);
