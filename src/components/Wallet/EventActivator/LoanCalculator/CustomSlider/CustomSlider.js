@@ -1,18 +1,5 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity, ScrollView, Slider, Text } from "react-native";
-import {
-  Content,
-  Label,
-  Item,
-  Input,
-  Card,
-  Picker,
-  Grid,
-  Col,
-  Row,
-  Textarea
-} from "native-base";
-import ICONS from "react-native-vector-icons/Entypo";
+import { View, Slider, Text } from "react-native";
 
 const CustomSlider = props => {
   const [count, setCount] = useState(0);
@@ -31,7 +18,7 @@ const CustomSlider = props => {
         }}
       >
         <Text style={{ fontFamily: "icofont" }}>
-          {props.name} : {count} {props.name == "Interest Rate" ? "%" : "Month"}
+          {props.name} : {count} {props.name == "Interest Rate" ? "%" : "Year"}
         </Text>
       </View>
       <View style={{ flex: 1 }}>

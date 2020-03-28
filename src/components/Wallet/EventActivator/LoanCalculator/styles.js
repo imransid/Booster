@@ -2,9 +2,9 @@ import { StyleSheet, Dimensions, Platform } from "react-native";
 
 const styles = StyleSheet.create({
   teXt_monthly: {
-    color: "#fff",
+    color: "#FF6347",
     fontFamily: "icofont",
-    fontSize: 25,
+    fontSize: 22,
     textAlign: "center"
   }
 });

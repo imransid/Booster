@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  View,
-  StatusBar,
-  FlatList,
-  TouchableOpacity,
-  ScrollView,
-  Text,
-  TextInput
-} from "react-native";
+import { View, StatusBar, Text, TextInput } from "react-native";
 import { Container } from "native-base";
 import HeaderMenu from "../../ComponentHeader/HeaderMenu";
 import CustomSlider from "../../EventActivator/LoanCalculator/CustomSlider/CustomSlider";
@@ -21,7 +13,9 @@ class LoanCalculator extends Component {
       amonut: 0,
       interest_rate: 0,
       duration_time: 0,
-      mothly_amonut: "00,000.00"
+      mothly_amonut: "00,000.00",
+      Total_Payment: "00,000.00",
+      Total_Interest: "00,000.00"
     };
   }
 
@@ -41,6 +35,7 @@ class LoanCalculator extends Component {
   };
 
   _interest_calculation = (name, value) => {
+    let monthly_bill, Total_Interest, Total_Payment;
     let totalAmount = parseInt(name == "amonut" ? value : this.state.amonut);
     let interestRate = parseInt(
       name == "interest_rate" ? value : this.state.interest_rate
@@ -49,18 +44,44 @@ class LoanCalculator extends Component {
       name == "duration_time" ? value : this.state.duration_time
     );
 
-    let resultInterest = (interestRate / 100) * totalAmount;
-    let resultInterestWithMonth = resultInterest * DurationTime;
-    let Total_Amount_Now = resultInterestWithMonth + totalAmount;
+    const principal = parseFloat(totalAmount);
+    const calculatedInterest = parseFloat(interestRate) / 100 / 12;
+    const calculatedPayments = parseFloat(DurationTime) * 12;
 
-    let monthly_bill = Total_Amount_Now / DurationTime;
+    //complate monthly payment
+    const x = Math.pow(1 + calculatedInterest, calculatedPayments);
+    const monthly = (principal * x * calculatedInterest) / (x - 1);
 
-    monthly_bill == Infinity
+    monthly == Infinity
       ? (monthly_bill = "00,000.00")
-      : (monthly_bill = monthly_bill.toFixed(3));
+      : monthly == 0
+      ? (monthly_bill = "00,000.00")
+      : monthly == NaN
+      ? (monthly_bill = "00,000.00")
+      : (monthly_bill = monthly.toFixed(3));
+
+    monthly == Infinity
+      ? (Total_Interest = "00,000.00")
+      : monthly == 0
+      ? (Total_Interest = "00,000.00")
+      : monthly == NaN
+      ? (Total_Interest = "00,000.00")
+      : (Total_Interest = (monthly * calculatedPayments - principal).toFixed(
+          2
+        ));
+
+    monthly == Infinity
+      ? (Total_Payment = "00,000.00")
+      : monthly == 0
+      ? (Total_Payment = "00,000.00")
+      : monthly == NaN
+      ? (Total_Payment = "00,000.00")
+      : (Total_Payment = (monthly * calculatedPayments).toFixed(2));
 
     this.setState({
-      mothly_amonut: monthly_bill
+      mothly_amonut: monthly_bill,
+      Total_Interest: Total_Interest,
+      Total_Payment: Total_Payment
     });
   };
 
@@ -116,17 +137,46 @@ class LoanCalculator extends Component {
             alignItems: "center"
           }}
         >
-          <Text
-            style={{
-              color: "#fff",
-              fontFamily: "icofont",
-              fontSize: 25,
-              textAlign: "center"
-            }}
-          >
-            Monthly Installment
-          </Text>
-          <Text style={styles.teXt_monthly}>{this.state.mothly_amonut}</Text>
+          <View style={{ flex: 0.3 }}></View>
+          <View style={{ flex: 1 }}>
+            <Text
+              style={{
+                color: "#C0C0C0",
+                fontFamily: "icofont",
+                fontSize: 25,
+                textAlign: "center"
+              }}
+            >
+              Monthly Installment
+            </Text>
+            <Text style={styles.teXt_monthly}>{this.state.mothly_amonut}</Text>
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text
+              style={{
+                color: "#C0C0C0",
+                fontFamily: "icofont",
+                fontSize: 25,
+                textAlign: "center"
+              }}
+            >
+              Total Payment
+            </Text>
+            <Text style={styles.teXt_monthly}>{this.state.Total_Payment}</Text>
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text
+              style={{
+                color: "#C0C0C0",
+                fontFamily: "icofont",
+                fontSize: 25,
+                textAlign: "center"
+              }}
+            >
+              Total Interest
+            </Text>
+            <Text style={styles.teXt_monthly}>{this.state.Total_Interest}</Text>
+          </View>
         </View>
       </Container>
     );
