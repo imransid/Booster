@@ -14,6 +14,12 @@ const styles = StyleSheet.create({
     height: 80,
     padding: 10
   },
+  footer_scroll_Cus: {
+    backgroundColor: "transparent",
+    position: "absolute",
+    bottom: 5,
+    right: 2
+  },
   input_Item_Cus: {
     borderColor: "#D3D3D3",
     borderWidth: 1

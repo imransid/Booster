@@ -6,7 +6,10 @@ const initialState = {
   loaded_data: [],
   total_price: 0,
   load_borrow_data: [],
-  load_borrow: false
+  load_borrow: false,
+  emi_loader: true,
+  Load_EMI_Data: [],
+  status: ""
 };
 
 export default (state = initialState, action) => {
@@ -24,6 +27,23 @@ export default (state = initialState, action) => {
         ...state,
         load_borrow_data: action.load_borrow_data,
         load_borrow: action.load_borrow
+      };
+    case actionType.ADD_EMI_DB:
+      return {
+        ...state,
+        emi_loader: true
+      };
+    case actionType.UPDATE_EMI_DB:
+      return {
+        ...state,
+        emi_loader: true
+      };
+    case actionType.LOADED_EMI_DB:
+      return {
+        ...state,
+        emi_loader: false,
+        Load_EMI_Data: action.Load_EMI_Data,
+        status: action.status
       };
     default:
       return state;

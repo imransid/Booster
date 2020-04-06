@@ -20,7 +20,10 @@ import {
 
 import {
   loadMCMDetails,
-  _loadBorrowORLendDB
+  _loadBorrowORLendDB,
+  add_emi,
+  load_emi,
+  _update_emi
 } from "../saga_actions/EventActivator";
 
 import { customNavigationUpdater } from "../saga_actions/customNavigation";
@@ -76,6 +79,9 @@ const rootSaga = function*() {
   yield takeEvery(actionType.CUSNAV, customNavigationUpdater);
   yield takeEvery(actionType.LOAD_MCM_DB, loadMCMDetails);
   yield takeEvery(actionType.LOAD_BORROWORLEND_DB, _loadBorrowORLendDB);
+  yield takeEvery(actionType.ADD_EMI_DB, add_emi);
+  yield takeEvery(actionType.RETRIVE_EMI_DB, load_emi);
+  yield takeEvery(actionType.UPDATE_EMI_DB, _update_emi);
 };
 
 export default rootSaga;

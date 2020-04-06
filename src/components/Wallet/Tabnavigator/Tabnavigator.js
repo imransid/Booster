@@ -28,6 +28,8 @@ import LOAN from "../EventActivator/Loan/Loan";
 import borrow_lending from "../EventActivator/Borrowing_Lending/Borrowing_lending";
 import borrow from "../EventActivator/Borrowing_Lending/Borrow/Borrow";
 import add_borrow_list from "../EventActivator/Borrowing_Lending/Borrow/AddBorrow";
+// EMI
+import EMI from "../EventActivator/EMI/EMI";
 
 const EVENT_AC = createStackNavigator(
   {
@@ -57,6 +59,9 @@ const EVENT_AC = createStackNavigator(
     },
     add_borrow_list: {
       screen: add_borrow_list
+    },
+    EMI: {
+      screen: EMI
     }
   },
   {

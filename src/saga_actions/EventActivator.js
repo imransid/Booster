@@ -2,6 +2,12 @@ import { takeEvery, select, call, put } from "redux-saga/effects";
 import { AsyncStorage, ToastAndroid } from "react-native";
 import actionType from "../constant/constant";
 import moment from "moment";
+import {
+  _add_emi,
+  _loadEMIDB,
+  _StaTusChecker,
+  _UpdateEMIDB
+} from "./extends_emi";
 
 let check = moment(new Date());
 
@@ -109,4 +115,55 @@ const _status_Checker = data => {
   _result.length == 0 ? (_return_data = []) : (_return_data = _result);
 
   return _return_data;
+};
+
+// ALLL EMI
+
+export const add_emi = function*(action) {
+  try {
+    const all_EMI_Data = yield call(_add_emi, action);
+
+    const StaTusChecker = yield call(_StaTusChecker, all_EMI_Data);
+
+    yield put({
+      type: actionType.LOADED_EMI_DB,
+      Load_EMI_Data: StaTusChecker,
+      status: "add_new_data"
+    });
+  } catch (error) {
+    console.log("Error is add_emi : ", error);
+  }
+};
+
+export const load_emi = function*(action) {
+  try {
+    const all_EMI_Data = yield call(_loadEMIDB);
+
+    const StaTusChecker = yield call(_StaTusChecker, all_EMI_Data);
+
+    yield put({
+      type: actionType.LOADED_EMI_DB,
+      Load_EMI_Data: StaTusChecker,
+      status: "retrive_data"
+    });
+  } catch (error) {
+    console.log("Error is add_emi : ", error);
+  }
+};
+
+// update emi
+export const _update_emi = function*(action) {
+  try {
+    const update_EMI_Data = yield call(_UpdateEMIDB, action);
+
+    const StaTusChecker = yield call(_StaTusChecker, update_EMI_Data);
+
+    yield put({
+      type: actionType.LOADED_EMI_DB,
+      Load_EMI_Data: StaTusChecker,
+      status: "retrive_data"
+    });
+  } catch (error) {
+    console.log("Error is add_emi : ", error);
+  }
 };
