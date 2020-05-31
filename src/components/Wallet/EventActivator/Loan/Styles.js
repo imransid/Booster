@@ -52,6 +52,20 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     // width: "100%"
     flex: 1
+  },
+  proced_Text: {
+    color: "#FFF",
+    textAlign: "center",
+    fontSize: 17,
+    fontFamily: "Amiko-SemiBold"
+  },
+  proced_Button: {
+    backgroundColor: "#7B1FA2",
+    borderRadius: 10,
+    justifyContent: "center",
+    height: 45,
+    alignItems: "center",
+    width: 100
   }
 });
 

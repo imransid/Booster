@@ -47,3 +47,54 @@ export function updateEMI(emi_id) {
     emi_id: emi_id
   };
 }
+
+// LOan Data
+
+export function LoadLoan() {
+  return {
+    type: actionType.RETRIVE_LOAN
+  };
+}
+
+// LOan Data
+
+export function addLoan(
+  loanTitle,
+  paidInstallment,
+  selectYear,
+  loan_catgory,
+  selectBank,
+  itemdate,
+  amount,
+  description,
+  interest,
+  monthly_amount
+) {
+  return {
+    type: actionType.ADD_LOAN,
+    loanTitle: loanTitle,
+    paidInstallment: paidInstallment,
+    selectYear: selectYear,
+    loan_catgory: loan_catgory,
+    selectBank: selectBank,
+    itemdate: itemdate,
+    amount: amount,
+    description: description,
+    interest: interest,
+    monthly_amount: monthly_amount
+  };
+}
+
+export function _load_Statistics_loader(id) {
+  return {
+    type: actionType.STATISTICS,
+    id: id
+  };
+}
+
+export function _load_update(id) {
+  return {
+    type: actionType.LOANUPDATE,
+    id: id
+  };
+}

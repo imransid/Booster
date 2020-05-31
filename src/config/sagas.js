@@ -23,7 +23,11 @@ import {
   _loadBorrowORLendDB,
   add_emi,
   load_emi,
-  _update_emi
+  _update_emi,
+  _retriveLoan,
+  _addLoan,
+  _load_statistics,
+  _updateLoan
 } from "../saga_actions/EventActivator";
 
 import { customNavigationUpdater } from "../saga_actions/customNavigation";
@@ -82,6 +86,10 @@ const rootSaga = function*() {
   yield takeEvery(actionType.ADD_EMI_DB, add_emi);
   yield takeEvery(actionType.RETRIVE_EMI_DB, load_emi);
   yield takeEvery(actionType.UPDATE_EMI_DB, _update_emi);
+  yield takeEvery(actionType.RETRIVE_LOAN, _retriveLoan);
+  yield takeEvery(actionType.ADD_LOAN, _addLoan);
+  yield takeEvery(actionType.STATISTICS, _load_statistics);
+  yield takeEvery(actionType.LOANUPDATE, _updateLoan);
 };
 
 export default rootSaga;

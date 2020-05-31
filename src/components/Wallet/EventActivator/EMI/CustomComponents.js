@@ -22,23 +22,31 @@ const Custom_Row = props => {
 };
 
 const Custom_Card = props => {
-  let CardNum = props.data.card_name.substr(-4);
-  let Card_Name = props.data.card_name.substring(0, 10);
+  console.log(props);
+  let CardNum =
+    props.name == "loan" ? props.data.id : props.data.card_name.substr(-4);
+  let Card_Name =
+    props.name == "loan"
+      ? props.data.selectBank
+      : props.data.card_name.substring(0, 10);
 
-  let CardName = Card_Name + " ( " + CardNum + " ) ";
+  let CardName =
+    props.name == "loan" ? Card_Name : Card_Name + " ( " + CardNum + " ) ";
 
   return (
     <Card style={{ padding: 5 }}>
       <Grid>
         <Col style={{ width: "25%" }}>
           <Custom_Row
-            text={"EMI " + props.count}
+            text={(props.name == "loan" ? "LOAN " : "EMI ") + props.count}
             position="left"
             cusFont="Amiko-Bold"
             cusCode="#3AB4B7"
           />
           <Custom_Row
-            text={props.data.title}
+            text={
+              props.name == "loan" ? props.data.loanTitle : props.data.title
+            }
             position="left"
             cusFont="Alef-Regular"
             cusCode="#787878"
@@ -61,7 +69,9 @@ const Custom_Card = props => {
             cusCode="#787878"
           />
           <Custom_Row
-            text={props.data.months}
+            text={
+              props.name == "loan" ? props.data.selectYear : props.data.months
+            }
             position="right"
             cusFont="Alef-Regular"
             cusCode="#787878"
@@ -105,6 +115,7 @@ const CusTomMSG = props => {
 };
 
 const AlertMsg = props => {
+  console.log("props props", props);
   return (
     <Card
       style={{
@@ -114,7 +125,7 @@ const AlertMsg = props => {
           props.Coloraction == "info"
             ? "#0000FF"
             : props.Coloraction == "warning"
-            ? "#BD3B1B"
+            ? "#ff4444"
             : props.Coloraction == "sucess"
             ? "#0000FF"
             : "#FFFFFF"

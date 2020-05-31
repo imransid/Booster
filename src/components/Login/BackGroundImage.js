@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, ImageBackground, Text, Image } from "react-native";
+import { View, ImageBackground, Text, Image, StatusBar } from "react-native";
 import FBbutton from "./facebookButton/fb_Button";
 import GooGleButton from "./googleButton/google_button";
 import styles from "./styles";
@@ -10,6 +10,7 @@ export default class BackGroundImage extends Component {
         source={require("../../assets/images/Back.png")}
         style={styles.backgroundDefault}
       >
+        <StatusBar hidden />
         <View style={styles.bodyContainer}>
           <View style={styles.headContainer}>
             <View style={styles.headerFixedheight}></View>

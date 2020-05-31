@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   footerContentText: {
     fontSize: 22,
     color: "#013220",
-    fontWeight: "bold"
+    fontFamily: "Alef-Regular"
   },
   headerFixedheight: { height: "10%" },
   headerIconIamgeheight: {

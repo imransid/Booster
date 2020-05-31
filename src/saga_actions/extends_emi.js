@@ -108,7 +108,7 @@ export async function _StaTusChecker(data) {
   return retun_data;
 }
 
-async function _makeid() {
+export async function _makeid() {
   var length = 10;
   var result = "";
   var characters =

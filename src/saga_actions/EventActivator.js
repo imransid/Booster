@@ -1,4 +1,4 @@
-import { takeEvery, select, call, put } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 import { AsyncStorage, ToastAndroid } from "react-native";
 import actionType from "../constant/constant";
 import moment from "moment";
@@ -8,6 +8,13 @@ import {
   _StaTusChecker,
   _UpdateEMIDB
 } from "./extends_emi";
+
+import {
+  Retrive_DB_Loan,
+  Add_Loan_DB,
+  _load_statistics_DB,
+  _Update_LOAN
+} from "./extends_Loan_Actions";
 
 let check = moment(new Date());
 
@@ -165,5 +172,67 @@ export const _update_emi = function*(action) {
     });
   } catch (error) {
     console.log("Error is add_emi : ", error);
+  }
+};
+
+// retrive Loan
+
+export const _retriveLoan = function*(action) {
+  try {
+    const Loan_Data = yield call(Retrive_DB_Loan);
+
+    yield put({
+      type: actionType.LOAN_DB_LOEDED,
+      Loan_Data: Loan_Data,
+      status: "retrive_data"
+    });
+  } catch (error) {
+    console.log("Error is _retriveLoan : ", error);
+  }
+};
+
+// ADD LOAN
+
+export const _addLoan = function*(action) {
+  try {
+    const Loan_Data = yield call(Add_Loan_DB, action);
+
+    console.log("okokokok", Loan_Data);
+
+    yield put({
+      type: actionType.LOAN_DB_LOEDED,
+      Loan_Data: Loan_Data,
+      status: "retrive_data"
+    });
+  } catch (error) {
+    console.log("Error is _retriveLoan : ", error);
+  }
+};
+
+export const _load_statistics = function*(action) {
+  try {
+    const Data = yield call(_load_statistics_DB, action);
+
+    yield put({
+      type: actionType.RETRIVE_STATISTICS,
+      loan_Statistics_data: Data[0],
+      loan_Statistics_details: Data[1]
+    });
+  } catch (error) {
+    console.log("Error is _load_statistics : ", error);
+  }
+};
+
+export const _updateLoan = function*(action) {
+  try {
+    const Data = yield call(_Update_LOAN, action);
+
+    yield put({
+      type: actionType.RETRIVE_STATISTICS,
+      loan_Statistics_data: Data[0],
+      loan_Statistics_details: Data[1]
+    });
+  } catch (error) {
+    console.log("Error is _updateLoan : ", error);
   }
 };

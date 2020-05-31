@@ -1,77 +1,170 @@
-import React, { Component } from "react";
-import { Container, View, Footer } from "native-base";
-import { ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  ScrollView,
+  Text,
+  ActivityIndicator,
+  StatusBar,
+  TouchableOpacity
+} from "react-native";
+import { Container, Footer, View } from "native-base";
 import HeaderMenu from "../../ComponentHeader/HeaderMenu";
-import { connect } from "react-redux";
-import BLaNK_Notify from "../BankNotityCard/Blank_Notify";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./Styles";
 import ADDLOAN from "./addLoan";
 import CUSFOOTER from "./customFooterLoan";
 
-class Loan extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: "LOAN",
-      input_focus: false
-    };
-  }
+import { LoadLoan } from "../../../../actions/EventActivator";
 
-  add_New_load = () => {
-    this.setState({
-      title: "Add Loan"
-    });
+import { Custom_Card, AlertMsg } from "../EMI/CustomComponents";
+
+const Loan = props => {
+  const dispatch = useDispatch();
+
+  const loader = useSelector(state => state.EVENT_AC.loan_loader);
+
+  const Loan_Data = useSelector(state => state.EVENT_AC.Loan_Data);
+
+  const status = useSelector(state => state.EVENT_AC.Loan_status);
+
+  const [onCencel, setOnCencel] = useState(true);
+  const title = onCencel == true ? "Loan" : "Add Loan";
+
+  _modalActivator = info => {
+    props.navigation.navigate("LoanStatics", { id: info.id });
   };
 
-  text_on_focus = () => {
-    this.setState({
-      input_focus: true
-    });
-  };
+  useEffect(() => {
+    try {
+      dispatch(LoadLoan());
+    } catch (error) {
+      console.log("Error is Loan useEffect ", error);
+    }
+  }, []);
 
-  text_on_blur = () => {
-    this.setState({
-      input_focus: false
-    });
-  };
+  return (
+    <Container>
+      <StatusBar hidden />
+      <HeaderMenu props={props.navigation} title={title} />
 
-  customCencel = () => {
-    console.log("okoaskdoaskd");
-    this.setState({
-      title: "LOAN"
-    });
-  };
-
-  render() {
-    return (
-      <Container>
-        <HeaderMenu props={this.props} title={this.state.title} />
-        <View style={styles.bank_scroll}>
-          <BLaNK_Notify msg={"You Don't have any current loan right now."} />
+      {loader == true ? (
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <ActivityIndicator size="large" color="#0000ff" />
         </View>
-        {this.state.title == "Add Loan" ? (
-          <ADDLOAN
-            text_on_focus={() => this.text_on_focus()}
-            text_on_blur={() => this.text_on_blur()}
-            customCencel={() => this.customCencel()}
-          />
-        ) : null}
-
-        {/*this.state.input_focus == false ? (*/
-        this.state.title == "LOAN" ? (
-          <View style={{ flex: 1 }}>
-            <ScrollView></ScrollView>
-            <Footer style={styles.footerCus}>
-              <CUSFOOTER cus_func={() => this.add_New_load()} cencel={true} />
-            </Footer>
+      ) : (
+        <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, padding: 10 }}>
+            <AlertMsg
+              msgA={
+                onCencel != true
+                  ? "ADD NEW Loan."
+                  : status == "retrive_data"
+                  ? Loan_Data.length == 0
+                    ? "No Loan."
+                    : "Loan Lists."
+                  : "Loan Added Sucessfully."
+              }
+              msgB={
+                onCencel != true
+                  ? "Now You Can Add Your New Loan In Loan List.."
+                  : status == "retrive_data"
+                  ? Loan_Data.length == 0
+                    ? "You Can Add Your Loan."
+                    : "All Loan Listed Are."
+                  : "Your Loan Has Been Added Sucessfully."
+              }
+              type={
+                onCencel != true
+                  ? "added"
+                  : status == "retrive_data"
+                  ? Loan_Data.length == 0
+                    ? "warning"
+                    : "sucess"
+                  : "info"
+              }
+              Coloraction={
+                onCencel != true
+                  ? "addemi"
+                  : status == "retrive_data"
+                  ? Loan_Data.length == 0
+                    ? "warning"
+                    : "sucess"
+                  : "info"
+              }
+            />
           </View>
-        ) : null}
-      </Container>
-    );
-  }
-}
-const mapStateProps = state => {
-  return {};
+          <View style={{ flex: 4 }}>
+            {onCencel == true ? (
+              <View
+                style={{
+                  flex: 0.5,
+                  justifyContent: "center",
+                  paddingLeft: 12
+                }}
+              >
+                {Loan_Data.length == 0 ? (
+                  <Text
+                    style={{ fontFamily: "Amiko-Bold", textAlign: "center" }}
+                  >
+                    No Loan Available Right Now...
+                  </Text>
+                ) : (
+                  <Text style={{ fontFamily: "Amiko-Bold" }}>Recent EMI</Text>
+                )}
+              </View>
+            ) : (
+              <View
+                style={{
+                  flex: 0.2
+                }}
+              ></View>
+            )}
+
+            {/* Dynamiclly set addEmi Or List */}
+            {onCencel == true ? (
+              <View style={{ flex: 3.4 }}>
+                <ScrollView style={{ padding: 10 }}>
+                  {Loan_Data.length == 0
+                    ? null
+                    : Loan_Data.map((e, i) => (
+                        <TouchableOpacity
+                          key={i}
+                          onPress={() => _modalActivator(e)}
+                        >
+                          <Custom_Card data={e} count={i + 1} name={"loan"} />
+                        </TouchableOpacity>
+                      ))}
+                </ScrollView>
+                <View style={styles.footer_scroll_Cus}>
+                  <CUSFOOTER
+                    cus_func={() => setOnCencel(!onCencel)}
+                    cencel={onCencel}
+                  />
+                </View>
+              </View>
+            ) : (
+              <View style={{ flex: 4 }}>
+                <ADDLOAN cus_func={() => setOnCencel(!onCencel)} />
+              </View>
+            )}
+
+            {/* For Footer */}
+            {onCencel == true ? null : (
+              <View style={{ flex: 0.9 }}>
+                <Footer style={styles.footerCus}>
+                  <CUSFOOTER
+                    cus_func={() => setOnCencel(!onCencel)}
+                    cencel={onCencel}
+                  />
+                </Footer>
+              </View>
+            )}
+          </View>
+        </View>
+      )}
+    </Container>
+  );
 };
 
-export default connect(mapStateProps)(Loan);
+export default Loan;

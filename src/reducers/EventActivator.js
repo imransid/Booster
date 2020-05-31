@@ -9,7 +9,13 @@ const initialState = {
   load_borrow: false,
   emi_loader: true,
   Load_EMI_Data: [],
-  status: ""
+  status: "",
+  Loan_Data: [],
+  Loan_status: "",
+  loan_loader: true,
+  loan_Statistics_loader: true,
+  loan_Statistics_data: [],
+  loan_Statistics_details: []
 };
 
 export default (state = initialState, action) => {
@@ -44,6 +50,36 @@ export default (state = initialState, action) => {
         emi_loader: false,
         Load_EMI_Data: action.Load_EMI_Data,
         status: action.status
+      };
+    case actionType.LOAN_DB_LOEDED:
+      return {
+        ...state,
+        loan_loader: false,
+        Loan_status: action.status,
+        Loan_Data: action.Loan_Data
+      };
+    case actionType.ADD_LOAN:
+      return {
+        ...state,
+        loan_loader: true
+      };
+    case actionType.RETRIVE_STATISTICS:
+      return {
+        ...state,
+        loan_Statistics_loader: false,
+        loan_Statistics_data: action.loan_Statistics_data,
+        loan_Statistics_details: action.loan_Statistics_details
+      };
+    case actionType.STATISTICS:
+      return {
+        ...state,
+        loan_Statistics_loader: true
+      };
+
+    case actionType.LOANUPDATE:
+      return {
+        ...state,
+        loan_Statistics_loader: true
       };
     default:
       return state;
