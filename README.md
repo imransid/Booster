@@ -3,24 +3,24 @@
 Our Booster android and ios react native project.. it's A wonderful app that can help you as a personal accountant manager.
 
 # Tools
--> react native
--> redux
--> native-base
--> redux-saga
--> firebase
--> react native push notification
--> react-native-google-signin
--> react-native-html-to-pdf
--> react-native-fbsdk
--> react-native-swiper
--> react-navigation
--> moment
--> rn-fetch-blob
--> redux-logger
--> react-native-modal
--> react-native-pie
--> react-native-splash-screen
--> react-native-vector-icon
+- react native
+- redux
+- native-base
+- redux-saga
+- firebase
+- react native push notification
+- react-native-google-signin
+- react-native-html-to-pdf
+- react-native-fbsdk
+- react-native-swiper
+- react-navigation
+- moment
+- rn-fetch-blob
+- redux-logger
+- react-native-modal
+- react-native-pie
+- react-native-splash-screen
+- react-native-vector-icon
     
     
 # For Bundel
