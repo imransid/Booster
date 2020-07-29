@@ -1,4 +1,9 @@
 import { addLoan } from "./../../../../actions/EventActivator";
+import moment from "moment";
+
+// Today Date
+const check = moment(new Date());
+const Current_Month = check.format("MM");
 
 export const check_Sumbit = (
   loadingOn,
@@ -75,6 +80,14 @@ const error_checker = (
     alert("! You can't Save Empty Field..");
   } else if (dateChecker > 27) {
     alert("! Please Change Date You Can't set date Gretter then 26..");
+  } else if (paidInstallment !== 0) {
+    if (Current_Month == itemdate.slice(3, -5)) {
+      alert(
+        "! Please Check your payment date. You need to set payment date when your loan start.."
+      );
+    } else {
+      return true;
+    }
   } else {
     return true;
   }

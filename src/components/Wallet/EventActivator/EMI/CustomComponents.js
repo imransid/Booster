@@ -125,7 +125,7 @@ const AlertMsg = props => {
           props.Coloraction == "info"
             ? "#0000FF"
             : props.Coloraction == "warning"
-            ? "#ff4444"
+            ? "#0091EA"
             : props.Coloraction == "sucess"
             ? "#0000FF"
             : "#FFFFFF"

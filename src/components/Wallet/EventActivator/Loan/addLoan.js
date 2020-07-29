@@ -77,6 +77,12 @@ const addLoan = props => {
   const [amount, setAmount] = useState(0);
   const [description, setDescription] = useState(0);
   const [monthlyAmount, setMonthlyAmount] = useState(0);
+  const [manualActivator, setManualActivator] = useState(false);
+
+  const _mothlyinstallmentsetter = e => {
+    setManualActivator(true);
+    setMonthlyAmount(e);
+  };
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || itemdate;
@@ -115,7 +121,7 @@ const addLoan = props => {
     let totalduration = name == "time" ? val : selectMonth;
     let totalInterest = name == "interest" ? val : count;
 
-    monthlyInstallment == 0 &&
+    manualActivator == false &&
     totalAmount !== 0 &&
     totalduration !== 0 &&
     totalInterest !== 0
@@ -260,11 +266,13 @@ const addLoan = props => {
 
           <CusRow
             name={
-              monthlyAmount == 0
-                ? "Monthly Installment"
-                : monthlyAmount.toString()
+              manualActivator == false
+                ? monthlyAmount == 0
+                  ? "Monthly Installment"
+                  : monthlyAmount.toString()
+                : "Monthly Installment"
             }
-            SetterValue={e => setMonthlyAmount(e)}
+            SetterValue={e => _mothlyinstallmentsetter(e)}
             Key="numeric"
           />
           {/* Select Month */}

@@ -16,16 +16,31 @@ class HeaderMenu extends Component {
         style={{
           height: 60,
           width: "100%",
-          backgroundColor: "#FFFFFF",
-          flexDirection: "row"
+          backgroundColor:
+            this.props.title == "Borrow" || this.props.title == "Lend"
+              ? this.props.color
+              : "#FFFFFF",
+          flexDirection: "row",
         }}
       >
         <View style={{ width: "20%", alignItems: "center", paddingTop: 15 }}>
-          <MENU navigation={this.props.props.navigation} />
+          <MENU
+            navigation={this.props.props.navigation}
+            title={this.props.title}
+          />
           {/* <Image source={require("../../../assets/images/hamburger.png")}/> */}
         </View>
         <View style={{ width: "60%", paddingTop: 17 }}>
-          <Text style={{ fontWeight: "900", fontSize: 18 }}>
+          <Text
+            style={{
+              fontWeight: "900",
+              fontSize: 18,
+              color:
+                this.props.title == "Borrow" || this.props.title == "Lend"
+                  ? "#F0F4C3"
+                  : "#000",
+            }}
+          >
             {this.props.title}
           </Text>
         </View>
@@ -35,7 +50,7 @@ class HeaderMenu extends Component {
               width: 43,
               height: 43,
               borderColor: "#6A0DAD",
-              borderWidth: 2
+              borderWidth: 2,
             }}
             source={{ uri: `data:image/png;base64,${this.props.userpic}` }}
           />
@@ -45,11 +60,11 @@ class HeaderMenu extends Component {
   }
 }
 
-const mapStateProps = state => {
+const mapStateProps = (state) => {
   const userpic = state.SETTING.userpic;
 
   return {
-    userpic
+    userpic,
     //SyncStatus
   };
 };
