@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Text, Platform, StatusBar } from "react-native";
 import { Container, Item, View, Input, Label, Button } from "native-base";
 import HeaderMenu from "../../../ComponentHeader/HeaderMenu";
@@ -6,27 +7,25 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 
 import { _save_borrow } from "./Func_Methods";
 
-const CustomItem = props => {
+const CustomItem = (props) => {
   return (
     <View style={{ flex: 1 }}>
       <Item floatingLabel>
         <Label>{props.name}</Label>
         <Input
           keyboardType={props.name == "Borrow Amount" ? "numeric" : "default"}
-          onChangeText={e => props.setter(e)}
+          onChangeText={(e) => props.setter(e)}
         />
       </Item>
     </View>
   );
 };
 
-const AddBorrow = props => {
-  let title;
-  const NameOf = props.navigation.state.params.names;
-  NameOf == "ADD LEND LIST"
-    ? (title = "Add Lend List")
-    : (title = "Add Borrow List");
+const AddBorrow = (props) => {
+  const dispatch = useDispatch();
 
+  let nameOfNavigation = props.navigation.state.params.names;
+  let title = `Add ${nameOfNavigation} List`;
   const [itemname, setItemname] = useState("");
   const [amount, setAmount] = useState("");
   const [show, setShow] = useState(false);
@@ -40,7 +39,7 @@ const AddBorrow = props => {
     setItemDate(event.nativeEvent.timestamp);
   };
 
-  const showMode = currentMode => {
+  const showMode = (currentMode) => {
     setShow(true);
     setMode(currentMode);
   };
@@ -57,7 +56,7 @@ const AddBorrow = props => {
         style={{
           flex: 1,
           paddingLeft: 20,
-          paddingRight: 20
+          paddingRight: 20,
         }}
       >
         {show && (
@@ -73,9 +72,9 @@ const AddBorrow = props => {
         )}
 
         <View style={{ flex: 0.7 }}></View>
-        <CustomItem name="Creditor Name" setter={e => setItemname(e)} />
+        <CustomItem name="Creditor Name" setter={(e) => setItemname(e)} />
         <View style={{ flex: 0.7 }}></View>
-        <CustomItem name="Borrow Amount" setter={e => setAmount(e)} />
+        <CustomItem name="Borrow Amount" setter={(e) => setAmount(e)} />
         <View style={{ flex: 0.7 }}></View>
         <View style={{ flex: 1 }}>
           <Button
@@ -84,14 +83,14 @@ const AddBorrow = props => {
             style={{
               width: "100%",
               alignItems: "center",
-              justifyContent: "center"
+              justifyContent: "center",
             }}
           >
             <Text
               style={{
                 color: "#FFF",
                 fontSize: 18,
-                fontWeight: "bold"
+                fontWeight: "bold",
               }}
             >
               Return Date
@@ -99,14 +98,22 @@ const AddBorrow = props => {
           </Button>
         </View>
         <View style={{ flex: 0.7 }}></View>
-        <CustomItem name="Comments" setter={e => setNote(e)} />
+        <CustomItem name="Comments" setter={(e) => setNote(e)} />
         <View style={{ flex: 0.7 }}></View>
         <View style={{ flex: 1 }}>
           <Button
             success
             full
             onPress={() =>
-              _save_borrow(props, itemname, amount, itemdate, note, NameOf)
+              _save_borrow(
+                props,
+                itemname,
+                amount,
+                itemdate,
+                note,
+                nameOfNavigation,
+                dispatch
+              )
             }
           >
             <Text style={{ color: "#FFF", fontSize: 18, fontWeight: "bold" }}>

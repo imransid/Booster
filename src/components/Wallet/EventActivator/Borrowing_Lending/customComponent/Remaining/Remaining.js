@@ -1,8 +1,12 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import { Text } from "react-native";
 import { Row, Col } from "native-base";
+import { useSelector } from "react-redux";
 
-const Remaining = (props) => {
+const Remaining = () => {
+  const remaining_overview = useSelector(
+    (state) => state.EVENT_AC.remaining_overview
+  );
   return (
     <Row style={{ paddingTop: 7 }}>
       <Col>
@@ -17,7 +21,7 @@ const Remaining = (props) => {
             color: "#6A0DAD",
           }}
         >
-          12000
+          {remaining_overview}
         </Text>
       </Col>
     </Row>

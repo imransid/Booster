@@ -4,18 +4,18 @@ import { all_Setting } from "../saga_actions/Setting";
 import {
   all_Transection,
   addTransections,
-  deleteTransection
+  deleteTransection,
 } from "../saga_actions/All_Data_Transections";
 import {
   all_Wallet_Card,
-  addWalletCard
+  addWalletCard,
 } from "../saga_actions/All_Data_Wallet";
 import {
   SummaryGenarator,
   SummaryToday,
   SummaryWeek,
   Summary_Month_Now,
-  Summary_Year_Now
+  Summary_Year_Now,
 } from "../saga_actions/All_Data_Summary";
 
 import {
@@ -27,7 +27,9 @@ import {
   _retriveLoan,
   _addLoan,
   _load_statistics,
-  _updateLoan
+  _updateLoan,
+  _saveBorrowORLendDB,
+  _refreshBorrowOrLend,
 } from "../saga_actions/EventActivator";
 
 import { customNavigationUpdater } from "../saga_actions/customNavigation";
@@ -38,7 +40,7 @@ const url = "https://free.currconv.com/api/v7/convert?q";
 // option B monthly 1000 free req
 // export const getLatestRate = (endpoint, access_key) => fetch(`http://data.fixer.io/api/${endpoint}?access_key=${access_key}&from=${from}&to${to}&amount=${amount}`);
 
-export const getLatestRate = pair_Currency =>
+export const getLatestRate = (pair_Currency) =>
   fetch(
     `https://free.currconv.com/api/v7/convert?q=${pair_Currency}&compact=ultra&apiKey=1e8d1babbeccde1eb21b`
   );
@@ -46,11 +48,11 @@ export const getLatestRate = pair_Currency =>
 // www.amdoren.com api tjbve4G7kJwCeqx35GnxrSudsU9M2P
 // https://free.currconv.com/api/v7/convert?q=USD_PHP&compact=ultra&apiKey=1e8d1babbeccde1eb21b
 
-const fetchuser = function*(action) {
+const fetchuser = function* (action) {
   console.log("work");
 };
 
-const leastRate = function*(action) {
+const leastRate = function* (action) {
   let pair_Currency = "USD" + "_" + "BDT";
 
   const responsebase = yield call(getLatestRate, pair_Currency);
@@ -66,7 +68,7 @@ const leastRate = function*(action) {
   }
 };
 
-const rootSaga = function*() {
+const rootSaga = function* () {
   yield takeEvery(actionType.USER, fetchuser);
   yield takeEvery(actionType.CONVERTION_INIT, leastRate);
   yield takeEvery(actionType.TRANSECTION, all_Transection);
@@ -90,6 +92,8 @@ const rootSaga = function*() {
   yield takeEvery(actionType.ADD_LOAN, _addLoan);
   yield takeEvery(actionType.STATISTICS, _load_statistics);
   yield takeEvery(actionType.LOANUPDATE, _updateLoan);
+  yield takeEvery(actionType.SAVE_BORROWORLEND_DB, _saveBorrowORLendDB);
+  yield takeEvery(actionType.REFRESHBORROWORLEND, _refreshBorrowOrLend);
 };
 
 export default rootSaga;

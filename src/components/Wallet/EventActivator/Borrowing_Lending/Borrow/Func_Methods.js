@@ -1,5 +1,9 @@
 import { AsyncStorage, Alert } from "react-native";
 import moment from "moment";
+import {
+  saveBorrowOrLend,
+  refreshBorrowOrLend,
+} from "../../../../../actions/EventActivator";
 
 // Today Date
 const check = moment(new Date());
@@ -23,70 +27,85 @@ export const _save_borrow = async (
   amount,
   itemdate,
   note,
-  NameOf
+  Name,
+  dispatch
 ) => {
   try {
     if (itemname == "" || amount == "" || itemdate == "") {
-      Alert.alert("! Please Check Again...");
+      Alert.alert("! Empty Field Cann't Save...");
       //   Value is defalut not changed
     } else {
       const check_in = moment(itemdate);
-      const ent_Date = check_in.format("DD-MM-YYYY");
+      const _Date = check_in.format("DD-MM-YYYY");
+
+      let _obj = {
+        name: itemname,
+        amount: amount,
+        return_date: _Date,
+        date: Current_Date,
+        note: note,
+        status: true,
+        id: _makeid(),
+        commments: "",
+      };
+
+      // Save Using Redux
+      dispatch(saveBorrowOrLend(_obj, props.navigation, Name));
 
       // Everything is Fine
-      const value = await AsyncStorage.getItem(
-        NameOf == "ADD LEND LIST" ? "LEND@all@Data" : "BORROW@all@Data"
-      );
+      //   const value = await AsyncStorage.getItem(
+      //     NameOf == "ADD LEND LIST" ? "LEND@all@Data" : "BORROW@all@Data"
+      //   );
 
-      let data_load = JSON.parse(value);
+      //   let data_load = JSON.parse(value);
 
-      let _data_load = [
-        {
-          name: itemname,
-          amount: amount,
-          return_date: ent_Date,
-          date: Current_Date,
-          note: note,
-          status: true,
-          id: _makeid(),
-          commments: ""
-        }
-      ];
+      //   let _data_load = [
+      //     {
+      //       name: itemname,
+      //       amount: amount,
+      //       return_date: ent_Date,
+      //       date: Current_Date,
+      //       note: note,
+      //       status: true,
+      //       id: _makeid(),
+      //       commments: "",
+      //     },
+      //   ];
 
-      if (data_load == null) {
-        await AsyncStorage.setItem(
-          NameOf == "ADD LEND LIST" ? "LEND@all@Data" : "BORROW@all@Data",
-          JSON.stringify(_data_load)
-        ).then(() => {
-          props.navigation.navigate("borrow_lending");
-        });
-      } else {
-        data_load.push({
-          name: itemname,
-          amount: amount,
-          return_date: ent_Date,
-          date: Current_Date,
-          note: note,
-          status: true,
-          id: _makeid(),
-          commments: ""
-        });
+      //   if (data_load == null) {
+      //     await AsyncStorage.setItem(
+      //       NameOf == "Lend" ? "LEND@all@Data" : "BORROW@all@Data",
+      //       JSON.stringify(_data_load)
+      //     ).then(() => {
+      //       props.navigation.navigate("borrow_lending");
+      //     });
+      //   } else {
+      //     data_load.push({
+      //       name: itemname,
+      //       amount: amount,
+      //       return_date: ent_Date,
+      //       date: Current_Date,
+      //       note: note,
+      //       status: true,
+      //       id: _makeid(),
+      //       commments: "",
+      //     });
 
-        // OK array add now save in DB
-        await AsyncStorage.setItem(
-          NameOf == "ADD LEND LIST" ? "LEND@all@Data" : "BORROW@all@Data",
-          JSON.stringify(data_load)
-        ).then(() => {
-          props.navigation.navigate("borrow_lending");
-        });
-      }
+      //     // OK array add now save in DB
+      //     await AsyncStorage.setItem(
+      //       NameOf == "ADD LEND LIST" ? "LEND@all@Data" : "BORROW@all@Data",
+      //       JSON.stringify(data_load)
+      //     ).then(() => {
+      //       props.navigation.navigate("borrow_lending");
+      //     });
+      //   }
     }
   } catch (error) {
     console.log("Error is _save_borrow : ", error);
   }
 };
 
-const _array_update = info => {
+const _array_update = (info) => {
   try {
     let _data = info;
     if (info.return_date == Current_Date) {
@@ -106,22 +125,22 @@ const _array_update = info => {
   }
 };
 
-export const _update_borrow = async (data, props, NameOFDes) => {
+// update Borrow or Lend
+
+export const _update_borrow = async (data, props, NameOFDes, dispatch) => {
   try {
     const value = await AsyncStorage.getItem(
-      NameOFDes == "lend" ? "LEND@all@Data" : "BORROW@all@Data"
+      NameOFDes == "Lend" ? "LEND@all@Data" : "BORROW@all@Data"
     );
     let data_load = JSON.parse(value);
-
-    let array_update = data_load.map(e =>
+    let array_update = data_load.map((e) =>
       e.id == data.id ? _array_update(e) : e
     );
-
     await AsyncStorage.setItem(
-      NameOFDes == "lend" ? "LEND@all@Data" : "BORROW@all@Data",
+      NameOFDes == "Lend" ? "LEND@all@Data" : "BORROW@all@Data",
       JSON.stringify(array_update)
     ).then(() => {
-      props.navigation.navigate("borrow_lending");
+      dispatch(refreshBorrowOrLend(NameOFDes));
     });
   } catch (error) {
     console.log("Error is _update_borrow : ", error);

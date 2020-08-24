@@ -3,8 +3,6 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { connect } from "react-redux";
 
 const DrawerButtons = (props) => {
-  console.log("props in", props.title);
-
   return (
     <Icon
       name="align-justify"

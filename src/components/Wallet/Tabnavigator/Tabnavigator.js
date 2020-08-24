@@ -3,7 +3,7 @@ import { Image } from "react-native";
 import {
   createBottomTabNavigator,
   createStackNavigator,
-  createAppContainer
+  createAppContainer,
 } from "react-navigation";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -27,7 +27,6 @@ import LOAN from "../EventActivator/Loan/Loan";
 import LoanStatics from "../EventActivator/LoanStatics/LoanStatics";
 // borrow_lending
 import borrow_lending from "../EventActivator/Borrowing_Lending/Borrowing_lending";
-import borrow from "../EventActivator/Borrowing_Lending/Borrow/Borrow";
 import add_borrow_list from "../EventActivator/Borrowing_Lending/Borrow/AddBorrow";
 // EMI
 import EMI from "../EventActivator/EMI/EMI";
@@ -35,63 +34,60 @@ import EMI from "../EventActivator/EMI/EMI";
 const EVENT_AC = createStackNavigator(
   {
     LOAN: {
-      screen: LOAN
+      screen: LOAN,
     },
     LoanStatics: {
-      screen: LoanStatics
+      screen: LoanStatics,
     },
     EventActivator: {
-      screen: EventActivator
+      screen: EventActivator,
     },
     LOANCALCULATOR: {
-      screen: LOANCALCULATOR
+      screen: LOANCALCULATOR,
     },
     MCM: {
-      screen: MCM
+      screen: MCM,
     },
     MCM_Details: {
-      screen: MCM_Details
+      screen: MCM_Details,
     },
     AddMCM: {
-      screen: AddMCM
+      screen: AddMCM,
     },
     borrow_lending: {
-      screen: borrow_lending
-    },
-    borrow: {
-      screen: borrow
+      screen: borrow_lending,
     },
     add_borrow_list: {
-      screen: add_borrow_list
+      screen: add_borrow_list,
     },
     EMI: {
-      screen: EMI
-    }
+      screen: EMI,
+    },
   },
   {
     headerMode: "none",
-    initialRouteName: "EventActivator"
+    initialRouteName: "EventActivator",
   }
 );
 
 const HOME = createStackNavigator(
   {
     WALLET: {
-      screen: WalletINIT
+      screen: WalletINIT,
     },
     TRANSECTIONS_EDIT: {
-      screen: TRANSECTIONS_EDIT
+      screen: TRANSECTIONS_EDIT,
     },
     ADD_TRANSECTIONS: {
-      screen: ADD_TRANSECTIONS
+      screen: ADD_TRANSECTIONS,
     },
     ADD_WALLET: {
-      screen: ADD_WALLET
-    }
+      screen: ADD_WALLET,
+    },
   },
   {
     headerMode: "none",
-    initialRouteName: "WALLET"
+    initialRouteName: "WALLET",
   }
 );
 
@@ -100,8 +96,8 @@ const Rootnavigator = createBottomTabNavigator(
     EventActivator: {
       screen: EVENT_AC,
       navigationOptions: {
-        tabBarIcon: <Icon name="bank" size={22} color="#FFFFFF" />
-      }
+        tabBarIcon: <Icon name="bank" size={22} color="#FFFFFF" />,
+      },
     },
 
     WALLET: {
@@ -112,14 +108,14 @@ const Rootnavigator = createBottomTabNavigator(
             source={require("../../../assets/icons/icon-wallet.png")}
             style={{ height: 22, width: 22 }}
           />
-        )
-      }
+        ),
+      },
     },
     History: {
       screen: History,
       navigationOptions: {
-        tabBarIcon: <Icon name="history" size={22} color="#FFFFFF" />
-      }
+        tabBarIcon: <Icon name="history" size={22} color="#FFFFFF" />,
+      },
     },
     Summary: {
       screen: Summary,
@@ -129,9 +125,9 @@ const Rootnavigator = createBottomTabNavigator(
             source={require("../../../assets/icons/icon-summary.png")}
             style={{ height: 22, width: 22 }}
           />
-        )
-      }
-    }
+        ),
+      },
+    },
   },
   {
     swipeEnabled: true,
@@ -139,9 +135,9 @@ const Rootnavigator = createBottomTabNavigator(
       activeTintColor: "white",
       activeBackgroundColor: "#4527A0",
       inactiveTintColor: "gray",
-      inactiveBackgroundColor: "#4527A0"
+      inactiveBackgroundColor: "#4527A0",
     },
-    initialRouteName: "WALLET"
+    initialRouteName: "WALLET",
   }
 );
 

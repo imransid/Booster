@@ -6,15 +6,22 @@ import {
   _add_emi,
   _loadEMIDB,
   _StaTusChecker,
-  _UpdateEMIDB
+  _UpdateEMIDB,
 } from "./extends_emi";
 
 import {
   Retrive_DB_Loan,
   Add_Loan_DB,
   _load_statistics_DB,
-  _Update_LOAN
+  _Update_LOAN,
 } from "./extends_Loan_Actions";
+
+import {
+  _loadBorroewDB,
+  _loadTotalAmount,
+  _SaveBorroewDB,
+  _OverView,
+} from "./extends_lend_borrow";
 
 let check = moment(new Date());
 
@@ -29,17 +36,17 @@ const _session_Checker = (data, sess) => {
   let return_data = [];
 
   if (sess == "month") {
-    data.map(e =>
+    data.map((e) =>
       e.date.slice(3, 5) == Current_month ? return_data.push(e) : e
     );
   } else if (sess == "p_month") {
-    data.map(e => (e.date.slice(3, 5) == P_month ? return_data.push(e) : e));
+    data.map((e) => (e.date.slice(3, 5) == P_month ? return_data.push(e) : e));
   } else if (sess == "year") {
-    data.map(e =>
+    data.map((e) =>
       e.date.slice(6, 10) == Current_year ? return_data.push(e) : e
     );
   } else if (sess == "p_year") {
-    data.map(e => (e.date.slice(6, 10) == P_year ? return_data.push(e) : e));
+    data.map((e) => (e.date.slice(6, 10) == P_year ? return_data.push(e) : e));
   }
   return return_data;
 };
@@ -61,7 +68,7 @@ export async function _loadMCMDetailsDB(sess) {
   }
 }
 
-export const loadMCMDetails = function*(action) {
+export const loadMCMDetails = function* (action) {
   const retive_data = yield call(_loadMCMDetailsDB, action.session);
 
   const total_price = yield call(_total_Cost, retive_data);
@@ -69,64 +76,81 @@ export const loadMCMDetails = function*(action) {
   yield put({
     type: actionType.LOADED_MCM_DB,
     loaded_data: retive_data,
-    total_price: total_price
+    total_price: total_price,
   });
 };
 
-const _total_Cost = async Data_array => {
+const _total_Cost = async (Data_array) => {
   var total_prices = 0;
-  Data_array.map(e => (total_prices = total_prices + parseInt(e.price)));
+  Data_array.map((e) => (total_prices = total_prices + parseInt(e.price)));
 
   return total_prices;
 };
 
-export const _loadBorrowORLendDB = function*(action) {
-  const BorrowData = yield call(_loadBorroewDB, action.name);
+// refresh Borrow Or Lend Data
+export const _refreshBorrowOrLend = function* (action) {
+  try {
+    yield call(_loadBorrowORLendDB, action.name);
+  } catch (err) {
+    console.log("ERRROR IS : ", err);
+  }
+};
+
+// load Borrow Or Lend Data
+export const _loadBorrowORLendDB = function* (action) {
+  const _Data = yield call(_loadBorroewDB, action.name);
+
+  const total_lend = yield call(_loadTotalAmount, "LEND@all@Data");
+
+  const total_borrow = yield call(_loadTotalAmount, "BORROW@all@Data");
+
+  const remaining = action.name === "Lend" ? total_lend : total_borrow;
+
+  const overview = yield call(_OverView, action.name, remaining);
 
   yield put({
     type: actionType.LOADED_BORROWORLEND_DB,
-    load_borrow_data: BorrowData,
-    load_borrow: true
+    load_borrow_data: _Data,
+    load_borrow: true,
+    total_lend: total_lend === undefined ? 0 : total_lend,
+    total_borrow: total_borrow === undefined ? 0 : total_borrow,
+    total_overview: overview[0],
+    paid_overview: overview[1],
+    remaining_overview: overview[2],
   });
 };
 
-export async function _loadBorroewDB(name) {
+// Save Borrow Or Lend
+
+export const _saveBorrowORLendDB = function* (action) {
   try {
-    console.log("name", name);
-    let data;
-    name == "lend"
-      ? (data = await AsyncStorage.getItem("LEND@all@Data"))
-      : (data = await AsyncStorage.getItem("BORROW@all@Data"));
+    const _Data = yield call(_loadBorroewDB, action.name);
+    _Data.push(action.info);
+    const _result = yield call(_SaveBorroewDB, action.name, _Data);
 
-    let data_load;
-    if (data !== null) {
-      _data = JSON.parse(data);
-      data_load = _status_Checker(_data);
-    } else {
-      data_load = [];
-    }
-    return data_load;
-  } catch (error) {
-    console.log("async retrive prlm _loadBorroewDB : ", error);
+    const total_lend = yield call(_loadTotalAmount, "LEND@all@Data");
+
+    const total_borrow = yield call(_loadTotalAmount, "BORROW@all@Data");
+
+    yield put({
+      type: actionType.LOADED_BORROWORLEND_DB,
+      load_borrow_data: _Data,
+      load_borrow: true,
+      total_lend: total_lend,
+      total_borrow: total_borrow,
+    });
+
+    _result === true
+      ? action.nav.navigate("borrow_lending")
+      : alert("Please Try Again Later.");
+  } catch (err) {
+    console.log("ERROR Is _saveBorrowORLendDB : ", err);
   }
-}
-
-const _status_Checker = data => {
-  let _return_data;
-  let _result = data.filter(e => {
-    if (e.status == true) {
-      return e;
-    }
-  });
-
-  _result.length == 0 ? (_return_data = []) : (_return_data = _result);
-
-  return _return_data;
 };
 
 // ALLL EMI
 
-export const add_emi = function*(action) {
+export const add_emi = function* (action) {
   try {
     const all_EMI_Data = yield call(_add_emi, action);
 
@@ -135,14 +159,14 @@ export const add_emi = function*(action) {
     yield put({
       type: actionType.LOADED_EMI_DB,
       Load_EMI_Data: StaTusChecker,
-      status: "add_new_data"
+      status: "add_new_data",
     });
   } catch (error) {
     console.log("Error is add_emi : ", error);
   }
 };
 
-export const load_emi = function*(action) {
+export const load_emi = function* (action) {
   try {
     const all_EMI_Data = yield call(_loadEMIDB);
 
@@ -151,7 +175,7 @@ export const load_emi = function*(action) {
     yield put({
       type: actionType.LOADED_EMI_DB,
       Load_EMI_Data: StaTusChecker,
-      status: "retrive_data"
+      status: "retrive_data",
     });
   } catch (error) {
     console.log("Error is add_emi : ", error);
@@ -159,7 +183,7 @@ export const load_emi = function*(action) {
 };
 
 // update emi
-export const _update_emi = function*(action) {
+export const _update_emi = function* (action) {
   try {
     const update_EMI_Data = yield call(_UpdateEMIDB, action);
 
@@ -168,7 +192,7 @@ export const _update_emi = function*(action) {
     yield put({
       type: actionType.LOADED_EMI_DB,
       Load_EMI_Data: StaTusChecker,
-      status: "retrive_data"
+      status: "retrive_data",
     });
   } catch (error) {
     console.log("Error is add_emi : ", error);
@@ -177,14 +201,14 @@ export const _update_emi = function*(action) {
 
 // retrive Loan
 
-export const _retriveLoan = function*(action) {
+export const _retriveLoan = function* (action) {
   try {
     const Loan_Data = yield call(Retrive_DB_Loan);
 
     yield put({
       type: actionType.LOAN_DB_LOEDED,
       Loan_Data: Loan_Data,
-      status: "retrive_data"
+      status: "retrive_data",
     });
   } catch (error) {
     console.log("Error is _retriveLoan : ", error);
@@ -193,7 +217,7 @@ export const _retriveLoan = function*(action) {
 
 // ADD LOAN
 
-export const _addLoan = function*(action) {
+export const _addLoan = function* (action) {
   try {
     const Loan_Data = yield call(Add_Loan_DB, action);
 
@@ -202,35 +226,35 @@ export const _addLoan = function*(action) {
     yield put({
       type: actionType.LOAN_DB_LOEDED,
       Loan_Data: Loan_Data,
-      status: "retrive_data"
+      status: "retrive_data",
     });
   } catch (error) {
     console.log("Error is _retriveLoan : ", error);
   }
 };
 
-export const _load_statistics = function*(action) {
+export const _load_statistics = function* (action) {
   try {
     const Data = yield call(_load_statistics_DB, action);
 
     yield put({
       type: actionType.RETRIVE_STATISTICS,
       loan_Statistics_data: Data[0],
-      loan_Statistics_details: Data[1]
+      loan_Statistics_details: Data[1],
     });
   } catch (error) {
     console.log("Error is _load_statistics : ", error);
   }
 };
 
-export const _updateLoan = function*(action) {
+export const _updateLoan = function* (action) {
   try {
     const Data = yield call(_Update_LOAN, action);
 
     yield put({
       type: actionType.RETRIVE_STATISTICS,
       loan_Statistics_data: Data[0],
-      loan_Statistics_details: Data[1]
+      loan_Statistics_details: Data[1],
     });
   } catch (error) {
     console.log("Error is _updateLoan : ", error);

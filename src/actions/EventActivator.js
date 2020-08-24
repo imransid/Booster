@@ -4,16 +4,27 @@ import actionType from "../constant/constant";
 export function load_all_mcm_details(session) {
   return {
     type: actionType.LOAD_MCM_DB,
-    session: session
+    session: session,
   };
 }
 
 // Load Borrow data
 
-export function LoadBorrow(name) {
+export function LoadBorrowOrLend(name) {
   return {
     type: actionType.LOAD_BORROWORLEND_DB,
-    name: name
+    name: name,
+  };
+}
+
+// Save Borrow data
+
+export function saveBorrowOrLend(info, nav, name) {
+  return {
+    type: actionType.SAVE_BORROWORLEND_DB,
+    name: name,
+    nav: nav,
+    info: info,
   };
 }
 
@@ -21,7 +32,7 @@ export function LoadBorrow(name) {
 
 export function LoadEMI() {
   return {
-    type: actionType.RETRIVE_EMI_DB
+    type: actionType.RETRIVE_EMI_DB,
   };
 }
 
@@ -35,7 +46,7 @@ export function add_emi_db(title, amount, card_id, months, note, card_name) {
     card_id: card_id,
     months: months,
     note: note,
-    card_name: card_name
+    card_name: card_name,
   };
 }
 
@@ -44,7 +55,7 @@ export function add_emi_db(title, amount, card_id, months, note, card_name) {
 export function updateEMI(emi_id) {
   return {
     type: actionType.UPDATE_EMI_DB,
-    emi_id: emi_id
+    emi_id: emi_id,
   };
 }
 
@@ -52,7 +63,7 @@ export function updateEMI(emi_id) {
 
 export function LoadLoan() {
   return {
-    type: actionType.RETRIVE_LOAN
+    type: actionType.RETRIVE_LOAN,
   };
 }
 
@@ -81,20 +92,27 @@ export function addLoan(
     amount: amount,
     description: description,
     interest: interest,
-    monthly_amount: monthly_amount
+    monthly_amount: monthly_amount,
   };
 }
 
 export function _load_Statistics_loader(id) {
   return {
     type: actionType.STATISTICS,
-    id: id
+    id: id,
   };
 }
 
 export function _load_update(id) {
   return {
     type: actionType.LOANUPDATE,
-    id: id
+    id: id,
+  };
+}
+
+export function refreshBorrowOrLend(name) {
+  return {
+    type: actionType.REFRESHBORROWORLEND,
+    name: name,
   };
 }

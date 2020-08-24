@@ -21,19 +21,19 @@ const CustomCard = (props) => {
               borderRadius: 150 / 2,
               overflow: "hidden",
             }}
-            source={require("../../../../../assets/images/test1.jpg")}
+            source={require("../../../../../../assets/images/avaternow.jpg")}
           />
         </View>
         <View style={{ flex: 2 }}>
           <Grid>
             <Row>
               <Text style={{ color: "#366DA5" }}>
-                Nahid Hasan Nafi (Creditor)
+                {props.info.name + " (Creditor)"}
               </Text>
             </Row>
             <Row>
               <Text style={{ color: "#43A047", fontSize: 12 }}>
-                Borrow 6,000{" "}
+                {props.activeStatus + "  " + props.info.amount}
               </Text>
             </Row>
             <Row>
@@ -42,7 +42,7 @@ const CustomCard = (props) => {
               </Col>
               <Col style={{ width: "80%" }}>
                 <Text style={{ color: "#366DA5", fontSize: 10 }}>
-                  05-05-2020
+                  {props.info.return_date}
                 </Text>
               </Col>
             </Row>
@@ -64,6 +64,7 @@ const CustomCard = (props) => {
               height: 30,
               width: 50,
             }}
+            onPress={() => (props.setModelData(), props.setModel())}
           >
             <Text style={{ color: "#FFF" }}>Pay</Text>
           </TouchableOpacity>

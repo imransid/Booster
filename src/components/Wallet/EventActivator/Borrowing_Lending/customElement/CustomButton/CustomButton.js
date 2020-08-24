@@ -10,6 +10,7 @@ const CustomButton = (props) => {
         padding: 10,
         borderRadius: 3,
       }}
+      onPress={() => props._navigate()}
     >
       <Text style={{ color: "#fff" }}>{props.name}</Text>
     </TouchableOpacity>

@@ -1,8 +1,11 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import { View, Row } from "native-base";
+import moment from "moment";
 
 import Icon from "react-native-vector-icons/AntDesign";
+
+var currMonthName = moment().format("MMMM");
 
 const OverView = (props) => {
   return (
@@ -19,7 +22,9 @@ const OverView = (props) => {
         >
           <View style={{ flex: 1 }}>
             <Text style={{ color: "#000" }}>Overview</Text>
-            <Text style={{ fontSize: 12 }}>Touch to View full report</Text>
+            <Text style={{ fontSize: 10 }}>
+              Touch to View full report {currMonthName}
+            </Text>
           </View>
           <View
             style={{
