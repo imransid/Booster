@@ -24,8 +24,21 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -40,79 +53,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>localhost</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>AntDesign.ttf</string>
-		<string>Entypo.ttf</string>
-		<string>EvilIcons.ttf</string>
-		<string>Feather.ttf</string>
-		<string>FontAwesome.ttf</string>
-		<string>FontAwesome5_Brands.ttf</string>
-		<string>FontAwesome5_Regular.ttf</string>
-		<string>FontAwesome5_Solid.ttf</string>
-		<string>Foundation.ttf</string>
-		<string>Ionicons.ttf</string>
-		<string>MaterialCommunityIcons.ttf</string>
-		<string>MaterialIcons.ttf</string>
-		<string>Octicons.ttf</string>
-		<string>Roboto_medium.ttf</string>
-		<string>Roboto.ttf</string>
-		<string>rubicon-icon-font.ttf</string>
-		<string>SimpleLineIcons.ttf</string>
-		<string>Zocial.ttf</string>
-		<string>icofont.ttf</string>
-		<string>AlexandriaFLF-Bold.ttf</string>
-		<string>AlexandriaFLF-BoldItalic.ttf</string>
-		<string>AlexandriaFLF-Italic.ttf</string>
-		<string>AlexandriaFLF.ttf</string>
-		<string>Audrey-Bold.otf</string>
-		<string>Audrey-BoldOblique.otf</string>
-		<string>Audrey-Medium.otf</string>
-		<string>Audrey-MediumOblique.otf</string>
-		<string>Audrey-Normal.otf</string>
-		<string>Audrey-NormalOblique.otf</string>
-		<string>Poppins-Black.otf</string>
-		<string>Poppins-BlackItalic.otf</string>
-		<string>Poppins-Bold.otf</string>
-		<string>Poppins-BoldItalic.otf</string>
-		<string>Poppins-ExtraBold.otf</string>
-		<string>Poppins-ExtraBoldItalic.otf</string>
-		<string>Poppins-ExtraLight.otf</string>
-		<string>Poppins-ExtraLightItalic.otf</string>
-		<string>Poppins-Italic.otf</string>
-		<string>Poppins-Light.otf</string>
-		<string>Poppins-LightItalic.otf</string>
-		<string>Poppins-Medium.otf</string>
-		<string>Poppins-MediumItalic.otf</string>
-		<string>Poppins-Regular.otf</string>
-		<string>Poppins-SemiBold.otf</string>
-		<string>Poppins-SemiBoldItalic.otf</string>
-		<string>Poppins-Thin.otf</string>
-		<string>Poppins-ThinItalic.otf</string>
-		<string>Alef-Regular.ttf</string>
-		<string>Amiko-Bold.ttf</string>
-		<string>Amiko-Regular.ttf</string>
-		<string>Amiko-SemiBold.ttf</string>
-		<string>Mark Simonson - Proxima Nova Alt Bold-webfont.ttf</string>
-		<string>Mark Simonson - Proxima Nova Alt Condensed Semibold-webfont.ttf</string>
-		<string>Mark Simonson - Proxima Nova Alt Regular-webfont.ttf</string>
-		<string>Mark Simonson - Proxima Nova ScOsf Thin-webfont.ttf</string>
-		<string>Mark Simonson - Proxima Nova Semibold-webfont.ttf</string>
-		<string>Mark Simonson - Proxima Nova Thin-webfont.ttf</string>
-		<string>Proxmia.ttf</string>
-	</array>
 </dict>
 </plist>
