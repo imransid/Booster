@@ -15,9 +15,15 @@ interface ButtonInterface {
   text?: string;
   iconName?: string;
   iconColor?: string;
+  onFocus?: any;
 }
 
-const Button: React.FC<ButtonInterface> = ({ type, iconName, iconColor }) => {
+const Button: React.FC<ButtonInterface> = ({
+  type,
+  iconName,
+  iconColor,
+  onFocus,
+}) => {
   const rotation = useSharedValue(0);
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -37,22 +43,16 @@ const Button: React.FC<ButtonInterface> = ({ type, iconName, iconColor }) => {
   const onClick = useCallback(() => {
     rotation.value = withSequence(
       withTiming(-4, { duration: 100 }),
-      withRepeat(withTiming(12, { duration: 150 }), 2, true),
+      withRepeat(withTiming(12, { duration: 150 }), 8, true),
       withTiming(0, { duration: 100 })
     );
+    onFocus();
   }, [rotation]);
 
   return (
     <Pressable onPress={onClick}>
       {type === "social" ? (
-        <Animated.View
-          style={[
-            animatedStyle,
-            {
-              height: hdp(160),
-            },
-          ]}
-        >
+        <Animated.View style={[animatedStyle]}>
           <Icons
             name={IconName}
             size={32}

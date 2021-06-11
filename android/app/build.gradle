@@ -34,7 +34,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.myapp"
+        applicationId "com.booster"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

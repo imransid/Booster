@@ -345,7 +345,7 @@
 		1CA519ED3615A13EEB888BC888B1B3B8 /* YGEnums.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2898F17582282CD2B485302DE69123C /* YGEnums.cpp */; settings = {COMPILER_FLAGS = "-fno-omit-frame-pointer -fexceptions -Wall -Werror -std=c++1y -fPIC -fno-objc-arc"; }; };
 		1CAA7BFFCAE3A898718F98E3F5B69762 /* Sse.h in Headers */ = {isa = PBXBuildFile; fileRef = 5783C32C4CF7FE091365941F41487F4D /* Sse.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1CAA853830420E525BD25FB923061328 /* RCTPerformanceLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 16BA0C177E9CDF6CB93067E5FDE314FD /* RCTPerformanceLogger.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1CADF5F5E7D4A114B684EEB09E202CCC /* Pods-MyApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DBE5427DDEAE2A85C5635CAECF8939FC /* Pods-MyApp-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1CADF5F5E7D4A114B684EEB09E202CCC /* Pods-Booster-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DBE5427DDEAE2A85C5635CAECF8939FC /* Pods-Booster-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1CCB31CBCE1F13836003D700A4934E25 /* evdns.c in Sources */ = {isa = PBXBuildFile; fileRef = 432DD7B8305A5DB6B3FD5FF09B0E6221 /* evdns.c */; };
 		1CEEFD76F0C0BD21552EAF7D496C34E9 /* Semaphore.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4D6B2B08A9911DA60E444106BE23BB /* Semaphore.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1D66E156B8AD27CCEE5E2D175E50E2B5 /* DoubleConversion-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDF9C72D4CB7B8FFCB103E4FE879D62 /* DoubleConversion-dummy.m */; };
@@ -693,7 +693,7 @@
 		46FF7FA43284A717D8E9D68CA426965C /* Poly-inl.h in Headers */ = {isa = PBXBuildFile; fileRef = 791754A9C82D9C78C0BAB07E0AEDA609 /* Poly-inl.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4700B5D0FA244D12C9C55C50C430F4F0 /* JSIDynamic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A9EAC0343D3BB5685A23C693908AB46 /* JSIDynamic.cpp */; settings = {COMPILER_FLAGS = "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32 -Wno-documentation"; }; };
 		470C01E8D8DA58E2C0D827346D43B8C9 /* SequencedExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = 64B9F6D01E963AF4E6967DD52AC57E7B /* SequencedExecutor.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		47543AC87C632ECDED9DFDB650562D3E /* Pods-MyApp-MyAppTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DEBF3034D4E6A737C63604CED1455D4 /* Pods-MyApp-MyAppTests-dummy.m */; };
+		47543AC87C632ECDED9DFDB650562D3E /* Pods-Booster-BoosterTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DEBF3034D4E6A737C63604CED1455D4 /* Pods-Booster-BoosterTests-dummy.m */; };
 		476C76DE6D26CCEEA35A83A09D86626E /* Exception.h in Headers */ = {isa = PBXBuildFile; fileRef = EFEE8EA227318BDD38F060C65CCC8FA3 /* Exception.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		47828FC695500FD7237F0BA38260F9EC /* RemoteObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D2F9564415EA4C400C558D474B192 /* RemoteObject.cpp */; settings = {COMPILER_FLAGS = "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DRNVERSION=64 -Wno-comma -Wno-shorten-64-to-32 -Wno-documentation"; }; };
 		4795ECEB9555623A512359B42681BEDB /* FixedString.h in Headers */ = {isa = PBXBuildFile; fileRef = 28C826A1BD4DE2A03C1DAB14E28946E7 /* FixedString.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -803,7 +803,7 @@
 		5468B18F248F48CC7444DAB53E55683B /* FlipperStateUpdateListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 294E7A771D10EF76D169706DEACD3106 /* FlipperStateUpdateListener.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5471CC54A7FF30D9BA817EA528ABA721 /* RCTConvert+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4BD3148182499E295E4FB25487BFD0 /* RCTConvert+Transform.m */; settings = {COMPILER_FLAGS = "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32 -Wno-documentation"; }; };
 		54744037FE1533D3D09F0C3C8F43CE98 /* FrameFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DCAC5D65A3F5F553EA9EB33DB4F098 /* FrameFlags.cpp */; settings = {COMPILER_FLAGS = "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DFOLLY_HAVE_LIBGFLAGS=0 -DFOLLY_HAVE_LIBJEMALLOC=0 -DFOLLY_HAVE_PREADV=0 -DFOLLY_HAVE_PWRITEV=0 -DFOLLY_HAVE_TFO=0 -DFOLLY_USE_SYMBOLIZER=0  -frtti\n    -fexceptions\n    -std=c++14\n    -Wno-error\n    -Wno-unused-local-typedefs\n    -Wno-unused-variable\n    -Wno-sign-compare\n    -Wno-comment\n    -Wno-return-type\n    -Wno-global-constructors"; }; };
-		54905F150856423A1379A868373373EC /* Pods-MyApp-MyAppTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 92F5979CE6F872F09F695079F1C5407E /* Pods-MyApp-MyAppTests-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		54905F150856423A1379A868373373EC /* Pods-Booster-BoosterTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 92F5979CE6F872F09F695079F1C5407E /* Pods-Booster-BoosterTests-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		54A9D809EC6D85C1966A163648E1DAF0 /* Core-inl.h in Headers */ = {isa = PBXBuildFile; fileRef = 8781B4717F54B9EEAD6B6B3DE4E0FFB4 /* Core-inl.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		54AA1DBC3DDDDCDBB5FF75A50E6649EC /* SparseByteSet.h in Headers */ = {isa = PBXBuildFile; fileRef = DFAD4D4DB56730AEB48FE0569D0DFD81 /* SparseByteSet.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		54ECA723AA87FD13E6470CE43E753CAD /* SKInvalidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 811DCB048DFFE6BABDF2798BA18FCEF3 /* SKInvalidation.m */; settings = {COMPILER_FLAGS = "-DDEBUG=1 -DFLIPPER_OSS=1 -DFB_SONARKIT_ENABLED=1 -DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DFOLLY_HAVE_LIBGFLAGS=0 -DFOLLY_HAVE_LIBJEMALLOC=0 -DFOLLY_HAVE_PREADV=0 -DFOLLY_HAVE_PWRITEV=0 -DFOLLY_HAVE_TFO=0 -DFOLLY_USE_SYMBOLIZER=0"; }; };
@@ -1566,7 +1566,7 @@
 		B368C1D464E69A2039CA152E5121BEB0 /* ConstexprMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 73ABEA97C0EE420041113880670F2002 /* ConstexprMath.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B3696F0511A1C92641CA2B958398EB84 /* stl_logging.h in Headers */ = {isa = PBXBuildFile; fileRef = B3B8C3AF207F4BFABB1CBC3051E80781 /* stl_logging.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B3C24CC04C9B9A9CD757FD65E1AE19C0 /* RCTEventEmitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7673B3927593019E91E0F483650E0EA5 /* RCTEventEmitter.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B3ECC8E88C5158C38EE0EE4149068D2A /* Pods-MyApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB89DDD5C5A33A446244EE0F112ED2 /* Pods-MyApp-dummy.m */; };
+		B3ECC8E88C5158C38EE0EE4149068D2A /* Pods-Booster-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB89DDD5C5A33A446244EE0F112ED2 /* Pods-Booster-dummy.m */; };
 		B41D706E66FDAF4E9095FCBF13BFFD2F /* BitIteratorDetail.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F75BEFEC4457865DB9F8468566FA56 /* BitIteratorDetail.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B41F375D69DB6469F21902BE2A4DA09F /* RCTScrollViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A78174F46FCC913FEDA9A2AA81049261 /* RCTScrollViewManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B422B4E612828E1D364388967374A083 /* RCTExceptionsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C04539043366A7DD37A4B44AD181746 /* RCTExceptionsManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -3985,7 +3985,7 @@
 		140AB29A19C45CCBCC066FCBFA36A02B /* RCTModalHostViewManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTModalHostViewManager.h; sourceTree = "<group>"; };
 		140E5577C26F3C701EF66591B1F5D6E2 /* RCTI18nUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTI18nUtil.m; sourceTree = "<group>"; };
 		144B2FA2AB65E07D87E42314CC7535E4 /* ChannelRequester.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = ChannelRequester.cpp; path = rsocket/statemachine/ChannelRequester.cpp; sourceTree = "<group>"; };
-		14603F545A59B0A55ABBB02C90AC9B41 /* Pods-MyApp-MyAppTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyApp-MyAppTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		14603F545A59B0A55ABBB02C90AC9B41 /* Pods-Booster-BoosterTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Booster-BoosterTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		1476BC52CEA63A84785D2FA3614AF101 /* RCTShadowView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTShadowView.h; sourceTree = "<group>"; };
 		147B2E959A25452E19CDC3F7621911FB /* event-internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "event-internal.h"; sourceTree = "<group>"; };
 		14948941C61A8DEC47DE758CCACDEC5D /* Random-inl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Random-inl.h"; path = "folly/Random-inl.h"; sourceTree = "<group>"; };
@@ -4006,7 +4006,7 @@
 		16ACE1450957A09A2EBF9A3B473956E2 /* RCTUIManagerUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTUIManagerUtils.h; sourceTree = "<group>"; };
 		16BA0C177E9CDF6CB93067E5FDE314FD /* RCTPerformanceLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTPerformanceLogger.h; sourceTree = "<group>"; };
 		16C8B21FFC72DEE4E8D64192D1B1C757 /* FBReactNativeSpec-generated.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = "FBReactNativeSpec-generated.mm"; path = "FBReactNativeSpec/FBReactNativeSpec-generated.mm"; sourceTree = "<group>"; };
-		16CDCC9A0702735AAA31FF20DFBE5948 /* Pods-MyApp-MyAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyApp-MyAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		16CDCC9A0702735AAA31FF20DFBE5948 /* Pods-Booster-BoosterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Booster-BoosterTests.release.xcconfig"; sourceTree = "<group>"; };
 		171F12B149207F63C4920C6BDCDA480C /* DiscriminatedPtr.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DiscriminatedPtr.h; path = folly/DiscriminatedPtr.h; sourceTree = "<group>"; };
 		172728F5F73DD445E0420B24B4369820 /* SSLSessionImpl.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = SSLSessionImpl.cpp; path = folly/ssl/detail/SSLSessionImpl.cpp; sourceTree = "<group>"; };
 		1778EC3CC5AA54618FF015D621578DB9 /* RCTCxxUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTCxxUtils.h; sourceTree = "<group>"; };
@@ -4043,7 +4043,7 @@
 		1B1F69F81F00B35DB07D200885FBEC21 /* NativeReanimatedModule.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; path = NativeReanimatedModule.cpp; sourceTree = "<group>"; };
 		1B2380113875356567B778BFBDF84170 /* Assume.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = Assume.cpp; path = folly/lang/Assume.cpp; sourceTree = "<group>"; };
 		1B2537158A5E1B961D47FC59C04D81B4 /* CocoaAsyncSocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaAsyncSocket.debug.xcconfig; sourceTree = "<group>"; };
-		1B421BF99AA3409C5D84BA969FBABA51 /* Pods-MyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyApp.debug.xcconfig"; sourceTree = "<group>"; };
+		1B421BF99AA3409C5D84BA969FBABA51 /* Pods-Booster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Booster.debug.xcconfig"; sourceTree = "<group>"; };
 		1B4D5081DE0090D15BA462DB9108AA63 /* SanitizeThread.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SanitizeThread.h; path = folly/synchronization/SanitizeThread.h; sourceTree = "<group>"; };
 		1B6E758CD3089DB3EBF75AE54A85AC72 /* F14Table.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = F14Table.cpp; path = folly/container/detail/F14Table.cpp; sourceTree = "<group>"; };
 		1B6E87D9F3726E92A1A3F2F000585993 /* small_vector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = small_vector.h; path = folly/small_vector.h; sourceTree = "<group>"; };
@@ -4067,7 +4067,7 @@
 		1D5F295C4612C5C2644025E8B53A7AAA /* React-CoreModules-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "React-CoreModules-dummy.m"; sourceTree = "<group>"; };
 		1D7073F6A75E3FD37666006FCC53AAA3 /* RCTCxxMethod.mm */ = {isa = PBXFileReference; includeInIndex = 1; path = RCTCxxMethod.mm; sourceTree = "<group>"; };
 		1D78D8CEEF366BC26BFFE47815A654AE /* NativeReanimatedModuleSpec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NativeReanimatedModuleSpec.h; sourceTree = "<group>"; };
-		1D87578E28A253482AF18BA2B5659BE9 /* Pods-MyApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyApp-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1D87578E28A253482AF18BA2B5659BE9 /* Pods-Booster-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Booster-acknowledgements.markdown"; sourceTree = "<group>"; };
 		1D8B38D10F6FD2D4E8454901D98922EC /* ConcurrentBitSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ConcurrentBitSet.h; path = folly/ConcurrentBitSet.h; sourceTree = "<group>"; };
 		1D99E4F959D010857CB7C0239B89B74E /* REAIOSScheduler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = REAIOSScheduler.h; sourceTree = "<group>"; };
 		1DBC2238ED3B39F0E43B17923D40AC12 /* RCTBundleURLProvider.mm */ = {isa = PBXFileReference; includeInIndex = 1; path = RCTBundleURLProvider.mm; sourceTree = "<group>"; };
@@ -4084,7 +4084,7 @@
 		1EC835182EFBD34F58DBD16C3DE057A8 /* fast-dtoa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "fast-dtoa.h"; path = "double-conversion/fast-dtoa.h"; sourceTree = "<group>"; };
 		1EE725EACE6DE8F9BB8EF3A7CAC4C5B6 /* Fingerprint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fingerprint.h; path = folly/Fingerprint.h; sourceTree = "<group>"; };
 		1EED12546AB3E72C4797C53F0473DBEA /* FKUserDefaultsPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKUserDefaultsPlugin.h; path = iOS/Plugins/FlipperKitUserDefaultsPlugin/FKUserDefaultsPlugin.h; sourceTree = "<group>"; };
-		1EF239BA7693D3C5AFBE99BDB0749FDF /* Pods-MyApp-MyAppTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyApp-MyAppTests-frameworks.sh"; sourceTree = "<group>"; };
+		1EF239BA7693D3C5AFBE99BDB0749FDF /* Pods-Booster-BoosterTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Booster-BoosterTests-frameworks.sh"; sourceTree = "<group>"; };
 		1F005D140DCFE89E7C54DE006324EDE2 /* JSBigString.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; path = JSBigString.cpp; sourceTree = "<group>"; };
 		1F1B426966E392E3F38B04C3DAD79D44 /* TurboCxxModule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TurboCxxModule.h; sourceTree = "<group>"; };
 		1F56D18EB9F9D53263C25ECE03A7C8A7 /* JSBundleType.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; path = JSBundleType.cpp; sourceTree = "<group>"; };
@@ -4238,7 +4238,7 @@
 		30D78F4CA9F5092EA9B7B51457251104 /* RCTRawTextViewManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTRawTextViewManager.h; sourceTree = "<group>"; };
 		3105508FEC74E1DA64D170CEB04BD29D /* RCTAppState.mm */ = {isa = PBXFileReference; includeInIndex = 1; path = RCTAppState.mm; sourceTree = "<group>"; };
 		315775EBAD2B0A0E6C1DE5DD5367A38B /* IOBuf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IOBuf.h; path = folly/io/IOBuf.h; sourceTree = "<group>"; };
-		3163C11976A0B951D32E2A986F34451D /* Pods-MyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyApp.release.xcconfig"; sourceTree = "<group>"; };
+		3163C11976A0B951D32E2A986F34451D /* Pods-Booster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Booster.release.xcconfig"; sourceTree = "<group>"; };
 		316D0738BBE0E8EB74F79434F7165838 /* RSocketStateMachine.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = RSocketStateMachine.cpp; path = rsocket/statemachine/RSocketStateMachine.cpp; sourceTree = "<group>"; };
 		3174074D4BE705D575D10A352F43B797 /* PublishProcessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PublishProcessor.h; path = yarpl/flowable/PublishProcessor.h; sourceTree = "<group>"; };
 		31858F61037F603A3AD7930D54BE7BA8 /* RCTRefreshControlManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTRefreshControlManager.h; sourceTree = "<group>"; };
@@ -4288,7 +4288,7 @@
 		37A924FBB858C30847421BB81ECE92BC /* AtomicReadMostlyMainPtr.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AtomicReadMostlyMainPtr.h; path = folly/experimental/AtomicReadMostlyMainPtr.h; sourceTree = "<group>"; };
 		37C1C55AFDC9CD1203DA66DAA1C23DB9 /* AsyncUDPSocket.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = AsyncUDPSocket.cpp; path = folly/io/async/AsyncUDPSocket.cpp; sourceTree = "<group>"; };
 		37C655F27657BF7717C73D13FB80D2A1 /* SKTapListenerImpl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SKTapListenerImpl.m; path = iOS/Plugins/FlipperKitLayoutPlugin/FlipperKitLayoutPlugin/SKTapListenerImpl.m; sourceTree = "<group>"; };
-		37C72675A273DA6C1CBF217A10EBDE67 /* Pods-MyApp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyApp-resources.sh"; sourceTree = "<group>"; };
+		37C72675A273DA6C1CBF217A10EBDE67 /* Pods-Booster-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Booster-resources.sh"; sourceTree = "<group>"; };
 		37D4CBFCF9B5C016EEC433FA378F34A2 /* FlipperClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlipperClient.h; path = xplat/Flipper/FlipperClient.h; sourceTree = "<group>"; };
 		3837D9CF71A9EE1C32D135E43B1BC661 /* SKIOSNetworkAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SKIOSNetworkAdapter.h; path = iOS/Plugins/FlipperKitNetworkPlugin/SKIOSNetworkPlugin/SKIOSNetworkAdapter.h; sourceTree = "<group>"; };
 		3864E1756ACA53F91687EACD9A30E1FB /* ManualExecutor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ManualExecutor.h; path = folly/executors/ManualExecutor.h; sourceTree = "<group>"; };
@@ -4465,7 +4465,7 @@
 		4C8E30F3360BF87C14ED379C620521F2 /* FlipperKitLayoutPlugin.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FlipperKitLayoutPlugin.mm; path = iOS/Plugins/FlipperKitLayoutPlugin/FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.mm; sourceTree = "<group>"; };
 		4C91344D3808981021C97450F54A2C29 /* Singleton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Singleton.h; path = folly/Singleton.h; sourceTree = "<group>"; };
 		4C996B79360313920FDB01B1BC26B9E7 /* dynamic-inl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "dynamic-inl.h"; path = "folly/dynamic-inl.h"; sourceTree = "<group>"; };
-		4CFB89DDD5C5A33A446244EE0F112ED2 /* Pods-MyApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MyApp-dummy.m"; sourceTree = "<group>"; };
+		4CFB89DDD5C5A33A446244EE0F112ED2 /* Pods-Booster-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Booster-dummy.m"; sourceTree = "<group>"; };
 		4D323F1148F9F6D49E20D67632D3DD87 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		4D600E5A750D579CEBBDD162F557C321 /* Bits.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Bits.h; path = folly/lang/Bits.h; sourceTree = "<group>"; };
 		4D634A23C9FC75BEF9709D52F71B9BCD /* RCTReconnectingWebSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCTReconnectingWebSocket.m; path = Libraries/WebSocket/RCTReconnectingWebSocket.m; sourceTree = "<group>"; };
@@ -4496,7 +4496,7 @@
 		4FE48C3BE3F2FD93AD6253ED7E3BC93A /* FrozenObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FrozenObject.h; sourceTree = "<group>"; };
 		50165E8A664909305E9E2431D9641634 /* StackTraceUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = StackTraceUtils.h; path = rsocket/internal/StackTraceUtils.h; sourceTree = "<group>"; };
 		50508239138577CA77F55D372629C5B6 /* RCTBaseTextInputView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTBaseTextInputView.h; sourceTree = "<group>"; };
-		5080CD9E2BBE97AED497EA0B6853BBBC /* libPods-MyApp-MyAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MyApp-MyAppTests.a"; path = "libPods-MyApp-MyAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5080CD9E2BBE97AED497EA0B6853BBBC /* libPods-Booster-BoosterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Booster-BoosterTests.a"; path = "libPods-Booster-BoosterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5090B568506FBB89160BCE099492C09F /* FBString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBString.h; path = folly/FBString.h; sourceTree = "<group>"; };
 		50E245459FFD21BEF080BF38C6656ECB /* RCTBaseTextShadowView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTBaseTextShadowView.m; sourceTree = "<group>"; };
 		50E46112391F43E9E27DD52645F4C862 /* AsyncUDPServerSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AsyncUDPServerSocket.h; path = folly/io/async/AsyncUDPServerSocket.h; sourceTree = "<group>"; };
@@ -4698,7 +4698,7 @@
 		63C13408371826A8332366FF6EA91986 /* YGMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YGMacros.h; path = yoga/YGMacros.h; sourceTree = "<group>"; };
 		63EF98F8F39B097128E061381DEC0255 /* RCTMaskedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTMaskedView.h; sourceTree = "<group>"; };
 		63F2198B90E62AEF6EDE195D25F5656D /* Synchronized.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Synchronized.h; path = folly/Synchronized.h; sourceTree = "<group>"; };
-		640CF50748F0703AA6A441494F237742 /* Pods-MyApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MyApp.modulemap"; sourceTree = "<group>"; };
+		640CF50748F0703AA6A441494F237742 /* Pods-Booster.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Booster.modulemap"; sourceTree = "<group>"; };
 		6423465DB76FC2E6D53B0AD6E6FA3470 /* FrameFlags.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FrameFlags.h; path = rsocket/framing/FrameFlags.h; sourceTree = "<group>"; };
 		6432895BB70C5915AFC5440502CA78A7 /* FlipperUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FlipperUtil.m; path = iOS/FlipperKit/FlipperUtil.m; sourceTree = "<group>"; };
 		64395902CB373B0341870661BAF71D7D /* ScopeGuard.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = ScopeGuard.cpp; path = folly/ScopeGuard.cpp; sourceTree = "<group>"; };
@@ -4741,7 +4741,7 @@
 		67EE95EBBF8E232003797FE41AED1ECF /* evutil.c */ = {isa = PBXFileReference; includeInIndex = 1; path = evutil.c; sourceTree = "<group>"; };
 		68287580776F7626B8E4D127F1364146 /* ResumeManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ResumeManager.h; path = rsocket/ResumeManager.h; sourceTree = "<group>"; };
 		68297852A229EBDC560EC1EDD1DF1C22 /* RCTUITextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTUITextField.m; sourceTree = "<group>"; };
-		684625585B5002628DD733354DACB30F /* libPods-MyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MyApp.a"; path = "libPods-MyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		684625585B5002628DD733354DACB30F /* libPods-Booster.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Booster.a"; path = "libPods-Booster.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6859739552CD7AE0A12BED41E67E2D24 /* RCTDivisionAnimatedNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTDivisionAnimatedNode.m; sourceTree = "<group>"; };
 		686BBCA43D2342F40499CC0A6761E5F5 /* RCTImageLoaderWithAttributionProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTImageLoaderWithAttributionProtocol.h; path = Libraries/Image/RCTImageLoaderWithAttributionProtocol.h; sourceTree = "<group>"; };
 		6898A9B589D28F0201C47C5B55B37A97 /* REAConcatNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = REAConcatNode.m; sourceTree = "<group>"; };
@@ -4785,7 +4785,7 @@
 		6DD5D011E115B9158AB6C3BD862FE880 /* iocp-internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iocp-internal.h"; sourceTree = "<group>"; };
 		6DDAC321B6E64E220349F3CFB21142F1 /* HazptrObjLinked.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HazptrObjLinked.h; path = folly/synchronization/HazptrObjLinked.h; sourceTree = "<group>"; };
 		6DE1DD28F3FDBEB641C6BE354494B9CD /* RCTTypeSafety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RCTTypeSafety.debug.xcconfig; sourceTree = "<group>"; };
-		6DEBF3034D4E6A737C63604CED1455D4 /* Pods-MyApp-MyAppTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MyApp-MyAppTests-dummy.m"; sourceTree = "<group>"; };
+		6DEBF3034D4E6A737C63604CED1455D4 /* Pods-Booster-BoosterTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Booster-BoosterTests-dummy.m"; sourceTree = "<group>"; };
 		6E370C293E655193AA307252FB586787 /* DoubleConversion-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DoubleConversion-prefix.pch"; sourceTree = "<group>"; };
 		6E457D714CD429C034C2C0FD3F1773B9 /* AtomicNotification-inl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "AtomicNotification-inl.h"; path = "folly/synchronization/AtomicNotification-inl.h"; sourceTree = "<group>"; };
 		6E5ED03A884155163E34A822DB95642F /* RCTTextViewManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTTextViewManager.m; sourceTree = "<group>"; };
@@ -4873,7 +4873,7 @@
 		7816D1D2C3951E179514148481580352 /* dynamic.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = dynamic.cpp; path = folly/dynamic.cpp; sourceTree = "<group>"; };
 		78459D84A5B128BEE97E9D0E1E90BB89 /* FrameTransport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FrameTransport.h; path = rsocket/framing/FrameTransport.h; sourceTree = "<group>"; };
 		784D15810C5FFA14456F1D9EF2C72ED4 /* utils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = utils.h; path = "double-conversion/utils.h"; sourceTree = "<group>"; };
-		7896FC1370DB14B50BD1D1E6994983D8 /* Pods-MyApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyApp-frameworks.sh"; sourceTree = "<group>"; };
+		7896FC1370DB14B50BD1D1E6994983D8 /* Pods-Booster-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Booster-frameworks.sh"; sourceTree = "<group>"; };
 		78CC9B839693A1F8379D362A5343F587 /* CocoaAsyncSocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-prefix.pch"; sourceTree = "<group>"; };
 		78E0D3585741DCD4B34664C9822F7C05 /* RSocketServer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSocketServer.h; path = rsocket/RSocketServer.h; sourceTree = "<group>"; };
 		78EFD1855A3959ACD39BB4D97C09151D /* FrameHeader.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = FrameHeader.cpp; path = rsocket/framing/FrameHeader.cpp; sourceTree = "<group>"; };
@@ -4995,7 +4995,7 @@
 		859330803F91E0AFBD48C4EA0AC6ACD3 /* RCTSwitch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTSwitch.h; sourceTree = "<group>"; };
 		85959D73F901527ABBBB763C6BFF2C83 /* strtod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = strtod.h; path = "double-conversion/strtod.h"; sourceTree = "<group>"; };
 		859B9C37394D4DED829910ABAA39D816 /* Util.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Util.h; path = folly/container/detail/Util.h; sourceTree = "<group>"; };
-		85BE4A884DEB772375C2BDD2108DAE00 /* Pods-MyApp-MyAppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MyApp-MyAppTests.modulemap"; sourceTree = "<group>"; };
+		85BE4A884DEB772375C2BDD2108DAE00 /* Pods-Booster-BoosterTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Booster-BoosterTests.modulemap"; sourceTree = "<group>"; };
 		85D98619FEBFC485AEDB60C08957EFB3 /* RCTBlobCollector.mm */ = {isa = PBXFileReference; includeInIndex = 1; path = RCTBlobCollector.mm; sourceTree = "<group>"; };
 		8640CBD3E17D61350090CBD5404226C3 /* IPAddressV4.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = IPAddressV4.cpp; path = folly/IPAddressV4.cpp; sourceTree = "<group>"; };
 		865E8DC31B7401199E1CD0FD0F55DA17 /* React-jsi-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "React-jsi-dummy.m"; sourceTree = "<group>"; };
@@ -5121,7 +5121,7 @@
 		92DE561F104A7C4BDB5A8B21640EEAB0 /* FileUtil.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = FileUtil.cpp; path = folly/FileUtil.cpp; sourceTree = "<group>"; };
 		92E51F6E5262F2716AB3A3D0E376478A /* SysTime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SysTime.h; path = folly/portability/SysTime.h; sourceTree = "<group>"; };
 		92E6D8DFB59DC4C30EC32B99E7FCC677 /* FBVector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBVector.h; path = folly/FBVector.h; sourceTree = "<group>"; };
-		92F5979CE6F872F09F695079F1C5407E /* Pods-MyApp-MyAppTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MyApp-MyAppTests-umbrella.h"; sourceTree = "<group>"; };
+		92F5979CE6F872F09F695079F1C5407E /* Pods-Booster-BoosterTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Booster-BoosterTests-umbrella.h"; sourceTree = "<group>"; };
 		93060F3E450DAA124E7FFD455C2E0CE0 /* React-cxxreact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "React-cxxreact.debug.xcconfig"; sourceTree = "<group>"; };
 		932EDBA0BCA0D180283D276CB41B91BE /* FBVector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBVector.h; path = folly/FBVector.h; sourceTree = "<group>"; };
 		93748C325749A521144536A3423FD1FA /* RCTDisplayWeakRefreshable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTDisplayWeakRefreshable.m; sourceTree = "<group>"; };
@@ -5155,7 +5155,7 @@
 		96A0A4A4015F1DDE0B89C8280DE1974E /* DynamicParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DynamicParser.h; path = folly/experimental/DynamicParser.h; sourceTree = "<group>"; };
 		96EA380EC2A93F65886EEA17675F11C5 /* FrameType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FrameType.h; path = rsocket/framing/FrameType.h; sourceTree = "<group>"; };
 		972E74ECAF59670EF1C93C187A47E011 /* REAClockNodes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = REAClockNodes.m; sourceTree = "<group>"; };
-		975FC022E34F4522784CAE1CA47371F5 /* Pods-MyApp-MyAppTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MyApp-MyAppTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		975FC022E34F4522784CAE1CA47371F5 /* Pods-Booster-BoosterTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Booster-BoosterTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9764CC8935556CD1ADCB9F66D67F1BAA /* RCTDataRequestHandler.mm */ = {isa = PBXFileReference; includeInIndex = 1; path = RCTDataRequestHandler.mm; sourceTree = "<group>"; };
 		9778768EA45E21E91FB836D39E7933CA /* React-RCTNetwork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "React-RCTNetwork.release.xcconfig"; sourceTree = "<group>"; };
 		978451D66CCB7D6318F2F237E217118A /* RCTURLRequestHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTURLRequestHandler.h; sourceTree = "<group>"; };
@@ -5533,7 +5533,7 @@
 		C36B78F0F6BEE0F18B766EEDE40AC3D7 /* RCTProfileTrampoline-arm.S */ = {isa = PBXFileReference; includeInIndex = 1; path = "RCTProfileTrampoline-arm.S"; sourceTree = "<group>"; };
 		C3E4FC26AD9A8F43091DB1D75B3FEB4C /* json.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = json.cpp; path = folly/json.cpp; sourceTree = "<group>"; };
 		C4273B125A06F38D4CB8FCAB17FCB88A /* REANode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = REANode.h; sourceTree = "<group>"; };
-		C435C8CB212328B6DB1BAEF1F2BA2271 /* Pods-MyApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MyApp-acknowledgements.plist"; sourceTree = "<group>"; };
+		C435C8CB212328B6DB1BAEF1F2BA2271 /* Pods-Booster-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Booster-acknowledgements.plist"; sourceTree = "<group>"; };
 		C43BA828A9C2977B93D354F182025F20 /* React-Core-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "React-Core-dummy.m"; sourceTree = "<group>"; };
 		C444E6C7A85DF1E0D205C402125363A7 /* Shell.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = Shell.cpp; path = folly/system/Shell.cpp; sourceTree = "<group>"; };
 		C452FE97169D5AF98D0C8047520BD060 /* BitVectorCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BitVectorCoding.h; path = folly/experimental/BitVectorCoding.h; sourceTree = "<group>"; };
@@ -5590,7 +5590,7 @@
 		C9DE761929EBAF7C41ED44FE68AE103F /* ScheduledFrameProcessor.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = ScheduledFrameProcessor.cpp; path = rsocket/framing/ScheduledFrameProcessor.cpp; sourceTree = "<group>"; };
 		C9EBFDDC880EF455B7CA65C9901F0C5D /* MoveWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MoveWrapper.h; path = folly/MoveWrapper.h; sourceTree = "<group>"; };
 		CA097ACDDA612E5A4A581EC1E70A375A /* RequestResponseResponder.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = RequestResponseResponder.cpp; path = rsocket/statemachine/RequestResponseResponder.cpp; sourceTree = "<group>"; };
-		CA44BC0422C74B4A87957D84E2DB828E /* Pods-MyApp-MyAppTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyApp-MyAppTests-resources.sh"; sourceTree = "<group>"; };
+		CA44BC0422C74B4A87957D84E2DB828E /* Pods-Booster-BoosterTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Booster-BoosterTests-resources.sh"; sourceTree = "<group>"; };
 		CA478F6D0063952E57187D2E63EC84EA /* Builtins.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = Builtins.cpp; path = folly/portability/Builtins.cpp; sourceTree = "<group>"; };
 		CA5A2BA6E5F3F59DF212DFFF22780335 /* RCTCxxUtils.mm */ = {isa = PBXFileReference; includeInIndex = 1; path = RCTCxxUtils.mm; sourceTree = "<group>"; };
 		CA78302C6E0529095B9DF538480B914F /* RCTAsyncLocalStorage.mm */ = {isa = PBXFileReference; includeInIndex = 1; path = RCTAsyncLocalStorage.mm; sourceTree = "<group>"; };
@@ -5723,7 +5723,7 @@
 		DBB0CAFAB566E1F548F82675BA22AC6F /* YogaKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YogaKit-umbrella.h"; sourceTree = "<group>"; };
 		DBB2B8E2B399DD0038889BD36EB908FB /* Subscription.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = Subscription.cpp; path = yarpl/flowable/Subscription.cpp; sourceTree = "<group>"; };
 		DBCBBAF0104997319CB9716C6693F486 /* Replaceable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Replaceable.h; path = folly/Replaceable.h; sourceTree = "<group>"; };
-		DBE5427DDEAE2A85C5635CAECF8939FC /* Pods-MyApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MyApp-umbrella.h"; sourceTree = "<group>"; };
+		DBE5427DDEAE2A85C5635CAECF8939FC /* Pods-Booster-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Booster-umbrella.h"; sourceTree = "<group>"; };
 		DBE905E14972A3B1011B840912C33BFC /* RCTAnimationUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTAnimationUtils.m; sourceTree = "<group>"; };
 		DC0D148E601A832FDB28ACAE62D5A2EF /* Scheduler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Scheduler.h; sourceTree = "<group>"; };
 		DC259E118255F651382B5CD68DB858D8 /* JemallocNodumpAllocator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JemallocNodumpAllocator.h; path = folly/experimental/JemallocNodumpAllocator.h; sourceTree = "<group>"; };
@@ -5895,7 +5895,7 @@
 		EE3C3C4F0DAB3D8814AECC6B2D262212 /* FlipperDiagnosticsViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FlipperDiagnosticsViewController.m; path = iOS/FlipperKit/FlipperDiagnosticsViewController.m; sourceTree = "<group>"; };
 		EE9494D2B0CF78FCF1C428CC2B2EDCCE /* NetOps.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NetOps.h; path = folly/net/NetOps.h; sourceTree = "<group>"; };
 		EE99473AF3F5E6CA8D73C60D40FEFC18 /* EventBase.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = EventBase.cpp; path = folly/io/async/EventBase.cpp; sourceTree = "<group>"; };
-		EEA4F60C1DECA1661541EE9ACEABABC8 /* Pods-MyApp-MyAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyApp-MyAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EEA4F60C1DECA1661541EE9ACEABABC8 /* Pods-Booster-BoosterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Booster-BoosterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EEA5FA08006E9D6E14B91C693ECA700B /* json_pointer.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = json_pointer.cpp; path = folly/json_pointer.cpp; sourceTree = "<group>"; };
 		EEAEF33077AB541E7875C273DFC2D4DE /* String.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = String.h; path = folly/portability/String.h; sourceTree = "<group>"; };
 		EEB85DDBAC486356F337C8017CDF9F9B /* IntrusiveList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IntrusiveList.h; path = folly/IntrusiveList.h; sourceTree = "<group>"; };
@@ -6550,21 +6550,21 @@
 			path = glog;
 			sourceTree = "<group>";
 		};
-		0F6CFAB20F53762275B96A56878A301F /* Pods-MyApp */ = {
+		0F6CFAB20F53762275B96A56878A301F /* Pods-Booster */ = {
 			isa = PBXGroup;
 			children = (
-				640CF50748F0703AA6A441494F237742 /* Pods-MyApp.modulemap */,
-				1D87578E28A253482AF18BA2B5659BE9 /* Pods-MyApp-acknowledgements.markdown */,
-				C435C8CB212328B6DB1BAEF1F2BA2271 /* Pods-MyApp-acknowledgements.plist */,
-				4CFB89DDD5C5A33A446244EE0F112ED2 /* Pods-MyApp-dummy.m */,
-				7896FC1370DB14B50BD1D1E6994983D8 /* Pods-MyApp-frameworks.sh */,
-				37C72675A273DA6C1CBF217A10EBDE67 /* Pods-MyApp-resources.sh */,
-				DBE5427DDEAE2A85C5635CAECF8939FC /* Pods-MyApp-umbrella.h */,
-				1B421BF99AA3409C5D84BA969FBABA51 /* Pods-MyApp.debug.xcconfig */,
-				3163C11976A0B951D32E2A986F34451D /* Pods-MyApp.release.xcconfig */,
+				640CF50748F0703AA6A441494F237742 /* Pods-Booster.modulemap */,
+				1D87578E28A253482AF18BA2B5659BE9 /* Pods-Booster-acknowledgements.markdown */,
+				C435C8CB212328B6DB1BAEF1F2BA2271 /* Pods-Booster-acknowledgements.plist */,
+				4CFB89DDD5C5A33A446244EE0F112ED2 /* Pods-Booster-dummy.m */,
+				7896FC1370DB14B50BD1D1E6994983D8 /* Pods-Booster-frameworks.sh */,
+				37C72675A273DA6C1CBF217A10EBDE67 /* Pods-Booster-resources.sh */,
+				DBE5427DDEAE2A85C5635CAECF8939FC /* Pods-Booster-umbrella.h */,
+				1B421BF99AA3409C5D84BA969FBABA51 /* Pods-Booster.debug.xcconfig */,
+				3163C11976A0B951D32E2A986F34451D /* Pods-Booster.release.xcconfig */,
 			);
-			name = "Pods-MyApp";
-			path = "Target Support Files/Pods-MyApp";
+			name = "Pods-Booster";
+			path = "Target Support Files/Pods-Booster";
 			sourceTree = "<group>";
 		};
 		0F8FDAE31C11720FB2AEF5FFCE31AF1E /* Support Files */ = {
@@ -7290,8 +7290,8 @@
 				65234B3E668A42D9137B2C7AB051EE37 /* libFlipperKit.a */,
 				3CA7A9404CCDD6BA22C97F8348CE3209 /* libglog.a */,
 				FB6FAD8F0183E86ACBFBD8A81BA7BF3A /* liblibevent.a */,
-				684625585B5002628DD733354DACB30F /* libPods-MyApp.a */,
-				5080CD9E2BBE97AED497EA0B6853BBBC /* libPods-MyApp-MyAppTests.a */,
+				684625585B5002628DD733354DACB30F /* libPods-Booster.a */,
+				5080CD9E2BBE97AED497EA0B6853BBBC /* libPods-Booster-BoosterTests.a */,
 				1936453FF2A7E3A13063C4917C4D5598 /* libRCT-Folly.a */,
 				F958876A082BF810B342435CE3FB5AF6 /* libRCTTypeSafety.a */,
 				BD71E2539823621820F84384064C253A /* libReact-Core.a */,
@@ -7419,21 +7419,21 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		51F60DA7752B8CA1FBCC4643637BCA15 /* Pods-MyApp-MyAppTests */ = {
+		51F60DA7752B8CA1FBCC4643637BCA15 /* Pods-Booster-BoosterTests */ = {
 			isa = PBXGroup;
 			children = (
-				85BE4A884DEB772375C2BDD2108DAE00 /* Pods-MyApp-MyAppTests.modulemap */,
-				14603F545A59B0A55ABBB02C90AC9B41 /* Pods-MyApp-MyAppTests-acknowledgements.markdown */,
-				975FC022E34F4522784CAE1CA47371F5 /* Pods-MyApp-MyAppTests-acknowledgements.plist */,
-				6DEBF3034D4E6A737C63604CED1455D4 /* Pods-MyApp-MyAppTests-dummy.m */,
-				1EF239BA7693D3C5AFBE99BDB0749FDF /* Pods-MyApp-MyAppTests-frameworks.sh */,
-				CA44BC0422C74B4A87957D84E2DB828E /* Pods-MyApp-MyAppTests-resources.sh */,
-				92F5979CE6F872F09F695079F1C5407E /* Pods-MyApp-MyAppTests-umbrella.h */,
-				EEA4F60C1DECA1661541EE9ACEABABC8 /* Pods-MyApp-MyAppTests.debug.xcconfig */,
-				16CDCC9A0702735AAA31FF20DFBE5948 /* Pods-MyApp-MyAppTests.release.xcconfig */,
+				85BE4A884DEB772375C2BDD2108DAE00 /* Pods-Booster-BoosterTests.modulemap */,
+				14603F545A59B0A55ABBB02C90AC9B41 /* Pods-Booster-BoosterTests-acknowledgements.markdown */,
+				975FC022E34F4522784CAE1CA47371F5 /* Pods-Booster-BoosterTests-acknowledgements.plist */,
+				6DEBF3034D4E6A737C63604CED1455D4 /* Pods-Booster-BoosterTests-dummy.m */,
+				1EF239BA7693D3C5AFBE99BDB0749FDF /* Pods-Booster-BoosterTests-frameworks.sh */,
+				CA44BC0422C74B4A87957D84E2DB828E /* Pods-Booster-BoosterTests-resources.sh */,
+				92F5979CE6F872F09F695079F1C5407E /* Pods-Booster-BoosterTests-umbrella.h */,
+				EEA4F60C1DECA1661541EE9ACEABABC8 /* Pods-Booster-BoosterTests.debug.xcconfig */,
+				16CDCC9A0702735AAA31FF20DFBE5948 /* Pods-Booster-BoosterTests.release.xcconfig */,
 			);
-			name = "Pods-MyApp-MyAppTests";
-			path = "Target Support Files/Pods-MyApp-MyAppTests";
+			name = "Pods-Booster-BoosterTests";
+			path = "Target Support Files/Pods-Booster-BoosterTests";
 			sourceTree = "<group>";
 		};
 		5232042E6E80B76724FD4DF4A6D0E43B /* Pod */ = {
@@ -8849,8 +8849,8 @@
 		8B034F9BE9AE5B8E52F44E60FAA7E57E /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				0F6CFAB20F53762275B96A56878A301F /* Pods-MyApp */,
-				51F60DA7752B8CA1FBCC4643637BCA15 /* Pods-MyApp-MyAppTests */,
+				0F6CFAB20F53762275B96A56878A301F /* Pods-Booster */,
+				51F60DA7752B8CA1FBCC4643637BCA15 /* Pods-Booster-BoosterTests */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
@@ -10745,7 +10745,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54905F150856423A1379A868373373EC /* Pods-MyApp-MyAppTests-umbrella.h in Headers */,
+				54905F150856423A1379A868373373EC /* Pods-Booster-BoosterTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11058,7 +11058,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CADF5F5E7D4A114B684EEB09E202CCC /* Pods-MyApp-umbrella.h in Headers */,
+				1CADF5F5E7D4A114B684EEB09E202CCC /* Pods-Booster-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11950,9 +11950,9 @@
 			productReference = FFDC7746794AB17CFB7150820479DF40 /* libFlipper-RSocket.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		236467F015C975DA1C6B4BE58EB58B46 /* Pods-MyApp-MyAppTests */ = {
+		236467F015C975DA1C6B4BE58EB58B46 /* Pods-Booster-BoosterTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA40C2D37CEAF049E9F25B2EDF76B7E1 /* Build configuration list for PBXNativeTarget "Pods-MyApp-MyAppTests" */;
+			buildConfigurationList = FA40C2D37CEAF049E9F25B2EDF76B7E1 /* Build configuration list for PBXNativeTarget "Pods-Booster-BoosterTests" */;
 			buildPhases = (
 				29071DDDCDA966F7C0A82E368E33CA6B /* Headers */,
 				1EC3BBADE11DB110D0F84D43B432C319 /* Sources */,
@@ -12003,9 +12003,9 @@
 				D52C670AD60AC7C2B912B2D1462DB544 /* PBXTargetDependency */,
 				5CBF66771CA94895F4BA4B6340D0FA63 /* PBXTargetDependency */,
 			);
-			name = "Pods-MyApp-MyAppTests";
-			productName = "Pods-MyApp-MyAppTests";
-			productReference = 5080CD9E2BBE97AED497EA0B6853BBBC /* libPods-MyApp-MyAppTests.a */;
+			name = "Pods-Booster-BoosterTests";
+			productName = "Pods-Booster-BoosterTests";
+			productReference = 5080CD9E2BBE97AED497EA0B6853BBBC /* libPods-Booster-BoosterTests.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		2AB2EF542954AB1C999E03BFEF8DE806 /* DoubleConversion */ = {
@@ -12061,9 +12061,9 @@
 			productReference = 5B3357A1CE67C0BF4AE31936A1BE6888 /* libYogaKit.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		4255925345F39757951D1D1864535DD4 /* Pods-MyApp */ = {
+		4255925345F39757951D1D1864535DD4 /* Pods-Booster */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2910D7B1A80B8C041145945A5D76EA67 /* Build configuration list for PBXNativeTarget "Pods-MyApp" */;
+			buildConfigurationList = 2910D7B1A80B8C041145945A5D76EA67 /* Build configuration list for PBXNativeTarget "Pods-Booster" */;
 			buildPhases = (
 				45F0C096E023F80331568D3CF4ADEB23 /* Headers */,
 				0A38A0D79924C111AFEA34842EA3D018 /* Sources */,
@@ -12114,9 +12114,9 @@
 				87BD9EE2AA0652997E3EE62E2CEDFD12 /* PBXTargetDependency */,
 				D9894721C92D6BFF08C297A01042F28E /* PBXTargetDependency */,
 			);
-			name = "Pods-MyApp";
-			productName = "Pods-MyApp";
-			productReference = 684625585B5002628DD733354DACB30F /* libPods-MyApp.a */;
+			name = "Pods-Booster";
+			productName = "Pods-Booster";
+			productReference = 684625585B5002628DD733354DACB30F /* libPods-Booster.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		463F41A7E8B252F8AC5024DA1F4AF6DA /* React-cxxreact */ = {
@@ -12785,8 +12785,8 @@
 				D0EFEFB685D97280256C559792236873 /* glog */,
 				04A30E186743192DFB26B0FD7DB8F250 /* libevent */,
 				B9ED5194E665042005069EF06C82A050 /* OpenSSL-Universal */,
-				4255925345F39757951D1D1864535DD4 /* Pods-MyApp */,
-				236467F015C975DA1C6B4BE58EB58B46 /* Pods-MyApp-MyAppTests */,
+				4255925345F39757951D1D1864535DD4 /* Pods-Booster */,
+				236467F015C975DA1C6B4BE58EB58B46 /* Pods-Booster-BoosterTests */,
 				EC55D52694092A9D0E6A78EB01207EB5 /* RCT-Folly */,
 				E7E7CE52C8C68B17224FF8C262D80ABF /* RCTRequired */,
 				D20469A9A1E5CFB26045EAEBE3F88E5E /* RCTTypeSafety */,
@@ -12860,17 +12860,17 @@
 			files = (
 			);
 			inputPaths = (
-				"/Users/bs302/WorkRepository/BS_23/Learning/MyApp/node_modules/react-native/scripts/../Libraries",
+				"/Users/bs302/WorkRepository/BS_23/Learning/Booster/node_modules/react-native/scripts/../Libraries",
 			);
 			name = "[CP-User] Generate Specs";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/codegen-FBReactNativeSpec.log",
-				"/Users/bs302/WorkRepository/BS_23/Learning/MyApp/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec.h",
-				"/Users/bs302/WorkRepository/BS_23/Learning/MyApp/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec-generated.mm",
+				"/Users/bs302/WorkRepository/BS_23/Learning/Booster/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec.h",
+				"/Users/bs302/WorkRepository/BS_23/Learning/Booster/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec-generated.mm",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -o pipefail\n\nbash -l -c 'SRCS_DIR=/Users/bs302/WorkRepository/BS_23/Learning/MyApp/node_modules/react-native/scripts/../Libraries CODEGEN_MODULES_OUTPUT_DIR=/Users/bs302/WorkRepository/BS_23/Learning/MyApp/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec CODEGEN_MODULES_LIBRARY_NAME=FBReactNativeSpec /Users/bs302/WorkRepository/BS_23/Learning/MyApp/node_modules/react-native/scripts/generate-specs.sh' 2>&1 | tee \"${SCRIPT_OUTPUT_FILE_0}\"";
+			shellScript = "set -o pipefail\n\nbash -l -c 'SRCS_DIR=/Users/bs302/WorkRepository/BS_23/Learning/Booster/node_modules/react-native/scripts/../Libraries CODEGEN_MODULES_OUTPUT_DIR=/Users/bs302/WorkRepository/BS_23/Learning/Booster/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec CODEGEN_MODULES_LIBRARY_NAME=FBReactNativeSpec /Users/bs302/WorkRepository/BS_23/Learning/Booster/node_modules/react-native/scripts/generate-specs.sh' 2>&1 | tee \"${SCRIPT_OUTPUT_FILE_0}\"";
 		};
 		2E321AB2BDD4D14F6F5D9E68E4F8CE6E /* [CP] Copy XCFrameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -13080,7 +13080,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3ECC8E88C5158C38EE0EE4149068D2A /* Pods-MyApp-dummy.m in Sources */,
+				B3ECC8E88C5158C38EE0EE4149068D2A /* Pods-Booster-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13135,7 +13135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47543AC87C632ECDED9DFDB650562D3E /* Pods-MyApp-MyAppTests-dummy.m in Sources */,
+				47543AC87C632ECDED9DFDB650562D3E /* Pods-Booster-BoosterTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15600,7 +15600,7 @@
 		};
 		22696118A563F7B3DB4C564204769DB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EEA4F60C1DECA1661541EE9ACEABABC8 /* Pods-MyApp-MyAppTests.debug.xcconfig */;
+			baseConfigurationReference = EEA4F60C1DECA1661541EE9ACEABABC8 /* Pods-Booster-BoosterTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -15609,7 +15609,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MyApp-MyAppTests/Pods-MyApp-MyAppTests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Booster-BoosterTests/Pods-Booster-BoosterTests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -16076,7 +16076,7 @@
 		};
 		635D654AD28B5F79CF51BC4C2F4C0456 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 16CDCC9A0702735AAA31FF20DFBE5948 /* Pods-MyApp-MyAppTests.release.xcconfig */;
+			baseConfigurationReference = 16CDCC9A0702735AAA31FF20DFBE5948 /* Pods-Booster-BoosterTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -16085,7 +16085,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MyApp-MyAppTests/Pods-MyApp-MyAppTests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Booster-BoosterTests/Pods-Booster-BoosterTests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -16825,7 +16825,7 @@
 		};
 		CF9551C73163D8A2E6D40733AEDE7633 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B421BF99AA3409C5D84BA969FBABA51 /* Pods-MyApp.debug.xcconfig */;
+			baseConfigurationReference = 1B421BF99AA3409C5D84BA969FBABA51 /* Pods-Booster.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -16834,7 +16834,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MyApp/Pods-MyApp.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Booster/Pods-Booster.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -17302,7 +17302,7 @@
 		};
 		F95F050DED891742EF191D7F5BF7CC2A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3163C11976A0B951D32E2A986F34451D /* Pods-MyApp.release.xcconfig */;
+			baseConfigurationReference = 3163C11976A0B951D32E2A986F34451D /* Pods-Booster.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -17311,7 +17311,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MyApp/Pods-MyApp.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Booster/Pods-Booster.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -17448,7 +17448,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2910D7B1A80B8C041145945A5D76EA67 /* Build configuration list for PBXNativeTarget "Pods-MyApp" */ = {
+		2910D7B1A80B8C041145945A5D76EA67 /* Build configuration list for PBXNativeTarget "Pods-Booster" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF9551C73163D8A2E6D40733AEDE7633 /* Debug */,
@@ -17763,7 +17763,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA40C2D37CEAF049E9F25B2EDF76B7E1 /* Build configuration list for PBXNativeTarget "Pods-MyApp-MyAppTests" */ = {
+		FA40C2D37CEAF049E9F25B2EDF76B7E1 /* Build configuration list for PBXNativeTarget "Pods-Booster-BoosterTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22696118A563F7B3DB4C564204769DB5 /* Debug */,
