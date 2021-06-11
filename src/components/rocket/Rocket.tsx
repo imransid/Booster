@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, FC } from "react";
 import { View, Button } from "react-native";
 import Animated, {
   useSharedValue,
@@ -8,7 +8,11 @@ import Animated, {
   Easing,
 } from "react-native-reanimated";
 
-export default () => {
+interface rocket {
+  activeStatus: boolean;
+}
+
+const Rocket: FC<rocket> = ({ activeStatus }) => {
   const offset = useSharedValue(10);
 
   const style = useAnimatedStyle(() => {
@@ -30,14 +34,14 @@ export default () => {
   const customSpringStyles = useAnimatedStyle(() => {
     return {
       width: withSpring(
-        offset.value === 10 ? offset.value * 20 : offset.value * 255,
+        offset.value === 10 ? offset.value * 20 : offset.value * 135,
         {
           damping: 20,
           stiffness: 90,
         }
       ),
       height: withSpring(
-        offset.value === 10 ? offset.value * 20 : offset.value * 255,
+        offset.value === 10 ? offset.value * 20 : offset.value * 135,
         {
           damping: 20,
           stiffness: 90,
@@ -46,7 +50,13 @@ export default () => {
     };
   });
 
-  const updateFunction = useCallback(() => (offset.value = 2), [offset]);
+  // const updateFunction = useCallback(() => (), [offset]);
+
+  useEffect(() => {
+    if (activeStatus === true) {
+      offset.value = 2;
+    }
+  }, [activeStatus, offset]);
 
   return (
     <Animated.View
@@ -62,7 +72,8 @@ export default () => {
         resizeMode="contain"
         style={[customSpringStyles, style]}
       />
-      <Button onPress={updateFunction} title="Move" />
     </Animated.View>
   );
 };
+
+export default Rocket;
