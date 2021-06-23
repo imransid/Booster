@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "470491176372",
+    "firebase_url": "https://booster-25017.firebaseio.com",
+    "project_id": "booster-25017",
+    "storage_bucket": "booster-25017.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470491176372:android:424b0886d78e32d59b66e1",
+        "android_client_info": {
+          "package_name": "com.booster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470491176372-1pahmrddtavc5va9j2kli652915sq0i4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.booster",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "470491176372-tln4p3lflcpp7jsum2sdgrgjb036vqf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUuXxqWhF42EaTFN_RGFxGLtSud4nKcig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470491176372-tln4p3lflcpp7jsum2sdgrgjb036vqf7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470491176372:android:db0e3a8aee94ca2d9b66e1",
+        "android_client_info": {
+          "package_name": "com.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470491176372-tln4p3lflcpp7jsum2sdgrgjb036vqf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUuXxqWhF42EaTFN_RGFxGLtSud4nKcig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470491176372-tln4p3lflcpp7jsum2sdgrgjb036vqf7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

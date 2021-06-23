@@ -1,14 +1,12 @@
 import React from "react";
 import { View, Button, Text, StyleSheet } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
 
 import Rocket from "./src/features/signIn/SignIn";
 
+import Card from "./src/components/card/Card";
+
+import Gallery from "./src/features/gallery";
+
 export default () => {
-  // return <Rocket />;
-  return (
-    <>
-      <Rocket />
-    </>
-  );
+  return <Gallery />;
 };
