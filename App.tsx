@@ -7,6 +7,8 @@ import Card from "./src/components/card/Card";
 
 import Gallery from "./src/features/gallery";
 
+import LiquidSwipe from "./src/features/LiquidSwipe";
+
 export default () => {
   return <Gallery />;
 };
